@@ -1,4 +1,4 @@
-# FrostyFix
+# FrostyFix 2
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
 
 ![image](https://i.imgur.com/2FMqz2h.png)
@@ -47,6 +47,9 @@ It works directly from Origin/EA Desktop but it's better to launch Battlefront f
 These games are confirmed to be unsupported because they use a different environment variable compared to most other Frostbite Games. They may get support later in the future
 - FIFA 20
 - Madden 20
+
+## FrostyFix 1
+The old FrostyFix [Github](https://github.com/Dulana57/FrostyFix-Old)
 
 ## Support
 For more information and/or support about FrostyFix, join [my Discord Server](https://discord.gg/57sJ6fj) or join the [BattlefrontModding Discord Server](https://discord.gg/EzXSJfUDmq)
