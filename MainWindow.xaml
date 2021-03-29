@@ -1,0 +1,192 @@
+﻿<Window x:Class="FrostyFix2.MainWindow"
+        ResizeMode="CanResize"
+        WindowStyle="SingleBorderWindow"
+        SizeChanged="Window_SizeChanged"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FrostyFix2"
+        mc:Ignorable="d"
+        Title="FrostyFix" Height="500" Width="800" Background="#FF323232" WindowStartupLocation="CenterScreen" Icon="Img/FrostyFix.ico" MinHeight="500" MinWidth="800">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
+    <Grid>
+        <Grid VerticalAlignment="Top" Background="Black">
+            <StackPanel Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Width="45" Content="―"  Name="MinimizeButton" Focusable="False" FontFamily="Global User Interface">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Black"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                            <Setter Property="FontSize" Value="10"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF3C3C3C"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Width="45" Content="╳"  Name="CloseButton" Focusable="False"  FontFamily="Global User Interface">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Black"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                            <Setter Property="FontSize" Value="10"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFE81123"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <Image HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="20" Source="Img/FrostyFix.ico"/>
+            <TextBlock HorizontalAlignment="Left" Margin="30,7,0,0" TextWrapping="Wrap" Text="FrostyFix 2" VerticalAlignment="Top" Foreground="#FFF1F1F1"/>
+        </Grid>
+        <!--<Rectangle Fill="#FF141414" Margin="5,115,5,5" Stroke="#FF141414"/>-->
+        <Canvas Margin="266,35,266,362" HorizontalAlignment="Center" Width="260">
+            <TextBlock TextWrapping="Wrap" Text="FrostyFix" VerticalAlignment="Top" Foreground="White" FontSize="42" FontWeight="Bold" FontFamily="Arial" Canvas.Left="66" Canvas.Top="12" Width="191"/>
+            <Image HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Source="Img/FrostyFixNBSm.png" Canvas.Top="4" Canvas.Left="-1"/>
+        </Canvas>
+        <Button Content="About" HorizontalAlignment="Right" Margin="0,36,6,0" VerticalAlignment="Top" Width="45" Height="20" Click="ButtonGithub" BorderBrush="#FFB90000">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#00000000"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF6C6C6C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FF5A5A5A"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Grid Margin="5,115,5,5" Background="#FF141414">
+            <Button Name="btn_enable" Content="Enable Mods" Width="150" Height="60" IsEnabled="False" Canvas.Left="322" Canvas.Top="253" Margin="316,0,316,34" VerticalAlignment="Bottom" Click="btn_enable_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF323232"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF6C6C6C"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF5A5A5A"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="#FFA2A2A2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="btn_disable" Content="Disable Mods" Width="150" Margin="316,0,316,6" Height="26" VerticalAlignment="Bottom" Click="btn_disable_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF323232"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF6C6C6C"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF5A5A5A"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="#FFA2A2A2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBox Name="txtb_custompath" Height="20" Margin="50,225,121,104" TextWrapping="Wrap" Text="" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" IsEnabled="False"/>
+            <RadioButton Name="rbtn_custom" Content="Custom" Margin="50,204,662,125" Foreground="#FFF1F1F1" FontSize="14" AutomationProperties.Name="Test" Height="20" VerticalContentAlignment="Center" Checked="rbtn_custom_Checked" Unchecked="rbtn_custom_Unchecked"/>
+            <Button Name="btn_customchoose" Content="Choose..." Margin="0,225,50,104" Height="20" HorizontalAlignment="Right" Width="66" IsEnabled="False" Click="btn_customchoose_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF323232"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF6C6C6C"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF5A5A5A"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="#FFA2A2A2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBlock Name="lbl_enabled" Margin="291,237,291,97" TextWrapping="Wrap" Text="" Width="200" TextAlignment="Center" VerticalAlignment="Bottom"/>
+            <RadioButton x:Name="rbtn_bf2015" Content="Star Wars: Battlefront (2015)" Margin="50,25,492,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2015_Checked"/>
+            <RadioButton x:Name="rbtn_bf2017" Content="Star Wars: Battlefront II (2017)" Margin="50,50,492,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2017_Checked"/>
+            <RadioButton x:Name="rbtn_bf1" Content="Battlefield One" Margin="50,75,492,254" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf1_Checked"/>
+            <RadioButton x:Name="rbtn_mea" Content="Mass Effect Andromeda" Margin="0,25,50,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_mea_Checked" HorizontalAlignment="Right" Width="172"/>
+            <RadioButton x:Name="rbtn_nfs" Content="Need for Speed" Margin="316,25,281,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfs_Checked" HorizontalAlignment="Center" Width="185"/>
+            <RadioButton x:Name="rbtn_nfspayback" Content="Need for Speed: Payback" Margin="316,50,281,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfspayback_Checked" HorizontalAlignment="Center" Width="185"/>
+            <RadioButton x:Name="rbtn_nfsheat" Content="Need for Speed: Heat" Margin="316,75,281,254" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfsheat_Checked" HorizontalAlignment="Center" Width="185"/>
+            <RadioButton x:Name="rbtn_gw2" Content="PvZ: Garden Warfare 2" Margin="0,50,50,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_gw2_Checked" HorizontalAlignment="Right" Width="172"/>
+            <RadioButton x:Name="rbtn_dai" Content="Dragon Age: Inquisition" Margin="0,75,50,254" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_dai_Checked" HorizontalAlignment="Right" Width="172"/>
+        </Grid>
+    </Grid>
+
+</Window>
