@@ -48,6 +48,9 @@ These games are confirmed to be unsupported because they use a different environ
 - FIFA 20
 - Madden 20
 
+## FrostyFix 1
+The old FrostyFix [Github](https://github.com/Dulana57/FrostyFix-Old)
+
 ## Support
 For more information and/or support about FrostyFix, join [my Discord Server](https://discord.gg/57sJ6fj) or join the [BattlefrontModding Discord Server](https://discord.gg/EzXSJfUDmq)
 
