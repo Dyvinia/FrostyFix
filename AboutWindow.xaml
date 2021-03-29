@@ -76,12 +76,12 @@
             https://github.com/Dulana57/FrostyFix
             </Hyperlink>
         </TextBlock>
-        <TextBlock Margin="40,377,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
+        <TextBlock Margin="25,377,25,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
             FAQ: 
             <Hyperlink 
             NavigateUri="https://github.com/Dulana57/FrostyFix#faq"
             RequestNavigate="Hyperlink_RequestNavigate" Foreground="White">
-            https://github.com/Dulana57/FrostyFix#faq
+            https://github.com/Dulana57/FrostyFix#FAQ
             </Hyperlink>
         </TextBlock>
         <TextBlock Margin="40,398,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
