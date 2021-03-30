@@ -63,7 +63,6 @@
             <Image HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="20" Source="Img/FrostyFix.ico"/>
             <TextBlock HorizontalAlignment="Left" Margin="30,7,0,0" TextWrapping="Wrap" Text="FrostyFix 2" VerticalAlignment="Top" Foreground="#FFF1F1F1"/>
         </Grid>
-        <!--<Rectangle Fill="#FF141414" Margin="5,115,5,5" Stroke="#FF141414"/>-->
         <Canvas Margin="266,35,266,362" HorizontalAlignment="Center" Width="260">
             <TextBlock TextWrapping="Wrap" Text="FrostyFix" VerticalAlignment="Top" Foreground="White" FontSize="42" FontWeight="Bold" FontFamily="Arial" Canvas.Left="66" Canvas.Top="12" Width="191"/>
             <Image HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Source="Img/FrostyFixNBSm.png" Canvas.Top="4" Canvas.Left="-1"/>
