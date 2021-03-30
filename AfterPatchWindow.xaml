@@ -185,8 +185,11 @@
                 </TextBlock>
             </Button>
         </Grid>
-        <TextBlock Margin="10,136,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" FontSize="16" Height="89" TextAlignment="Center">
-            It is required to restart Origin/EA Desktop to apply the patch. If that does not work, it is recommended to restart your PC and launch the game after that.
+        <TextBlock Margin="10,180,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" FontSize="16" Height="46" TextAlignment="Center">
+            If that does not work, it is recommended to restart your PC and launch the game after that.
+        </TextBlock>
+        <TextBlock Margin="10,145,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" FontSize="16" Height="25" TextAlignment="Center">
+            Restarting Origin/EA Desktop is required.
         </TextBlock>
     </Grid>
 </Window>
