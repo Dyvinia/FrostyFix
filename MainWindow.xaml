@@ -15,7 +15,7 @@
     <Grid>
         <Grid VerticalAlignment="Top" Background="Black">
             <StackPanel Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Width="45" Content="―"  Name="MinimizeButton" Focusable="False" FontFamily="Global User Interface">
+                <Button Width="45" Content="&#xE949;"  Name="MinimizeButton" Focusable="False" FontFamily="Segoe MDL2 Assets">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Black"/>
@@ -37,7 +37,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Width="45" Content="╳"  Name="CloseButton" Focusable="False"  FontFamily="Global User Interface">
+                <Button Width="45" Content="&#xE106;"  Name="CloseButton" Focusable="False"  FontFamily="Segoe MDL2 Assets">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Black"/>

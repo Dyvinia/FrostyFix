@@ -18,7 +18,7 @@
     <Grid>
         <Grid VerticalAlignment="Top" Background="Black">
             <StackPanel Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Width="45" Content="╳"  Name="CloseButton_AfterPatch" Focusable="False" FontFamily="Global User Interface">
+                <Button Width="45" Content="&#xE106;"  Name="CloseButton_AfterPatch" Focusable="False"  FontFamily="Segoe MDL2 Assets">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Black"/>
