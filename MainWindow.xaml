@@ -94,6 +94,11 @@
         </Button>
         <Grid Margin="5,115,5,5" Background="#FF141414">
             <Button Name="btn_enable" Content="Enable Mods" Width="150" Height="60" IsEnabled="False" Canvas.Left="322" Canvas.Top="253" Margin="316,0,316,34" VerticalAlignment="Bottom" Click="btn_enable_Click">
+                <Button.ToolTip>
+                    <ToolTip Background="Black" Foreground="White">
+                        Click to apply the fix
+                    </ToolTip>
+                </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#FF323232"/>
@@ -121,6 +126,11 @@
                 </Button.Template>
             </Button>
             <Button Name="btn_disable" Content="Disable Mods" Width="150" Margin="316,0,316,6" Height="26" VerticalAlignment="Bottom" Click="btn_disable_Click">
+                <Button.ToolTip>
+                    <ToolTip Background="Black" Foreground="White">
+                        Click to remove the fix
+                    </ToolTip>
+                </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#FF323232"/>
@@ -150,6 +160,11 @@
             <TextBox Name="txtb_custompath" Height="20" Margin="50,225,121,104" TextWrapping="Wrap" Text="" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" IsEnabled="False"/>
             <RadioButton Name="rbtn_custom" Content="Custom" Margin="50,204,662,125" Foreground="#FFF1F1F1" FontSize="14" AutomationProperties.Name="Test" Height="20" VerticalContentAlignment="Center" Checked="rbtn_custom_Checked" Unchecked="rbtn_custom_Unchecked"/>
             <Button Name="btn_customchoose" Content="Choose..." Margin="0,225,50,104" Height="20" HorizontalAlignment="Right" Width="66" IsEnabled="False" Click="btn_customchoose_Click">
+                <Button.ToolTip>
+                    <ToolTip Background="Black" Foreground="White">
+                        Select game executable
+                    </ToolTip>
+                </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#FF323232"/>

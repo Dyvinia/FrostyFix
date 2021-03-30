@@ -59,6 +59,11 @@
         <TextBlock Margin="69,91,69,0" TextWrapping="Wrap" Text="After Patch Options" VerticalAlignment="Top" Foreground="#FFF1F1F1" FontSize="22" Height="33" TextAlignment="Center" FontWeight="Bold"/>
         <Grid Height="210" Margin="5,0,5,5" VerticalAlignment="Bottom" Background="#FF141414">
             <Button Name="btn_restartEA" Height="60" IsEnabled="True" Canvas.Left="322" Canvas.Top="253" Margin="85,0,85,140" VerticalAlignment="Bottom" Click="btn_restartEA_Click" FontSize="16">
+                <Button.ToolTip>
+                    <ToolTip Background="Black" Foreground="White">
+                        Closes Origin/EA Desktop and starts EA Desktop
+                    </ToolTip>
+                </Button.ToolTip>
                 <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="Restart EA Desktop" RenderTransformOrigin="0.5,0.5" >
                     <TextBlock.RenderTransform>
                         <TransformGroup>
@@ -96,6 +101,11 @@
                 </Button.Template>
             </Button>
             <Button x:Name="btn_restartOrigin" Height="60" IsEnabled="True" Margin="85,0,85,75" VerticalAlignment="Bottom" Click="btn_restartOrigin_Click" FontSize="16">
+                <Button.ToolTip>
+                    <ToolTip Background="Black" Foreground="White">
+                        Closes Origin/EA Desktop and starts Origin
+                    </ToolTip>
+                </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#FF323232"/>
@@ -133,6 +143,11 @@
                 </TextBlock>
             </Button>
             <Button x:Name="btn_restartPC" Height="60" IsEnabled="True" Margin="85,0,85,10" VerticalAlignment="Bottom" Click="btn_restartPC_Click" FontSize="16">
+                <Button.ToolTip>
+                    <ToolTip Background="Black" Foreground="White">
+                        Restarts PC
+                    </ToolTip>
+                </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#FF323232"/>
