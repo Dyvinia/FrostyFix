@@ -67,7 +67,7 @@ namespace FrostyFix2 {
         }
 
         private async void btn_restartPC_Click(object sender, RoutedEventArgs e) {
-            string message = "Are you sure you want to restart this PC?";
+            string message = "Do you want to restart this PC?";
             string title = "Restart PC";
             MessageBoxButton buttons = MessageBoxButton.YesNo;
             MessageBoxImage icon = MessageBoxImage.Warning;
