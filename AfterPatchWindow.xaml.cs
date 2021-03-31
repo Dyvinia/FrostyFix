@@ -41,8 +41,8 @@ namespace FrostyFix2 {
             foreach (var process in Process.GetProcessesByName("Origin")) {
                 process.Kill();
             }
-            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-            await Task.Delay(8000);
+            Mouse.OverrideCursor = Cursors.Wait;
+            await Task.Delay(5000);
             Mouse.OverrideCursor = null;
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
@@ -61,8 +61,8 @@ namespace FrostyFix2 {
             foreach (var process in Process.GetProcessesByName("Origin")) {
                 process.Kill();
             }
-            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-            await Task.Delay(8000);
+            Mouse.OverrideCursor = Cursors.Wait;
+            await Task.Delay(5000);
             Mouse.OverrideCursor = null;
             Process p = new Process();
             p.StartInfo.UseShellExecute = false;
@@ -81,7 +81,7 @@ namespace FrostyFix2 {
             switch (result) {
                 case MessageBoxResult.Yes:
                     await Task.Delay(2000);
-                    System.Diagnostics.Process.Start("shutdown.exe", "-r -t 0");
+                    Process.Start("shutdown.exe", "-r -t 0");
                     break;
             }
         }

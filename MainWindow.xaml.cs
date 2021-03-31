@@ -22,46 +22,38 @@ namespace FrostyFix2 {
 
         public void checkStatus() {
             var isenabled = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
-            if (isenabled == "\\ModData") {
-                lbl_enabled.Text = "Registry Key is Currently Broken";
-                lbl_enabled.Foreground = Brushes.Orange;
-            }
-            else if (isenabled != null) {
-                if (isenabled == bf2015 + "\\ModData") {
+            if (isenabled != null) {
+                lbl_enabled.Foreground = Brushes.LightGreen;
+                if (isenabled == "\\ModData") {
+                    lbl_enabled.Text = "Registry Key is Currently Broken";
+                    lbl_enabled.Foreground = Brushes.Orange;
+                }
+                else if (isenabled == bf2015 + "\\ModData") {
                     lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront (2015)";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
                 else if (isenabled == bf2017 + "\\ModData") {
                     lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront II (2017)";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
                 else if (isenabled == mea + "\\ModData") {
                     lbl_enabled.Text = "Mods are Currently Enabled for Mass Effect: Andromeda";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
                 else if (isenabled == bf1 + "\\ModData") {
                     lbl_enabled.Text = "Mods are Currently Enabled for Battlefield One";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
                 else if (isenabled == nfs + "\\ModData") {
                     lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
                 else if (isenabled == nfspayback + "\\ModData") {
                     lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed: Payback";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
                 else if (isenabled == gw2 + "\\ModData") {
                     lbl_enabled.Text = "Mods are Currently Enabled for PvZ: Garden Warfare 2";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
                 else if (isenabled == dai + "\\ModData") {
                     lbl_enabled.Text = "Mods are Currently Enabled for Dragon Age: Inquisition";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
                 else {
                     lbl_enabled.Text = "Mods are Currently Enabled for Custom Game";
-                    lbl_enabled.Foreground = Brushes.LightGreen;
                 }
             }
             else {
@@ -71,7 +63,7 @@ namespace FrostyFix2 {
         }
 
         private async void btn_enable_Click(object sender, RoutedEventArgs e) {
-            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            Mouse.OverrideCursor = Cursors.Wait;
             Environment.SetEnvironmentVariable("GAME_DATA_DIR", datadir + "\\ModData", EnvironmentVariableTarget.User);
             await Task.Delay(10);
             Mouse.OverrideCursor = null;
@@ -81,7 +73,7 @@ namespace FrostyFix2 {
         }
 
         private async void btn_disable_Click(object sender, RoutedEventArgs e) {
-            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            Mouse.OverrideCursor = Cursors.Wait;
             Environment.SetEnvironmentVariable("GAME_DATA_DIR", "", EnvironmentVariableTarget.User);
             await Task.Delay(10);
             Mouse.OverrideCursor = null;
@@ -105,7 +97,7 @@ namespace FrostyFix2 {
                     rbtn_bf2015.IsEnabled = false;
                     rbtn_bf2015.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
                 }
-            
+
             using (RegistryKey bf2017key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\EA Games\STAR WARS Battlefront II"))
                 if (bf2017key != null) {
                     bf2017 = (string)bf2017key.GetValue("Install Dir");
@@ -125,7 +117,7 @@ namespace FrostyFix2 {
                     rbtn_bf1.IsEnabled = false;
                     rbtn_bf1.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
                 }
-            
+
             using (RegistryKey meakey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\BioWare\Mass Effect Andromeda"))
                 if (meakey != null) {
                     mea = (string)meakey.GetValue("Install Dir");
@@ -135,7 +127,7 @@ namespace FrostyFix2 {
                     rbtn_mea.IsEnabled = false;
                     rbtn_mea.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
                 }
-            
+
             using (RegistryKey nfskey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\EA Games\Need for Speed"))
                 if (nfskey != null) {
                     nfs = (string)nfskey.GetValue("Install Dir");
@@ -145,7 +137,7 @@ namespace FrostyFix2 {
                     rbtn_nfs.IsEnabled = false;
                     rbtn_nfs.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
                 }
-            
+
             using (RegistryKey nfspaybackkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\EA Games\Need for Speed Payback"))
                 if (nfspaybackkey != null) {
                     nfspayback = (string)nfspaybackkey.GetValue("Install Dir");
@@ -155,7 +147,7 @@ namespace FrostyFix2 {
                     rbtn_nfspayback.IsEnabled = false;
                     rbtn_nfspayback.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
                 }
-            
+
             using (RegistryKey gw2key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\PopCap\Plants vs Zombies GW2"))
                 if (gw2key != null) {
                     gw2 = (string)gw2key.GetValue("Install Dir");
@@ -165,7 +157,7 @@ namespace FrostyFix2 {
                     rbtn_gw2.IsEnabled = false;
                     rbtn_gw2.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
                 }
-            
+
             using (RegistryKey daikey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\Bioware\Dragon Age Inquisition"))
                 if (daikey != null) {
                     dai = (string)daikey.GetValue("Install Dir");
@@ -204,7 +196,8 @@ namespace FrostyFix2 {
         private void btn_customchoose_Click(object sender, RoutedEventArgs e) {
             btn_enable.IsEnabled = true;
             btn_disable.IsEnabled = true;
-            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog(); {
+            OpenFileDialog openFileDlg = new OpenFileDialog();
+            {
                 openFileDlg.Filter = "Game executable (*.exe)|*.exe";
                 openFileDlg.FilterIndex = 2;
                 openFileDlg.RestoreDirectory = true;
