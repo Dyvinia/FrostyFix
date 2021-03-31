@@ -43,7 +43,12 @@ namespace FrostyFix2 {
             Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
             await Task.Delay(8000);
             Mouse.OverrideCursor = null;
-            Process.Start(eaddir);
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = true;
+            p.StartInfo.Verb = "runas";
+            p.StartInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(eaddir);
+            p.StartInfo.FileName = System.IO.Path.GetDirectoryName(eaddir) + "\\EALauncher.exe";
+            p.Start();
             this.Close();
         }
 
