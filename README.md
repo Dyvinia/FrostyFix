@@ -44,11 +44,12 @@ It works directly from Origin/EA Desktop but it's better to launch Battlefront f
 > **A:** If FrostyFix cannot locate a game, it greys out the option making it unselectable to prevent an empty variable to be set.
 
 ## Unsupported Games
-These games are confirmed to be unsupported because they use a different environment variable compared to most other Frostbite Games. They may get support later in the future
+These games are confirmed to be unsupported because they DO NOT USE a environment variable unlike most other Frostbite Games. They will not be able to be fixed through FrostyFix
 - FIFA 20
 - Madden 20
+- Need For Speed: Heat
 
-## FrostyFix 1
+## FrostyFix 1.0
 The old FrostyFix [Github](https://github.com/Dulana57/FrostyFix-Old)
 
 ## Support
