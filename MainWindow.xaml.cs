@@ -20,26 +20,62 @@ namespace FrostyFix2 {
         string dai;
         string datadir;
 
-        private async void btn_enable_Click(object sender, RoutedEventArgs e) {
-            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
-            Environment.SetEnvironmentVariable("GAME_DATA_DIR", datadir + "\\ModData", EnvironmentVariableTarget.User);
-            await Task.Delay(10);
-            Mouse.OverrideCursor = null;
-
-            //Recheck patch status
+        public void checkStatus() {
             var isenabled = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
             if (isenabled == "\\ModData") {
                 lbl_enabled.Text = "Registry Key is Currently Broken";
                 lbl_enabled.Foreground = Brushes.Orange;
             }
             else if (isenabled != null) {
-                lbl_enabled.Text = "Mods are Currently Enabled";
-                lbl_enabled.Foreground = Brushes.LightGreen;
+                if (isenabled == bf2015 + "\\ModData") {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront (2015)";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
+                else if (isenabled == bf2017 + "\\ModData") {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront II (2017)";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
+                else if (isenabled == mea + "\\ModData") {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Mass Effect: Andromeda";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
+                else if (isenabled == bf1 + "\\ModData") {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Battlefield One";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
+                else if (isenabled == nfs + "\\ModData") {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
+                else if (isenabled == nfspayback + "\\ModData") {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed: Payback";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
+                else if (isenabled == gw2 + "\\ModData") {
+                    lbl_enabled.Text = "Mods are Currently Enabled for PvZ: Garden Warfare 2";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
+                else if (isenabled == dai + "\\ModData") {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Dragon Age: Inquisition";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
+                else {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Custom Game";
+                    lbl_enabled.Foreground = Brushes.LightGreen;
+                }
             }
             else {
                 lbl_enabled.Text = "Mods are Currently NOT Enabled";
                 lbl_enabled.Foreground = Brushes.LightSalmon;
             }
+        }
+
+        private async void btn_enable_Click(object sender, RoutedEventArgs e) {
+            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            Environment.SetEnvironmentVariable("GAME_DATA_DIR", datadir + "\\ModData", EnvironmentVariableTarget.User);
+            await Task.Delay(10);
+            Mouse.OverrideCursor = null;
+            checkStatus();
             AfterPatchWindow afterpatch = new AfterPatchWindow();
             afterpatch.Show();
         }
@@ -49,21 +85,7 @@ namespace FrostyFix2 {
             Environment.SetEnvironmentVariable("GAME_DATA_DIR", "", EnvironmentVariableTarget.User);
             await Task.Delay(10);
             Mouse.OverrideCursor = null;
-
-            //Recheck patch status
-            var isenabled = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
-            if (isenabled == "\\ModData") {
-                lbl_enabled.Text = "Registry Key is Currently Broken";
-                lbl_enabled.Foreground = Brushes.Orange;
-            }
-            else if (isenabled != null) {
-                lbl_enabled.Text = "Mods are Currently Enabled";
-                lbl_enabled.Foreground = Brushes.LightGreen;
-            }
-            else {
-                lbl_enabled.Text = "Mods are Currently NOT Enabled";
-                lbl_enabled.Foreground = Brushes.LightSalmon;
-            }
+            checkStatus();
             AfterPatchWindow afterpatch = new AfterPatchWindow();
             afterpatch.Show();
         }
@@ -73,21 +95,6 @@ namespace FrostyFix2 {
             MinimizeButton.Click += (s, e) => WindowState = WindowState.Minimized;
             CloseButton.Click += (s, e) => Application.Current.Shutdown();
 
-            //Check patch status
-            var isenabled = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
-            if (isenabled == "\\ModData") {
-                lbl_enabled.Text = "Registry Key is Currently Broken";
-                lbl_enabled.Foreground = Brushes.Orange;
-            }
-            else if (isenabled != null) {
-                lbl_enabled.Text = "Mods are Currently Enabled";
-                lbl_enabled.Foreground = Brushes.LightGreen;
-            }
-            else {
-                lbl_enabled.Text = "Mods are Currently NOT Enabled";
-                lbl_enabled.Foreground = Brushes.LightSalmon;
-            }
-            
             //Get Paths using Registry
             using (RegistryKey bf2015key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront"))
                 if (bf2015key != null) {
@@ -167,7 +174,9 @@ namespace FrostyFix2 {
                 else {
                     rbtn_dai.IsEnabled = false;
                     rbtn_dai.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
-                } 
+                }
+
+            checkStatus();
         }
 
         public void Window_SizeChanged(object sender, SizeChangedEventArgs e) {

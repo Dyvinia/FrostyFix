@@ -190,11 +190,11 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <TextBlock Name="lbl_enabled" Margin="291,237,291,97" TextWrapping="Wrap" Text="" Width="200" TextAlignment="Center" VerticalAlignment="Bottom"/>
+            <TextBlock Name="lbl_enabled" Margin="180,0,180,97" TextWrapping="Wrap" Text="" Width="422" TextAlignment="Center" VerticalAlignment="Bottom"/>
             <RadioButton x:Name="rbtn_bf2015" Content="Star Wars: Battlefront (2015)" Margin="50,25,492,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2015_Checked"/>
             <RadioButton x:Name="rbtn_bf2017" Content="Star Wars: Battlefront II (2017)" Margin="50,50,492,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2017_Checked"/>
             <RadioButton x:Name="rbtn_bf1" Content="Battlefield One" Margin="50,75,492,254" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf1_Checked"/>
-            <RadioButton x:Name="rbtn_mea" Content="Mass Effect Andromeda" Margin="0,25,50,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_mea_Checked" HorizontalAlignment="Right" Width="172"/>
+            <RadioButton x:Name="rbtn_mea" Content="Mass Effect: Andromeda" Margin="0,25,50,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_mea_Checked" HorizontalAlignment="Right" Width="172"/>
             <RadioButton x:Name="rbtn_nfs" Content="Need for Speed" Margin="316,25,281,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfs_Checked" HorizontalAlignment="Center" Width="185"/>
             <RadioButton x:Name="rbtn_nfspayback" Content="Need for Speed: Payback" Margin="316,50,281,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfspayback_Checked" HorizontalAlignment="Center" Width="185"/>
             <RadioButton x:Name="rbtn_gw2" Content="PvZ: Garden Warfare 2" Margin="0,50,50,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_gw2_Checked" HorizontalAlignment="Right" Width="172"/>
