@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -46,8 +47,8 @@ namespace FrostyFix2 {
             Process p = new Process();
             p.StartInfo.UseShellExecute = true;
             p.StartInfo.Verb = "runas";
-            p.StartInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(eaddir);
-            p.StartInfo.FileName = System.IO.Path.GetDirectoryName(eaddir) + "\\EALauncher.exe";
+            p.StartInfo.WorkingDirectory = Path.GetDirectoryName(eaddir);
+            p.StartInfo.FileName = Path.GetDirectoryName(eaddir) + "\\EALauncher.exe";
             p.Start();
             this.Close();
         }

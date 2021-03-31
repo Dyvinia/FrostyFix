@@ -103,7 +103,11 @@
             <Button x:Name="btn_restartOrigin" Height="60" IsEnabled="True" Margin="85,0,85,75" VerticalAlignment="Bottom" Click="btn_restartOrigin_Click" FontSize="16">
                 <Button.ToolTip>
                     <ToolTip Background="Black" Foreground="White">
-                        Closes Origin/EA Desktop and starts Origin. You must manually restart FrostyFix once before clicking this button
+                        <TextBlock>
+                            Closes Origin/EA Desktop and starts Origin. 
+                            <LineBreak /> 
+                            You must manually restart FrostyFix once before clicking this button.
+                        </TextBlock>
                     </ToolTip>
                 </Button.ToolTip>
                 <Button.Style>
