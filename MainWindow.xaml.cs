@@ -16,7 +16,6 @@ namespace FrostyFix2 {
         string bf1;
         string nfs;
         string nfspayback;
-        string nfsheat;
         string gw2;
         string dai;
         string datadir;
@@ -150,16 +149,6 @@ namespace FrostyFix2 {
                     rbtn_nfspayback.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
                 }
             
-            using (RegistryKey nfsheatkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\EA Games\Need for Speed Heat"))
-                if (nfsheatkey != null) {
-                    nfsheat = (string)nfsheatkey.GetValue("Install Dir");
-                    rbtn_nfsheat.IsEnabled = true;
-                }
-                else {
-                    rbtn_nfsheat.IsEnabled = false;
-                    rbtn_nfsheat.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
-                }
-            
             using (RegistryKey gw2key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\PopCap\Plants vs Zombies GW2"))
                 if (gw2key != null) {
                     gw2 = (string)gw2key.GetValue("Install Dir");
@@ -191,7 +180,6 @@ namespace FrostyFix2 {
         }
 
         private void ButtonGithub(object sender, RoutedEventArgs e) {
-            //System.Diagnostics.Process.Start("https://github.com/Dulana57/FrostyFix");
             AboutWindow about = new AboutWindow();
             about.Show();
         }
@@ -253,12 +241,6 @@ namespace FrostyFix2 {
 
         private void rbtn_nfspayback_Checked(object sender, RoutedEventArgs e) {
             datadir = nfspayback;
-            btn_enable.IsEnabled = true;
-            btn_disable.IsEnabled = true;
-        }
-
-        private void rbtn_nfsheat_Checked(object sender, RoutedEventArgs e) {
-            datadir = nfsheat;
             btn_enable.IsEnabled = true;
             btn_disable.IsEnabled = true;
         }
