@@ -1,6 +1,6 @@
 # FrostyFix 2
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
-#### Does not currently work with the Frosty Alpha released on 5/9/2021
+#### v2.3.0 is Required if you use the Frosty Alpha
 
 ![image](https://i.imgur.com/6h3ngWV.png)
 
