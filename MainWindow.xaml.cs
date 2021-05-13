@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System.IO;
 
 namespace FrostyFix2 {
     /// <summary>
@@ -28,32 +30,32 @@ namespace FrostyFix2 {
                     lbl_enabled.Text = "Registry Key is Currently Broken";
                     lbl_enabled.Foreground = Brushes.Orange;
                 }
-                else if (isenabled == bf2015 + "\\ModData") {
-                    lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront (2015)";
+                else if (isenabled.Contains(bf2015)) {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront (2015) using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
-                else if (isenabled == bf2017 + "\\ModData") {
-                    lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront II (2017)";
+                else if (isenabled.Contains(bf2017)) {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront II (2017) using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
-                else if (isenabled == mea + "\\ModData") {
-                    lbl_enabled.Text = "Mods are Currently Enabled for Mass Effect: Andromeda";
+                else if (isenabled.Contains(mea)) {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Mass Effect: Andromeda using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
-                else if (isenabled == bf1 + "\\ModData") {
-                    lbl_enabled.Text = "Mods are Currently Enabled for Battlefield One";
+                else if (isenabled.Contains(bf1)) {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Battlefield One using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
-                else if (isenabled == nfs + "\\ModData") {
-                    lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed";
+                else if (isenabled.Contains(nfs)) {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
-                else if (isenabled == nfspayback + "\\ModData") {
-                    lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed: Payback";
+                else if (isenabled.Contains(nfspayback)) {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed: Payback using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
-                else if (isenabled == gw2 + "\\ModData") {
-                    lbl_enabled.Text = "Mods are Currently Enabled for PvZ: Garden Warfare 2";
+                else if (isenabled.Contains(gw2)) {
+                    lbl_enabled.Text = "Mods are Currently Enabled for PvZ: Garden Warfare 2 using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
-                else if (isenabled == dai + "\\ModData") {
-                    lbl_enabled.Text = "Mods are Currently Enabled for Dragon Age: Inquisition";
+                else if (isenabled.Contains(dai)) {
+                    lbl_enabled.Text = "Mods are Currently Enabled for Dragon Age: Inquisition using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
                 else {
-                    lbl_enabled.Text = "Mods are Currently Enabled for Custom Game";
+                    lbl_enabled.Text = "Mods are Currently Enabled for Custom Game using profile: " + new DirectoryInfo(Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)).Name;
                 }
             }
             else {
@@ -63,13 +65,19 @@ namespace FrostyFix2 {
         }
 
         private async void btn_enable_Click(object sender, RoutedEventArgs e) {
-            Mouse.OverrideCursor = Cursors.Wait;
-            Environment.SetEnvironmentVariable("GAME_DATA_DIR", datadir + "\\ModData", EnvironmentVariableTarget.User);
-            await Task.Delay(10);
-            Mouse.OverrideCursor = null;
-            checkStatus();
-            AfterPatchWindow afterpatch = new AfterPatchWindow();
-            afterpatch.Show();
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.Title = "Select Profile";
+            dialog.InitialDirectory = datadir + "ModData\\";
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
+                Mouse.OverrideCursor = Cursors.Wait;
+                Environment.SetEnvironmentVariable("GAME_DATA_DIR", dialog.FileName, EnvironmentVariableTarget.User);
+                await Task.Delay(10);
+                Mouse.OverrideCursor = null;
+                checkStatus();
+                AfterPatchWindow afterpatch = new AfterPatchWindow();
+                afterpatch.Show();
+            }
         }
 
         private async void btn_disable_Click(object sender, RoutedEventArgs e) {
