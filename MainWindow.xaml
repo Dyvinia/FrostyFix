@@ -60,8 +60,8 @@
                     </Button.Template>
                 </Button>
             </StackPanel>
-            <Image HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="20" Source="Img/FrostyFix.ico"/>
-            <TextBlock HorizontalAlignment="Left" Margin="30,7,0,0" TextWrapping="Wrap" Text="FrostyFix 2" VerticalAlignment="Top" Foreground="#FFF1F1F1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="31,6,0,0" TextWrapping="Wrap" Text="FrostyFix 2" VerticalAlignment="Top" Foreground="#FFE8E8E8" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Image HorizontalAlignment="Left" Height="26" Margin="2,2,0,0" VerticalAlignment="Top" Width="26" Source="Img/FrostyFixNBSm.png"/>
         </Grid>
         <Canvas Margin="266,35,266,362" HorizontalAlignment="Center" Width="260">
             <TextBlock TextWrapping="Wrap" Text="FrostyFix" VerticalAlignment="Top" Foreground="White" FontSize="42" FontWeight="Bold" FontFamily="Arial" Canvas.Left="66" Canvas.Top="12" Width="191"/>
