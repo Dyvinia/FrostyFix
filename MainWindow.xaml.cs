@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.IO;
+using System.Diagnostics;
 
 namespace FrostyFix2 {
     /// <summary>
@@ -31,28 +32,28 @@ namespace FrostyFix2 {
                     lbl_enabled.Text = "Registry Key is Currently Broken";
                     lbl_enabled.Foreground = Brushes.Orange;
                 }
-                else if (isenabled.Contains(bf2015)) {
+                else if (bf2015 != null && isenabled.Contains(bf2015)) {
                     lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront (2015) using profile: " + frostyprofile;
                 }
-                else if (isenabled.Contains(bf2017)) {
+                else if (bf2017 != null && isenabled.Contains(bf2017)) {
                     lbl_enabled.Text = "Mods are Currently Enabled for Star Wars: Battlefront II (2017) using profile: " + frostyprofile;
                 }
-                else if (isenabled.Contains(mea)) {
+                else if (mea != null && isenabled.Contains(mea)) {
                     lbl_enabled.Text = "Mods are Currently Enabled for Mass Effect: Andromeda using profile: " + frostyprofile;
                 }
-                else if (isenabled.Contains(bf1)) {
+                else if (bf1 != null && isenabled.Contains(bf1)) {
                     lbl_enabled.Text = "Mods are Currently Enabled for Battlefield One using profile: " + frostyprofile;
                 }
-                else if (isenabled.Contains(nfs)) {
+                else if (nfs != null && isenabled.Contains(nfs)) {
                     lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed using profile: " + frostyprofile;
                 }
-                else if (isenabled.Contains(nfspayback)) {
+                else if (nfspayback != null && isenabled.Contains(nfspayback)) {
                     lbl_enabled.Text = "Mods are Currently Enabled for Need for Speed: Payback using profile: " + frostyprofile;
                 }
-                else if (isenabled.Contains(gw2)) {
+                else if (gw2 != null && isenabled.Contains(gw2)) {
                     lbl_enabled.Text = "Mods are Currently Enabled for PvZ: Garden Warfare 2 using profile: " + frostyprofile;
                 }
-                else if (isenabled.Contains(dai)) {
+                else if (dai != null && isenabled.Contains(dai)) {
                     lbl_enabled.Text = "Mods are Currently Enabled for Dragon Age: Inquisition using profile: " + frostyprofile;
                 }
                 else {
@@ -66,6 +67,7 @@ namespace FrostyFix2 {
         }
 
         private async void btn_enable_Click(object sender, RoutedEventArgs e) {
+            Directory.CreateDirectory(datadir + "\\ModData");
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.Title = "Select Profile";
             dialog.InitialDirectory = datadir + "ModData\\";
@@ -266,6 +268,10 @@ namespace FrostyFix2 {
             datadir = dai;
             btn_enable.IsEnabled = true;
             btn_disable.IsEnabled = true;
+        }
+
+        private void ButtonEnvVar(object sender, RoutedEventArgs e) {
+            Process.Start("rundll32.exe", "sysdm.cpl, EditEnvironmentVariables");
         }
     }
 }

@@ -200,6 +200,30 @@
             <RadioButton x:Name="rbtn_gw2" Content="PvZ: Garden Warfare 2" Margin="0,50,50,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_gw2_Checked" HorizontalAlignment="Right" Width="172"/>
             <RadioButton x:Name="rbtn_dai" Content="Dragon Age: Inquisition" Margin="0,75,50,254" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_dai_Checked" HorizontalAlignment="Right" Width="172"/>
         </Grid>
+        <Button Content="Open Env. Variables" HorizontalAlignment="Right" Margin="0,36,56,0" VerticalAlignment="Top" Width="110" Height="20" Click="ButtonEnvVar" BorderBrush="#FFB90000">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#00000000"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF6C6C6C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FF5A5A5A"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 
 </Window>
