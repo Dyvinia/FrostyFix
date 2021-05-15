@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Navigation;
 
@@ -15,6 +16,10 @@ namespace FrostyFix2 {
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e) {
             System.Diagnostics.Process.Start(e.Uri.ToString());
+        }
+
+        private void ButtonEnvVar(object sender, RoutedEventArgs e) {
+            Process.Start("rundll32.exe", "sysdm.cpl, EditEnvironmentVariables");
         }
     }
 }

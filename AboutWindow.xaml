@@ -62,11 +62,7 @@
             Based off the batch file by<LineBreak/>BattleDash, Dulana57, and VictorPLopes
         </TextBlock>
         <Grid Height="155" Margin="10,0,10,117" VerticalAlignment="Bottom" Background="#FF141414">
-            <TextBlock Margin="10,6" TextWrapping="Wrap" Foreground="#FFF1F1F1" TextAlignment="Left" FontSize="13">
-                It is recommended to launch the game with Frosty.<LineBreak/><LineBreak/>
-                You must disable this whenever you play any other Frostbite game or if you encounter issues with other games.<LineBreak/><LineBreak/>
-                It may help to restart your computer after running this program.
-            </TextBlock>
+            <TextBlock Margin="10,6" TextWrapping="Wrap" Foreground="#FFF1F1F1" TextAlignment="Left" FontSize="13"><Run Text="It is recommended to launch the game with Frosty."/><LineBreak/><Run/><LineBreak/><Run Text="You must disable this whenever you play any other Frostbite game or if you encounter issues with other games."/></TextBlock>
         </Grid>
         <TextBlock Margin="40,357,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
             GitHub: 
@@ -100,5 +96,29 @@
             https://discord.gg/advqsyv
             </Hyperlink>
         </TextBlock>
+        <Button Content="Open Environment Variables" HorizontalAlignment="Center" Margin="80,310,80,0" VerticalAlignment="Top" Width="200" Height="25" Click="ButtonEnvVar" BorderBrush="#FFB90000" FontSize="14">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF323232"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF6C6C6C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FF5A5A5A"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </Grid>
 </Window>

@@ -269,9 +269,5 @@ namespace FrostyFix2 {
             btn_enable.IsEnabled = true;
             btn_disable.IsEnabled = true;
         }
-
-        private void ButtonEnvVar(object sender, RoutedEventArgs e) {
-            Process.Start("rundll32.exe", "sysdm.cpl, EditEnvironmentVariables");
-        }
     }
 }
