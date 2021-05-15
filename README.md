@@ -2,7 +2,7 @@
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
 #### v2.3.0 and above are Required if you use the Frosty Alpha
 
-![image](https://i.imgur.com/6h3ngWV.png)
+![image](https://i.imgur.com/Uzkz4CJ.png)
 
 ## Instructions
 
@@ -11,9 +11,9 @@ A tool to fix Frosty Support with games on platforms other than Origin (EA Deskt
 1. Launch FrostyFix
 2. Pick game (or choose custom)
 3. Press Enable Mods or Disable Mods
-4. When pressing Enable Mods you will have to select a profile folder (if you are using non-alpha version of Frosty, just press "Select Folder" on the popup)
-5. IMPORTANT: Choose one of the **After Patch Options**
-6. Launch game through Frosty
+4. When pressing Enable Mods you will have to select a profile folder. Note: If you are using non-alpha version of Frosty, just press "Select Folder" on the popup
+6. IMPORTANT: Choose one of the **After Patch Options**
+7. Launch game through Frosty
 
 [Video Tutorial](https://www.youtube.com/watch?v=-oUOCvFBGLs)
 
