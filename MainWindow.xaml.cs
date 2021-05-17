@@ -7,6 +7,7 @@ using System.Windows.Media;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.IO;
 using System.Diagnostics;
+using System.Linq;
 
 namespace FrostyFix2 {
     /// <summary>
@@ -68,18 +69,29 @@ namespace FrostyFix2 {
 
         private async void btn_enable_Click(object sender, RoutedEventArgs e) {
             Directory.CreateDirectory(datadir + "\\ModData");
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.Title = "Select Profile";
-            dialog.InitialDirectory = datadir + "ModData\\";
-            dialog.IsFolderPicker = true;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
+            if (/*Directory.GetDirectories(datadir + "\\ModData").Length == 0 ||*/ Directory.Exists(datadir + "\\ModData\\Data")) {
                 Mouse.OverrideCursor = Cursors.Wait;
-                Environment.SetEnvironmentVariable("GAME_DATA_DIR", dialog.FileName, EnvironmentVariableTarget.User);
+                Environment.SetEnvironmentVariable("GAME_DATA_DIR", datadir + "\\ModData", EnvironmentVariableTarget.User);
                 await Task.Delay(10);
                 Mouse.OverrideCursor = null;
                 checkStatus();
                 AfterPatchWindow afterpatch = new AfterPatchWindow();
                 afterpatch.Show();
+            }
+            else {
+                CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+                dialog.Title = "Select Profile";
+                dialog.InitialDirectory = datadir + "ModData\\";
+                dialog.IsFolderPicker = true;
+                if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
+                    Mouse.OverrideCursor = Cursors.Wait;
+                    Environment.SetEnvironmentVariable("GAME_DATA_DIR", dialog.FileName, EnvironmentVariableTarget.User);
+                    await Task.Delay(10);
+                    Mouse.OverrideCursor = null;
+                    checkStatus();
+                    AfterPatchWindow afterpatch = new AfterPatchWindow();
+                    afterpatch.Show();
+                }
             }
         }
 
