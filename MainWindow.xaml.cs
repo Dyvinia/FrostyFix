@@ -28,8 +28,8 @@ namespace FrostyFix2 {
             if (isenabled != null) {
                 string frostyprofile = new DirectoryInfo(isenabled).Name;
                 lbl_enabled.Foreground = Brushes.LightGreen;
-                if (isenabled == "\\ModData") {
-                    lbl_enabled.Text = "Registry Key is Currently Broken";
+                if (isenabled == "\\ModData" || !isenabled.Contains("ModData")) {
+                    lbl_enabled.Text = "User Error when selecting path. Please click Disable Mods and try again";
                     lbl_enabled.Foreground = Brushes.Orange;
                 }
                 else if (bf2015 != null && isenabled.Contains(bf2015)) {
