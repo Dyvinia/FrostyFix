@@ -44,8 +44,8 @@
                     </Button.Template>
                 </Button>
             </StackPanel>
-            <Image HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" VerticalAlignment="Top" Width="20" Source="Img/FrostyFix.ico"/>
-            <TextBlock HorizontalAlignment="Left" Margin="30,7,0,0" TextWrapping="Wrap" Text="FrostyFix 2: After Patch Options" VerticalAlignment="Top" Foreground="#FFF1F1F1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="31,6,0,0" TextWrapping="Wrap" Text="FrostyFix 2: After Patch Options" VerticalAlignment="Top" Foreground="#FFE8E8E8" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <Image HorizontalAlignment="Left" Height="26" Margin="2,2,0,0" VerticalAlignment="Top" Width="26" Source="Img/FrostyFixNBSm.png"/>
         </Grid>
         <Canvas Margin="46,28,54,363" HorizontalAlignment="Center" Width="260" RenderTransformOrigin="0.5,0.5">
             <Canvas.RenderTransform>
