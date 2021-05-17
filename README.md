@@ -2,7 +2,7 @@
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
 #### v2.3.0 and above are Required if you use the Frosty Alpha
 
-![image](https://i.imgur.com/Uzkz4CJ.png)
+![image](https://i.imgur.com/t7inYyy.png)
 
 ## Instructions
 
