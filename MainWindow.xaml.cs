@@ -69,7 +69,7 @@ namespace FrostyFix2 {
 
         private async void btn_enable_Click(object sender, RoutedEventArgs e) {
             Directory.CreateDirectory(datadir + "\\ModData");
-            if (/*Directory.GetDirectories(datadir + "\\ModData").Length == 0 ||*/ Directory.Exists(datadir + "\\ModData\\Data")) {
+            if (Directory.GetDirectories(datadir + "\\ModData").Length == 0 || Directory.Exists(datadir + "\\ModData\\Data")) {
                 Mouse.OverrideCursor = Cursors.Wait;
                 Environment.SetEnvironmentVariable("GAME_DATA_DIR", datadir + "\\ModData", EnvironmentVariableTarget.User);
                 await Task.Delay(10);
