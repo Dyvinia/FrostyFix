@@ -1,8 +1,8 @@
-# FrostyFix 2
+# FrostyFix 3
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
 #### v2.3.0 and above are Required if you use the Frosty Alpha
 
-![image](https://i.imgur.com/t7inYyy.png)
+![image](https://i.imgur.com/hgtCpqQ.png)
 
 ## Instructions
 
@@ -10,16 +10,16 @@ A tool to fix Frosty Support with games on platforms other than Origin (EA Deskt
 
 1. Launch FrostyFix
 2. Pick game (or choose custom)
-3. Press Enable Mods or Disable Mods
-4. If you are using the Frosty Alpha, when pressing Enable Mods you will have to select a profile folder. Note: If you are using non-alpha version of Frosty, just press "Select Folder" on the popup
-6. IMPORTANT: Choose one of the **After Patch Options**
-7. Launch game through Frosty
+3. Select the Platform you intend to use
+4. If you are using the Frosty Alpha, when clicking Launch you will have to select a profile folder.
+5. Launch game through Frosty
+6. To disable Frosty Fix, you can click **Close all Platforms**, manually close and open the game launcher, or Restart your PC
 
 [Video Tutorial](https://www.youtube.com/watch?v=-oUOCvFBGLs)
 
 ## Info
 #### **You must disable this whenever you play any other Frostbite game or if you encounter issues with other games.**
-It is recommended to launch the game with Frosty after forcing mods.
+It is recommended to launch the game with Frosty after enabling mods.
 It works directly from Origin/EA Desktop but it's better to launch Battlefront from Frosty Mod Manager/Editor to guarantee everything is working fine and to refresh your mod list.
 **You must run this program again every time you want to play another Frostbite game**, so you can either disable mods or select the other game.
 
@@ -32,10 +32,6 @@ It works directly from Origin/EA Desktop but it's better to launch Battlefront f
 > **Q:** Frosty is giving me an error, how do I use FrostyFix to solve this?
 > 
 > **A:** If Frosty is giving you an error, then it is an issue with your mod setup or how your Frosty is configured. FrostyFix was not created to solve those issue.
-
-> **Q:** Mods are still not working after FrostyFix
-> 
-> **A:** Make sure to click on either **Restart Origin** or **Restart EA Desktop** in the After Patch Options (Depending on the platform you use. If that does not work, try restarting Origin or EADesk again. If it still does not work, it is recommended to restart your PC and launch the game after that.
 
 > **Q:** When I try to launch game other than the one I chose in FrostyFix, I get an error
 > 
@@ -58,4 +54,6 @@ The old FrostyFix [Github](https://github.com/Dulana57/FrostyFix-Old)
 For more information and/or support about FrostyFix, join [my Discord Server](https://discord.gg/57sJ6fj) or join the [BattlefrontModding Discord Server](https://discord.gg/EzXSJfUDmq)
 
 ## Credits
-Created by [Dulana57](https://Dulana57.com), based off the batch file by [BattleDash](https://forums.nexusmods.com/index.php?/topic/9737483-a-permanent-solution-to-epic-games-modding/), [Dulana57](https://Dulana57.com), and [VictorPLopes](https://twitter.com/VictorPL2003/)
+Created by [Dulana57](https://Dulana57.com)
+
+[![Donate](https://img.shields.io/badge/Donate-Paypal-informational?style=for-the-badge)](https://www.paypal.me/DulanaG)
