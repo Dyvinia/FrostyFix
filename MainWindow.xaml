@@ -66,7 +66,7 @@
                     </Button.Template>
                 </Button>
             </StackPanel>
-            <TextBlock HorizontalAlignment="Left" Margin="31,6,0,0" TextWrapping="Wrap" Text="FrostyFix 2" VerticalAlignment="Top" Foreground="#FFE8E8E8" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
+            <TextBlock HorizontalAlignment="Left" Margin="31,6,0,0" TextWrapping="Wrap" Text="FrostyFix 3" VerticalAlignment="Top" Foreground="#FFE8E8E8" FontWeight="Bold" FontFamily="Calibri" FontSize="14"/>
             <Image HorizontalAlignment="Left" Height="26" Margin="2,2,0,0" VerticalAlignment="Top" Width="26" Source="Img/FrostyFixNBSm.png"/>
         </Grid>
         <Canvas Margin="266,35,266,362" HorizontalAlignment="Center" Width="260">
@@ -98,43 +98,10 @@
             </Button.Template>
         </Button>
         <Grid Margin="5,115,5,5" Background="#FF141414">
-            <Button Name="btn_enable" Content="Enable Mods" Width="150" Height="60" IsEnabled="False" Canvas.Left="322" Canvas.Top="253" Margin="316,0,316,34" VerticalAlignment="Bottom" Click="btn_enable_Click">
+            <Grid Height="5" Margin="0,165,0,0" Background="#FF323232" VerticalAlignment="Top"/>
+            <Button x:Name="btn_disable" Content="Close all Platforms" Margin="10,0,0,10" Height="26" VerticalAlignment="Bottom" Click="btn_disable_Click" HorizontalAlignment="Left" Width="120">
                 <Button.ToolTip>
-                    <ToolTip Background="Black" Foreground="White">
-                        Click to apply the fix
-                    </ToolTip>
-                </Button.ToolTip>
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="#FF323232"/>
-                        <Setter Property="BorderBrush" Value="Black"/>
-                        <Setter Property="Foreground" Value="#FFF1F1F1"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF6C6C6C"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" Value="#FF5A5A5A"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Foreground" Value="#FFA2A2A2"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-            <Button Name="btn_disable" Content="Disable Mods" Width="150" Margin="316,0,316,6" Height="26" VerticalAlignment="Bottom" Click="btn_disable_Click">
-                <Button.ToolTip>
-                    <ToolTip Background="Black" Foreground="White">
-                        Click to remove the fix
-                    </ToolTip>
+                    <ToolTip Background="Black" Foreground="White" Content="Click to close all platforms to remove the fix applied to any of them"/>
                 </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
@@ -162,13 +129,11 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <TextBox Name="txtb_custompath" Height="20" Margin="50,225,121,104" TextWrapping="Wrap" Text="" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" IsEnabled="False"/>
-            <RadioButton Name="rbtn_custom" Content="Custom" Margin="50,204,662,125" Foreground="#FFF1F1F1" FontSize="14" AutomationProperties.Name="Test" Height="20" VerticalContentAlignment="Center" Checked="rbtn_custom_Checked" Unchecked="rbtn_custom_Unchecked"/>
-            <Button Name="btn_customchoose" Content="Choose..." Margin="0,225,50,104" Height="20" HorizontalAlignment="Right" Width="66" IsEnabled="False" Click="btn_customchoose_Click">
+            <TextBox x:Name="txtb_custompath" Height="20" Margin="50,135,121,0" TextWrapping="Wrap" Text="" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" IsEnabled="False" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbtn_custom" Content="Custom" Margin="50,115,662,0" Foreground="#FFF1F1F1" FontSize="14" AutomationProperties.Name="Test" Height="20" VerticalContentAlignment="Center" Checked="rbtn_custom_Checked" Unchecked="rbtn_custom_Unchecked" VerticalAlignment="Top"/>
+            <Button x:Name="btn_customchoose" Content="Choose..." Margin="0,135,50,0" Height="20" HorizontalAlignment="Right" Width="66" IsEnabled="False" Click="btn_customchoose_Click" VerticalAlignment="Top">
                 <Button.ToolTip>
-                    <ToolTip Background="Black" Foreground="White">
-                        Select game executable
-                    </ToolTip>
+                    <ToolTip Background="Black" Foreground="White" Content="Select game executable"/>
                 </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
@@ -196,15 +161,89 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <TextBlock Name="lbl_enabled" Margin="140,0,140,97" TextWrapping="Wrap" Text="" Width="502" TextAlignment="Center" VerticalAlignment="Bottom"/>
-            <RadioButton x:Name="rbtn_bf2015" Content="Star Wars: Battlefront (2015)" Margin="50,25,492,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2015_Checked"/>
-            <RadioButton x:Name="rbtn_bf2017" Content="Star Wars: Battlefront II (2017)" Margin="50,50,492,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2017_Checked"/>
-            <RadioButton x:Name="rbtn_bf1" Content="Battlefield One" Margin="50,75,492,254" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf1_Checked"/>
-            <RadioButton x:Name="rbtn_mea" Content="Mass Effect: Andromeda" Margin="0,25,50,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_mea_Checked" HorizontalAlignment="Right" Width="172"/>
-            <RadioButton x:Name="rbtn_nfs" Content="Need for Speed" Margin="316,25,281,304" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfs_Checked" HorizontalAlignment="Center" Width="185"/>
-            <RadioButton x:Name="rbtn_nfspayback" Content="Need for Speed: Payback" Margin="316,50,281,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfspayback_Checked" HorizontalAlignment="Center" Width="185"/>
-            <RadioButton x:Name="rbtn_gw2" Content="PvZ: Garden Warfare 2" Margin="0,50,50,279" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_gw2_Checked" HorizontalAlignment="Right" Width="172"/>
-            <RadioButton x:Name="rbtn_dai" Content="Dragon Age: Inquisition" Margin="0,75,50,254" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_dai_Checked" HorizontalAlignment="Right" Width="172"/>
+            <TextBlock x:Name="lbl_enabled" Margin="275,0,5,5" TextWrapping="Wrap" Text="Game Text" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <RadioButton x:Name="rbtn_bf2015" Content="Star Wars: Battlefront (2015)" Margin="50,40,492,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2015_Checked" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbtn_bf2017" Content="Star Wars: Battlefront II (2017)" Margin="50,65,492,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2017_Checked" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbtn_bf1" Content="Battlefield One" Margin="50,90,492,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf1_Checked" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbtn_mea" Content="Mass Effect: Andromeda" Margin="0,40,50,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_mea_Checked" HorizontalAlignment="Right" Width="172" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbtn_nfs" Content="Need for Speed" Margin="316,40,281,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfs_Checked" HorizontalAlignment="Center" Width="185" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbtn_nfspayback" Content="Need for Speed: Payback" Margin="316,65,281,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_nfspayback_Checked" HorizontalAlignment="Center" Width="185" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbtn_gw2" Content="PvZ: Garden Warfare 2" Margin="0,65,50,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_gw2_Checked" HorizontalAlignment="Right" Width="172" VerticalAlignment="Top"/>
+            <RadioButton x:Name="rbtn_dai" Content="Dragon Age: Inquisition" Margin="0,90,50,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_dai_Checked" HorizontalAlignment="Right" Width="172" VerticalAlignment="Top"/>
+            <TextBlock Margin="50,15,0,0" TextWrapping="Wrap" Text="Select Game" Foreground="#FFF1F1F1" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
+            <TextBlock Margin="50,180,0,0" TextWrapping="Wrap" Text="Select Platform" Foreground="#FFF1F1F1" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
+            <RadioButton GroupName="Platform" x:Name="rbtn_origin" Content="Origin (Native)" Margin="50,230,492,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_platform_Checked" VerticalAlignment="Top"/>
+            <RadioButton GroupName="Platform" x:Name="rbtn_eadesk" Content="EA Desktop" Margin="50,205,492,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_platform_Checked" VerticalAlignment="Top"/>
+            <RadioButton GroupName="Platform" x:Name="rbtn_epicgames" Content="Epic Games Store" Margin="316,205,281,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_platform_Checked" VerticalAlignment="Top" HorizontalAlignment="Center" Width="185"/>
+            <Grid Height="5" Margin="0,260,0,0" Background="#FF323232" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350*"/>
+                    <ColumnDefinition Width="41*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <RadioButton GroupName="Platform" x:Name="rbtn_steam" Content="Steam" Margin="491,205,50,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_platform_Checked" VerticalAlignment="Top" HorizontalAlignment="Right" Width="172"/>
+            <TextBlock x:Name="lbl_profile" Margin="0,0,5,25" TextWrapping="Wrap" Text="Platform Text" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="lbl_platform" Margin="0,0,5,45" TextWrapping="Wrap" Text="Platform Text" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Button x:Name="btn_refresh" Content="Refresh" Margin="0,275,10,0" Height="26" VerticalAlignment="Top" Click="btn_refresh_Click" HorizontalAlignment="Right" Width="55" Visibility="Hidden">
+                <Button.ToolTip>
+                    <ToolTip Background="Black" Foreground="White" Content="Click to close all platforms to remove the fix applied to any of them"/>
+                </Button.ToolTip>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF323232"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF6C6C6C"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF5A5A5A"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="#FFA2A2A2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button x:Name="btn_enable" Content="Launch with Mods enabled" Width="210" Height="60" IsEnabled="False" Canvas.Left="322" Canvas.Top="253" Margin="286,0,286,28" VerticalAlignment="Bottom" Click="btn_enable_Click">
+                <Button.ToolTip>
+                    <ToolTip Background="Black" Foreground="White" Content="Click to launch the select platform with the fix applied"/>
+                </Button.ToolTip>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#FF323232"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF6C6C6C"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF5A5A5A"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="#FFA2A2A2"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </Grid>
     </Grid>
 
