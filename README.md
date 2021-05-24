@@ -15,7 +15,7 @@ A tool to fix Frosty Support with games on platforms other than Origin (EA Deskt
 5. Launch game through Frosty
 6. To disable Frosty Fix, you can click **Close all Platforms**, manually close and open the game launcher, or Restart your PC
 
-[Video Tutorial](https://www.youtube.com/watch?v=-oUOCvFBGLs)
+[Video Tutorial](https://youtu.be/N_b7J1NPYD0)
 
 ## Info
 #### **You must disable this whenever you play any other Frostbite game or if you encounter issues with other games.**
