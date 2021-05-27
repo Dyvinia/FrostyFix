@@ -77,6 +77,8 @@ namespace FrostyFix2 {
                 string frostyprofile = new DirectoryInfo(isenabled).Name;
                 lbl_enabled.Foreground = Brushes.LightGreen;
                 lbl_profile.Foreground = Brushes.LightGreen;
+                lbl_enabled_tooltip.Visibility = Visibility.Visible;
+                lbl_enabled_tooltip.Content = isenabled;
                 lbl_profile.Text = "Frosty Profile: " + frostyprofile;
                 if (isenabled == "\\ModData" || !isenabled.Contains("ModData")) {
                     lbl_enabled.Text = "User Error when selecting path. Please click Disable Mods and try again";
@@ -113,6 +115,8 @@ namespace FrostyFix2 {
             else {
                 lbl_enabled.Text = "Mods are Currently NOT Enabled";
                 lbl_enabled.Foreground = Brushes.LightSalmon;
+                lbl_enabled_tooltip.Content = "";
+                lbl_enabled_tooltip.Visibility = Visibility.Hidden;
                 lbl_profile.Text = "";
             }
         }

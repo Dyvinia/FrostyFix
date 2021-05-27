@@ -161,7 +161,11 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <TextBlock x:Name="lbl_enabled" Margin="275,0,5,5" TextWrapping="Wrap" Text="Game Text" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="lbl_enabled" Margin="0,0,5,5" TextWrapping="Wrap" Text="Game Text" Width="300" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <TextBlock.ToolTip>
+                    <ToolTip x:Name="lbl_enabled_tooltip" Background="Black" Foreground="White"/>
+                </TextBlock.ToolTip>
+            </TextBlock>
             <RadioButton x:Name="rbtn_bf2015" Content="Star Wars: Battlefront (2015)" Margin="50,40,492,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2015_Checked" VerticalAlignment="Top"/>
             <RadioButton x:Name="rbtn_bf2017" Content="Star Wars: Battlefront II (2017)" Margin="50,65,492,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf2017_Checked" VerticalAlignment="Top"/>
             <RadioButton x:Name="rbtn_bf1" Content="Battlefield One" Margin="50,90,492,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_bf1_Checked" VerticalAlignment="Top"/>
@@ -182,7 +186,7 @@
                 </Grid.ColumnDefinitions>
             </Grid>
             <RadioButton GroupName="Platform" x:Name="rbtn_steam" Content="Steam" Margin="491,205,50,0" Foreground="#FFF1F1F1" FontSize="14" Height="20" VerticalContentAlignment="Center" Checked="rbtn_platform_Checked" VerticalAlignment="Top" HorizontalAlignment="Right" Width="172"/>
-            <TextBlock x:Name="lbl_profile" Margin="0,0,5,25" TextWrapping="Wrap" Text="Platform Text" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="lbl_profile" Margin="0,0,5,25" TextWrapping="Wrap" Text="Profile Text" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <TextBlock x:Name="lbl_platform" Margin="0,0,5,45" TextWrapping="Wrap" Text="Platform Text" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <Button x:Name="btn_refresh" Content="Refresh" Margin="0,275,10,0" Height="26" VerticalAlignment="Top" Click="btn_refresh_Click" HorizontalAlignment="Right" Width="55" Visibility="Hidden">
                 <Button.ToolTip>
