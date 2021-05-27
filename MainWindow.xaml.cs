@@ -149,10 +149,6 @@ namespace FrostyFix2 {
                 foreach (var process in Process.GetProcessesByName("EADesktop")) {
                     process.Kill();
                 }
-                /*ServiceController service = new ServiceController("EABackgroundService");
-                if (service.Status != ServiceControllerStatus.Stopped) {
-                    service.Stop();
-                }*/
                 foreach (var process in Process.GetProcessesByName("Origin")) {
                     process.Kill();
                 }
@@ -205,10 +201,6 @@ namespace FrostyFix2 {
                     foreach (var process in Process.GetProcessesByName("EADesktop")) {
                         process.Kill();
                     }
-                    /*ServiceController service = new ServiceController("EABackgroundService");
-                    if (service.Status != ServiceControllerStatus.Stopped) {
-                        service.Stop();
-                    }*/
                     foreach (var process in Process.GetProcessesByName("Origin")) {
                         process.Kill();
                     }
