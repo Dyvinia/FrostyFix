@@ -19,7 +19,6 @@ namespace FrostyFix2 {
         }
 
         private void ButtonEnvVar(object sender, RoutedEventArgs e) {
-            //Process.Start("rundll32.exe", "sysdm.cpl, EditEnvironmentVariables");
             (Application.Current.MainWindow as MainWindow).checkStatus();
         }
     }
