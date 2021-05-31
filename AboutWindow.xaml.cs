@@ -21,5 +21,13 @@ namespace FrostyFix2 {
         private void ButtonEnvVar(object sender, RoutedEventArgs e) {
             (Application.Current.MainWindow as MainWindow).checkStatus();
         }
+
+        private void ButtonGameDir(object sender, RoutedEventArgs e) {
+            (Application.Current.MainWindow as MainWindow).openGameDir();
+        }
+
+        private void ButtonDelModData(object sender, RoutedEventArgs e) {
+            (Application.Current.MainWindow as MainWindow).delModData();
+        }
     }
 }

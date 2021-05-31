@@ -133,6 +133,50 @@ namespace FrostyFix2 {
             }
         }
 
+        public void openGameDir() {
+            if (datadir != null) {
+                Process.Start("explorer.exe", datadir);
+            }
+            else {
+                string message = "Select a game in the main window";
+                string title = "Select a game";
+                MessageBoxButton buttons = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+                MessageBoxResult result = MessageBox.Show(message, title, buttons, icon);
+            }
+        }
+
+        public void delModData() {
+            if (datadir != null) {
+                if (Directory.Exists(datadir + "\\ModData")) {
+                    string message = "Are you sure you want to delete ModData for the selected game? You will have to regenerate ModData again through Frosty.";
+                    string title = "Delete ModData";
+                    MessageBoxButton buttons = MessageBoxButton.YesNo;
+                    MessageBoxImage icon = MessageBoxImage.Warning;
+                    MessageBoxResult result = MessageBox.Show(message, title, buttons, icon);
+                    switch (result) {
+                        case MessageBoxResult.Yes:
+                            Directory.Delete(datadir + "\\ModData");
+                            break;
+                    }
+                }
+                else {
+                    string message = "ModData does not exist for selected game.";
+                    string title = "ModData does not exist";
+                    MessageBoxButton buttons = MessageBoxButton.OK;
+                    MessageBoxImage icon = MessageBoxImage.Warning;
+                    MessageBoxResult result = MessageBox.Show(message, title, buttons, icon);
+                }
+            }
+            else {
+                string message = "Select a game in the main window";
+                string title = "Select a game";
+                MessageBoxButton buttons = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+                MessageBoxResult result = MessageBox.Show(message, title, buttons, icon);
+            }
+        }
+
         private async void btn_enable_Click(object sender, RoutedEventArgs e) {
             Directory.CreateDirectory(datadir + "\\ModData");
             if (Directory.GetDirectories(datadir + "\\ModData").Length == 0 || Directory.Exists(datadir + "\\ModData\\Data")) {
