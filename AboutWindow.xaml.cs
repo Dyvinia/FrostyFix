@@ -1,6 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Navigation;
 
 namespace FrostyFix2 {
@@ -28,6 +31,13 @@ namespace FrostyFix2 {
 
         private void ButtonDelModData(object sender, RoutedEventArgs e) {
             (Application.Current.MainWindow as MainWindow).delModData();
+        }
+
+        private async void ButtonClearEnvVar(object sender, RoutedEventArgs e) {
+            Mouse.OverrideCursor = Cursors.Wait;
+            Environment.SetEnvironmentVariable("GAME_DATA_DIR", "", EnvironmentVariableTarget.User);
+            await Task.Delay(10);
+            Mouse.OverrideCursor = null;
         }
     }
 }

@@ -99,7 +99,7 @@
             https://discord.gg/advqsyv
             </Hyperlink>
         </TextBlock>
-        <Button Content="Refresh Status on Main Window" HorizontalAlignment="Center" Margin="75,300,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonEnvVar" BorderBrush="#FFB90000" FontSize="14">
+        <Button Content="Refresh Status on Main Window" HorizontalAlignment="Center" Margin="75,310,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonEnvVar" BorderBrush="#FFB90000" FontSize="14">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF323232"/>
@@ -123,7 +123,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="Delete Selected Game ModData" HorizontalAlignment="Center" Margin="75,268,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonDelModData" BorderBrush="#FFB90000" FontSize="14">
+        <Button Content="Delete Selected Game ModData" HorizontalAlignment="Center" Margin="75,250,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonDelModData" BorderBrush="#FFB90000" FontSize="14">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF323232"/>
@@ -147,7 +147,31 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="Open Selected Game Directory" HorizontalAlignment="Center" Margin="75,236,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonGameDir" BorderBrush="#FFB90000" FontSize="14">
+        <Button Content="Open Selected Game Directory" HorizontalAlignment="Center" Margin="75,220,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonGameDir" BorderBrush="#FFB90000" FontSize="14">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="#FF323232"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF6C6C6C"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FF5A5A5A"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="Clear Env. Var. from FrostyFix 2" HorizontalAlignment="Center" Margin="75,280,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonClearEnvVar" BorderBrush="#FFB90000" FontSize="14">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF323232"/>
