@@ -124,6 +124,9 @@
             </Button.Template>
         </Button>
         <Button Content="Delete Selected Game ModData" HorizontalAlignment="Center" Margin="75,250,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonDelModData" BorderBrush="#FFB90000" FontSize="14">
+            <Button.ToolTip>
+                <ToolTip Background="Black" Foreground="White" Content="May require administrator access"/>
+            </Button.ToolTip>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF323232"/>
