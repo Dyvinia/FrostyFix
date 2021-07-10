@@ -17,6 +17,15 @@ namespace FrostyFix2 {
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
             txt_Version.Text = "v" + version;
         }
+
+        public void VictorCringe(object sender, MouseButtonEventArgs e) {
+            string message = "Victor is Cringe";
+            string title = "Victor";
+            MessageBoxButton buttons = MessageBoxButton.OK;
+            MessageBoxImage icon = MessageBoxImage.Error;
+            MessageBoxResult result = MessageBox.Show(message, title, buttons, icon);
+        }
+
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e) {
             System.Diagnostics.Process.Start(e.Uri.ToString());
         }

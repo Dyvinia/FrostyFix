@@ -61,9 +61,12 @@
         </Canvas>
         <TextBlock Name="txt_Version"  Margin="150,82,150,0" TextWrapping="Wrap" Text="version" VerticalAlignment="Top" Foreground="#FFF1F1F1" FontSize="14" TextAlignment="Center"/>
         <TextBlock Margin="97,113,96,0" TextWrapping="Wrap" Text="Created by Dulana57" VerticalAlignment="Top" Foreground="#FFF1F1F1" FontSize="18" Height="24" TextAlignment="Center"/>
-        <TextBlock Margin="40,142,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="42" TextAlignment="Center" FontSize="13">
+        <ContentControl MouseDoubleClick="VictorCringe">
+            <TextBlock Name="txt_Credits" Margin="40,142,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="42" TextAlignment="Center" FontSize="13">
             Originally based off the batch file by<LineBreak/>BattleDash, Dulana57, and VictorPLopes
-        </TextBlock>
+            </TextBlock>
+        </ContentControl>
+
         <Grid Height="155" Margin="10,0,10,117" VerticalAlignment="Bottom" Background="#FF141414">
             <TextBlock Margin="10,6" TextWrapping="Wrap" Foreground="#FFF1F1F1" TextAlignment="Center" FontSize="16"><Run Text="Extra Options"/></TextBlock>
         </Grid>
