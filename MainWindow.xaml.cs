@@ -187,6 +187,15 @@ namespace FrostyFix2 {
                     MessageBoxImage icon = MessageBoxImage.Warning;
                     MessageBoxResult result = MessageBox.Show(message, title, buttons, icon);
                 }
+
+                if (Directory.Exists(datadir + "\\ModData\\Data") && (Directory.Exists(datadir + "\\ModData\\Default") || Directory.Exists(datadir + "\\ModData\\Editor"))) {
+                    string message = "You are using both the Frosty Alpha and Frosty Public version. FrostyFix will not use the Alpha profile system unless you DELETE ModData (option in the About menu)";
+                    string title = "Frosty Alpha";
+                    MessageBoxButton buttons = MessageBoxButton.OK;
+                    MessageBoxImage icon = MessageBoxImage.Warning;
+                    MessageBoxResult result = MessageBox.Show(message, title, buttons, icon);
+                }
+
                 Mouse.OverrideCursor = Cursors.Wait;
 
                 //Kill all Launcher processes
