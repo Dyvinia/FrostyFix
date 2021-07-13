@@ -133,6 +133,28 @@ namespace FrostyFix2 {
             }
         }
 
+        public void enableButtonText() {
+            string platform = null;
+            if (rbtn_origin.IsChecked == true) platform = "Origin ";
+            if (rbtn_eadesk.IsChecked == true) platform = "EA Desktop ";
+            if (rbtn_epicgames.IsChecked == true) platform = "Epic Games Store ";
+            if (rbtn_steam.IsChecked == true) platform = "Steam ";
+
+            string game = null;
+            if (rbtn_bf2015.IsChecked == true) game = "Star Wars Battlefront (2015)";
+            if (rbtn_bf2017.IsChecked == true) game = "Star Wars Battlefront II (2017)";
+            if (rbtn_bf1.IsChecked == true) game = "Battlefield One";
+            if (rbtn_mea.IsChecked == true) game = "Mass Effect: Andromeda";
+            if (rbtn_nfs.IsChecked == true) game = "Need for Speed";
+            if (rbtn_nfspayback.IsChecked == true) game = "Need for Speed: Payback";
+            if (rbtn_gw2.IsChecked == true) game = "PvZ: Garden Warfare 2";
+            if (rbtn_dai.IsChecked == true) game = "Dragon Age: Inquisition";
+            if (rbtn_custom.IsChecked == true) game = "Custom Game";
+
+            btn_enable_text.Text = "Launch " + platform + "with Mods enabled";
+            if (game != null) btn_enable_text.Text = btn_enable_text.Text + " for " + game;
+        }
+
         public void openGameDir() {
             if (datadir != null) {
                 Process.Start("explorer.exe", datadir);
@@ -456,6 +478,7 @@ namespace FrostyFix2 {
 
         private void rbtn_custom_Checked(object sender, RoutedEventArgs e) {
             btn_customchoose.IsEnabled = true;
+            enableButtonText();
         }
 
         private void rbtn_custom_Unchecked(object sender, RoutedEventArgs e) {
@@ -482,45 +505,54 @@ namespace FrostyFix2 {
         private void rbtn_bf2015_Checked(object sender, RoutedEventArgs e) {
             datadir = bf2015;
             checkEnabled();
+            enableButtonText();
         }
 
         private void rbtn_bf2017_Checked(object sender, RoutedEventArgs e) {
             datadir = bf2017;
             checkEnabled();
+            enableButtonText();
         }
 
         private void rbtn_bf1_Checked(object sender, RoutedEventArgs e) {
             datadir = bf1;
             checkEnabled();
+            enableButtonText();
         }
 
         private void rbtn_mea_Checked(object sender, RoutedEventArgs e) {
             datadir = mea;
             checkEnabled();
+            enableButtonText();
         }
 
         private void rbtn_nfs_Checked(object sender, RoutedEventArgs e) {
             datadir = nfs;
             checkEnabled();
+            enableButtonText();
         }
 
         private void rbtn_nfspayback_Checked(object sender, RoutedEventArgs e) {
             datadir = nfspayback;
             checkEnabled();
+            enableButtonText();
         }
 
         private void rbtn_gw2_Checked(object sender, RoutedEventArgs e) {
             datadir = gw2;
             checkEnabled();
+            enableButtonText();
         }
 
         private void rbtn_dai_Checked(object sender, RoutedEventArgs e) {
             datadir = dai;
             checkEnabled();
+            enableButtonText();
         }
 
         private void rbtn_platform_Checked(object sender, RoutedEventArgs e) {
             checkEnabled();
+            enableButtonText();
         }
 
         private void btn_refresh_Click(object sender, RoutedEventArgs e) {

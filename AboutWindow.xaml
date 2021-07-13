@@ -70,7 +70,7 @@
         <Grid Height="155" Margin="10,0,10,117" VerticalAlignment="Bottom" Background="#FF141414">
             <TextBlock Margin="10,6" TextWrapping="Wrap" Foreground="#FFF1F1F1" TextAlignment="Center" FontSize="16"><Run Text="Extra Options"/></TextBlock>
         </Grid>
-        <TextBlock Margin="40,357,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
+        <TextBlock Margin="40,351,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
             GitHub: 
             <Hyperlink 
             NavigateUri="https://github.com/Dulana57/FrostyFix"
@@ -78,7 +78,7 @@
             https://github.com/Dulana57/FrostyFix
             </Hyperlink>
         </TextBlock>
-        <TextBlock Margin="25,377,25,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
+        <TextBlock Margin="25,371,25,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
             FAQ: 
             <Hyperlink 
             NavigateUri="https://github.com/Dulana57/FrostyFix#faq"
@@ -86,7 +86,7 @@
             https://github.com/Dulana57/FrostyFix#FAQ
             </Hyperlink>
         </TextBlock>
-        <TextBlock Margin="40,398,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
+        <TextBlock Margin="40,392,40,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
             Support: 
             <Hyperlink 
             NavigateUri="https://Dulana57.com/Discord"
@@ -94,12 +94,20 @@
             https://Dulana57.com/Discord
             </Hyperlink>
         </TextBlock>
-        <TextBlock Margin="10,418,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
+        <TextBlock Margin="10,412,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
             BattlefrontModding: 
             <Hyperlink 
             NavigateUri="https://discord.gg/advqsyv"
             RequestNavigate="Hyperlink_RequestNavigate" Foreground="White">
             https://discord.gg/advqsyv
+            </Hyperlink>
+        </TextBlock>
+        <TextBlock Margin="10,432,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13">
+            Donate: 
+            <Hyperlink 
+            NavigateUri="https://www.dulana57.com/donate"
+            RequestNavigate="Hyperlink_RequestNavigate" Foreground="White">
+            https://Dulana57.com/Donate
             </Hyperlink>
         </TextBlock>
         <Button Content="Refresh Status on Main Window" HorizontalAlignment="Center" Margin="75,310,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonEnvVar" BorderBrush="#FFB90000" FontSize="14">

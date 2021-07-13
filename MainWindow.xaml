@@ -218,7 +218,8 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Button x:Name="btn_enable" Content="Launch with Mods enabled" Width="210" Height="60" IsEnabled="False" Canvas.Left="322" Canvas.Top="253" Margin="286,0,286,28" VerticalAlignment="Bottom" Click="btn_enable_Click">
+            <Button x:Name="btn_enable"  Width="242" Height="64" IsEnabled="False" Canvas.Left="322" Canvas.Top="253" Margin="270,0,270,26" VerticalAlignment="Bottom" Click="btn_enable_Click">
+                <TextBlock x:Name="btn_enable_text" Text="Launch with Mods enabled" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
                 <Button.ToolTip>
                     <ToolTip Background="Black" Foreground="White" Content="Click to launch the select platform with the fix applied"/>
                 </Button.ToolTip>
