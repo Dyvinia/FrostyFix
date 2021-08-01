@@ -110,7 +110,7 @@
             https://Dulana57.com/Donate
             </Hyperlink>
         </TextBlock>
-        <Button Content="Refresh Status on Main Window" HorizontalAlignment="Center" Margin="75,310,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonEnvVar" BorderBrush="#FFB90000" FontSize="14">
+        <Button Content="Refresh Status on Main Window" HorizontalAlignment="Center" Margin="75,310,75,0" VerticalAlignment="Top" Width="210" Height="25" Click="ButtonEnvVar" BorderBrush="#FFB90000" FontSize="14" Visibility="Hidden">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Background" Value="#FF323232"/>
