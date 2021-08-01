@@ -59,5 +59,25 @@ namespace FrostyFix2.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon FrostyFix {
+            get {
+                object obj = ResourceManager.GetObject("FrostyFix", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon FrostyFixGreen {
+            get {
+                object obj = ResourceManager.GetObject("FrostyFixGreen", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

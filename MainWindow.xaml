@@ -6,6 +6,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
         xmlns:local="clr-namespace:FrostyFix2"
         mc:Ignorable="d"
         Title="FrostyFix" Height="500" Width="800" Background="#FF323232" WindowStartupLocation="CenterScreen" Icon="Img/FrostyFix.ico" MinHeight="500" MinWidth="800">
@@ -13,6 +14,41 @@
         <WindowChrome CaptionHeight="30" GlassFrameThickness="0" CornerRadius="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
     </WindowChrome.WindowChrome>
     <Grid>
+
+        <tb:TaskbarIcon 
+            x:Name="tooltipTray"
+            
+            MenuActivation="LeftOrRightClick"
+            >
+
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu Background="#FF141414" Foreground="#FFF1F1F1">
+                    <MenuItem Header="Hide FrostyFix" x:Name="ShowHideFF" Click="showhideFF"/>
+                    <MenuItem Header="Exit FrostyFix" Click="quitFF"/>
+                    <ContextMenu.Style>
+                        <Style TargetType="{x:Type ContextMenu}">
+                            <Setter Property="SnapsToDevicePixels" Value="True" />
+                            <Setter Property="OverridesDefaultStyle" Value="True" />
+                            <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+                            <Setter Property="HasDropShadow" Value="True" />
+                            <Setter Property="Foreground" Value="#FFF1F1F1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ContextMenu}">
+                                        <Border x:Name="Border" Background="#FF141414" BorderThickness="1">
+                                            <ItemsPresenter />
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ContextMenu.Style>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+
+        </tb:TaskbarIcon>
+
+
         <Grid VerticalAlignment="Top" Background="#FF0A0A0A">
             <StackPanel Height="30" WindowChrome.IsHitTestVisibleInChrome="True" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Width="45" Content="&#xE949;"  Name="MinimizeButton" Focusable="False" FontFamily="Segoe MDL2 Assets">

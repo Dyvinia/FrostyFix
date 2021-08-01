@@ -7,9 +7,9 @@ using System.Windows.Media;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.IO;
 using System.Diagnostics;
-using System.Linq;
-using System.ServiceProcess;
+using System.Windows.Threading;
 using Gapotchenko.FX.Diagnostics;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace FrostyFix2 {
     /// <summary>
@@ -31,6 +31,7 @@ namespace FrostyFix2 {
         string steamdir;
         bool customChoose = false;
         string isenabled;
+        private DispatcherTimer dispatcherTimer;
 
         public void checkStatus() {
             isenabled = null;
@@ -111,6 +112,8 @@ namespace FrostyFix2 {
                 else {
                     lbl_enabled.Text = "Game: Custom";
                 }
+                tooltipTray.ToolTipText = lbl_platform.Text + Environment.NewLine + lbl_profile.Text + Environment.NewLine + lbl_enabled.Text;
+                tooltipTray.Icon = Properties.Resources.FrostyFixGreen;
             }
             else {
                 lbl_enabled.Text = "Mods are Currently NOT Enabled";
@@ -118,7 +121,10 @@ namespace FrostyFix2 {
                 lbl_enabled_tooltip.Content = "";
                 lbl_enabled_tooltip.Visibility = Visibility.Hidden;
                 lbl_profile.Text = "";
+                tooltipTray.ToolTipText = lbl_enabled.Text;
+                tooltipTray.Icon = Properties.Resources.FrostyFix;
             }
+
         }
 
         public void checkEnabled() {
@@ -338,10 +344,22 @@ namespace FrostyFix2 {
             checkStatus();
         }
 
+        private void dispatcherTimer_Tick(object sender, EventArgs e) {
+            checkStatus();
+        }
+
         public MainWindow() {
             InitializeComponent();
             MinimizeButton.Click += (s, e) => WindowState = WindowState.Minimized;
-            CloseButton.Click += (s, e) => Application.Current.Shutdown();
+            CloseButton.Click += (s, e) => hideFF();
+
+            tooltipTray.Icon = Properties.Resources.FrostyFix;
+
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+
 
             //Get Paths using Registry
             using (RegistryKey bf2015key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront"))
@@ -557,6 +575,32 @@ namespace FrostyFix2 {
 
         private void btn_refresh_Click(object sender, RoutedEventArgs e) {
             checkStatus();
+        }
+
+        private void quitFF (object sender, RoutedEventArgs e) {
+            Application.Current.Shutdown();
+        }
+
+        private void showhideFF(object sender, RoutedEventArgs e) {
+            if (this.Visibility == Visibility.Visible) {
+                hideFF();
+            }
+            else if (this.Visibility == Visibility.Hidden) {
+                showFF();
+            }
+        }
+
+        private void showFF() {
+            ShowHideFF.Header = "Hide FrostyFix";
+            Show();
+        }
+
+        private void hideFF() {
+            ShowHideFF.Header = "Show FrostyFix";
+            Hide();
+            new ToastContentBuilder()
+            .AddText("FrostyFix has been minimized to the taskbar")
+            .Show();
         }
     }
 }
