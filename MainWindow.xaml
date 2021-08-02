@@ -22,14 +22,14 @@
 
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu Background="#FF141414" Foreground="#FFF1F1F1">
-                    <MenuItem Header="      Hide FrostyFix      " x:Name="ShowHideFF" Click="showhideFF">
+                    <MenuItem Header="      Hide FrostyFix" x:Name="ShowHideFF" Click="showhideFF">
                         <MenuItem.Style>
                             <Style TargetType="{x:Type MenuItem}">
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type MenuItem}">
                                             <Border x:Name="Border" Background="{TemplateBinding Background}" BorderThickness="1">
-                                                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Grid VerticalAlignment="Center">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="Auto"/>
@@ -52,14 +52,14 @@
                             </Style>
                         </MenuItem.Style>
                     </MenuItem>
-                    <MenuItem Header="Exit FrostyFix" Click="quitFF">
+                    <MenuItem Header="      Exit FrostyFix          " Click="quitFF">
                         <MenuItem.Style>
                             <Style TargetType="{x:Type MenuItem}">
                                 <Setter Property="Template">
                                     <Setter.Value>
                                         <ControlTemplate TargetType="{x:Type MenuItem}">
                                             <Border x:Name="Border" Background="{TemplateBinding Background}" BorderThickness="1">
-                                                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                <Grid VerticalAlignment="Center">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="Auto"/>

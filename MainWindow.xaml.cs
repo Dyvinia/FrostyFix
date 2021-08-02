@@ -591,12 +591,12 @@ namespace FrostyFix2 {
         }
 
         private void showFF(object sender, RoutedEventArgs e) {
-            ShowHideFF.Header = "Hide FrostyFix";
+            ShowHideFF.Header = "      Hide FrostyFix";
             Show();
         }
 
         private void hideFF() {
-            ShowHideFF.Header = "Show FrostyFix";
+            ShowHideFF.Header = "      Show FrostyFix";
             Hide();
             new ToastContentBuilder()
             .AddText("FrostyFix has been minimized to the taskbar")
