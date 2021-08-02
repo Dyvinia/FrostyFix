@@ -17,9 +17,8 @@
 
         <tb:TaskbarIcon 
             x:Name="tooltipTray"
-            
             MenuActivation="LeftOrRightClick"
-            >
+            TrayMouseDoubleClick="showFF">
 
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu Background="#FF141414" Foreground="#FFF1F1F1">

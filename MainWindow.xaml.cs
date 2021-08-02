@@ -586,11 +586,11 @@ namespace FrostyFix2 {
                 hideFF();
             }
             else if (this.Visibility == Visibility.Hidden) {
-                showFF();
+                showFF(sender, e);
             }
         }
 
-        private void showFF() {
+        private void showFF(object sender, RoutedEventArgs e) {
             ShowHideFF.Header = "Hide FrostyFix";
             Show();
         }
