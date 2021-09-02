@@ -57,3 +57,5 @@ For more information and/or support about FrostyFix, join [my Discord Server](ht
 Created by [Dulana57](https://Dulana57.com)
 
 [![Donate](https://img.shields.io/badge/Donate-Paypal-informational?style=for-the-badge)](https://www.paypal.me/DulanaG)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J63UBHG)
