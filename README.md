@@ -1,6 +1,8 @@
 # FrostyFix 3
+[![Latest Release](https://img.shields.io/github/v/release/Dyvine57/FrostyFix?style=for-the-badge&color=blueviolet&label=Latest%20Release&cacheSeconds=3600)](https://github.com/Dyvine57/FrostyFix/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/Dyvine57/FrostyFix/total?style=for-the-badge&color=blueviolet&label=Downloads&cacheSeconds=3600)](https://getsharex.com/downloads/)
+
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
-#### v2.3.0 and above are Required if you use the Frosty Alpha
 
 ![image](https://i.imgur.com/4exzvfi.png)
 
