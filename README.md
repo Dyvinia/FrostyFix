@@ -1,6 +1,6 @@
 # FrostyFix 3
-[![Latest Release](https://img.shields.io/github/v/release/Dyvine57/FrostyFix?style=for-the-badge&color=blueviolet&label=Latest%20Release)](https://github.com/Dyvine57/FrostyFix/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/Dyvine57/FrostyFix/total?style=for-the-badge&color=blueviolet&label=Downloads)](https://github.com/Dyvine57/FrostyFix/releases)
+[![Latest Release](https://img.shields.io/github/v/release/Dyvine57/FrostyFix?style=for-the-badge&color=blueviolet&label=Latest%20Release&cacheSeconds=3600)](https://github.com/Dyvine57/FrostyFix/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/Dyvine57/FrostyFix/total?style=for-the-badge&color=blueviolet&label=Downloads&cacheSeconds=3600)](https://github.com/Dyvine57/FrostyFix/releases)
 
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
 
