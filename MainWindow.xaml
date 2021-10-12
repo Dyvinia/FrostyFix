@@ -6,14 +6,15 @@
         xmlns:local="clr-namespace:FrostyFix4"
         mc:Ignorable="d"
         Title="FrostyFix 4"
-        Height="450" Width="800"
+        MinHeight="420" MinWidth="640"
+        Height="420" Width="640"
         MouseDown="window_MouseDown"
         Style="{DynamicResource CustomWindowStyle}">
     <Window.Resources>
         <DropShadowBitmapEffect x:Key="NormalShadow" ShadowDepth="2" Softness="0.2" Opacity="0.64"/>
     </Window.Resources>
     <Grid>
-        <Grid Background="#FF141414" Margin="5,74,5,5">
+        <Grid Background="#FF141414" Margin="5,75,5,5">
             <ComboBox HorizontalAlignment="Left" Margin="32,47,0,0" VerticalAlignment="Top" Width="221">
                 <ComboBoxItem Content="Star Wars: Battlefront"/>
                 <ComboBoxItem Content="Star Wars: Battlefront II"/>
@@ -24,8 +25,14 @@
                 <ComboBoxItem Content="Plants vs. Zombies: Garden Warfare 2"/>
                 <ComboBoxItem Content="Dragon Age: Inquisition"/>
             </ComboBox>
+            <TextBlock HorizontalAlignment="Left" Margin="32,22,0,0" Text="Select Game:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="32,88,0,0" Text="Select Platform:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
+            <RadioButton Content="EA Desktop" HorizontalAlignment="Left" Margin="32,113,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Epic Games Store" HorizontalAlignment="Left" Margin="32,138,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Steam" HorizontalAlignment="Left" Margin="32,163,0,0" VerticalAlignment="Top"/>
+            <RadioButton Content="Origin" HorizontalAlignment="Left" Margin="32,188,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Image VerticalAlignment="Top" Margin="215,5,215,0" Width="300" HorizontalAlignment="Center">
+        <Image VerticalAlignment="Top" Margin="118,5,119,0" Width="300" HorizontalAlignment="Center">
             <Image.Source>
                 <DrawingImage>
                     <DrawingImage.Drawing>
