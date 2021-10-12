@@ -118,6 +118,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\GillSansNova-Bold.ttf" />
+    <Resource Include="Fonts\GillSansNova-CnBold.ttf" />
+    <Resource Include="Fonts\GillSansNovaInline-Bold.ttf" />
+    <Resource Include="Fonts\GillSansNova-SemiBold.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -130,5 +134,6 @@
   <ItemGroup>
     <Resource Include="Resources\FrostyFixNB.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

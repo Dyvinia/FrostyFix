@@ -4076,11 +4076,11 @@
                                         
                                         <!-- CUSTOM ICON END -->
                                         
-                                        <TextBlock Margin="3,3"
-                                                   VerticalAlignment="Center"
+                                        <TextBlock Margin="2,4"
+                                                   VerticalAlignment="Top"
                                                    HorizontalAlignment="Stretch"
                                                    TextWrapping="NoWrap"
-                                                   FontWeight="Bold" FontFamily="Calibri" FontSize="14" Width="Auto"
+                                                   FontFamily="/Fonts/GillSansNova-Bold.ttf #Gill Sans Nova Bold" FontSize="14" Width="Auto"
                                                    Foreground="{StaticResource ControlDefaultForeground}"
                                                    Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"   
                                                    Grid.Column="1" TextAlignment="Left"/>

@@ -13,10 +13,20 @@
         <DropShadowBitmapEffect x:Key="NormalShadow" ShadowDepth="2" Softness="0.2" Opacity="0.64"/>
     </Window.Resources>
     <Grid>
-        <Grid Background="#FF141414" Margin="5,74,5,5"/>
+        <Grid Background="#FF141414" Margin="5,74,5,5">
+            <ComboBox HorizontalAlignment="Left" Margin="32,47,0,0" VerticalAlignment="Top" Width="221">
+                <ComboBoxItem Content="Star Wars: Battlefront"/>
+                <ComboBoxItem Content="Star Wars: Battlefront II"/>
+                <ComboBoxItem Content="Battlefield One"/>
+                <ComboBoxItem Content="Need for Speed"/>
+                <ComboBoxItem Content="Need for Speed: Payback"/>
+                <ComboBoxItem Content="Mass Effect: Andromeda"/>
+                <ComboBoxItem Content="Plants vs. Zombies: Garden Warfare 2"/>
+                <ComboBoxItem Content="Dragon Age: Inquisition"/>
+            </ComboBox>
+        </Grid>
         <Image VerticalAlignment="Top" Margin="215,5,215,0" Width="300" HorizontalAlignment="Center">
             <Image.Source>
-
                 <DrawingImage>
                     <DrawingImage.Drawing>
                         <DrawingGroup ClipGeometry="M0,0 V405 H1909 V0 H0 Z">
@@ -54,7 +64,6 @@
                         </DrawingGroup>
                     </DrawingImage.Drawing>
                 </DrawingImage>
-
             </Image.Source>
         </Image>
 
