@@ -20,7 +20,13 @@ namespace FrostyFix4.Themes
                 try { MinimizeWind(Window.GetWindow((FrameworkElement)e.Source)); } catch { }
         }
 
-        public void CloseWind(Window window) => window.Close();
+        public void CloseWind(Window window) {
+            if (window.Title == "FrostyFix 4") {
+                Application.Current.Shutdown();
+            }
+            else window.Hide();
+        }
+
         public void MaximizeRestore(Window window)
         {
             if (window.WindowState == WindowState.Maximized) {

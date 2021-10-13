@@ -6,16 +6,18 @@
         xmlns:local="clr-namespace:FrostyFix4"
         mc:Ignorable="d"
         Title="FrostyFix 4"
-        MinHeight="420" MinWidth="640"
-        Height="420" Width="640"
+        MinHeight="440" MinWidth="600"
+        Height="440" Width="600"
+        WindowStartupLocation="CenterScreen"
         MouseDown="window_MouseDown"
-        Style="{DynamicResource CustomWindowStyle}">
+        Icon="Resources/FrostyFix.ico"
+        Style="{DynamicResource CustomWindowStyle}" >
     <Window.Resources>
         <DropShadowBitmapEffect x:Key="NormalShadow" ShadowDepth="2" Softness="0.2" Opacity="0.64"/>
     </Window.Resources>
     <Grid>
         <Grid Background="#FF141414" Margin="5,75,5,5">
-            <ComboBox HorizontalAlignment="Left" Margin="32,47,0,0" VerticalAlignment="Top" Width="221">
+            <ComboBox Name="GameSelectorDropdown" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top" Width="240">
                 <ComboBoxItem Content="Star Wars: Battlefront"/>
                 <ComboBoxItem Content="Star Wars: Battlefront II"/>
                 <ComboBoxItem Content="Battlefield One"/>
@@ -25,14 +27,40 @@
                 <ComboBoxItem Content="Plants vs. Zombies: Garden Warfare 2"/>
                 <ComboBoxItem Content="Dragon Age: Inquisition"/>
             </ComboBox>
-            <TextBlock HorizontalAlignment="Left" Margin="32,22,0,0" Text="Select Game:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="32,88,0,0" Text="Select Platform:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
-            <RadioButton Content="EA Desktop" HorizontalAlignment="Left" Margin="32,113,0,0" VerticalAlignment="Top"/>
-            <RadioButton Content="Epic Games Store" HorizontalAlignment="Left" Margin="32,138,0,0" VerticalAlignment="Top"/>
-            <RadioButton Content="Steam" HorizontalAlignment="Left" Margin="32,163,0,0" VerticalAlignment="Top"/>
-            <RadioButton Content="Origin" HorizontalAlignment="Left" Margin="32,188,0,0" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="32,18,0,0" Text="Select Game:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="32,79,0,0" Text="Select Platform:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
+            <RadioButton Name="EADPlat"  Content="EA Desktop" HorizontalAlignment="Left" Margin="32,104,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="EGSPlat" Content="Epic Games Store" HorizontalAlignment="Left" Margin="32,129,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="OriginPlat" Content="Origin" HorizontalAlignment="Left" Margin="32,154,0,0" VerticalAlignment="Top"/>
+            <RadioButton Name="GlobalPlat" Content="Global" HorizontalAlignment="Left" Margin="32,179,0,0" VerticalAlignment="Top">
+                <RadioButton.ToolTip>
+                    <ToolTip Background="Black" Foreground="White" Content="Sets the path as a global path variable instead.&#x0a;Affects all platforms (including Steam)&#x0a;Changes will be permanant until you click Disable Mods"/>
+                </RadioButton.ToolTip>
+            </RadioButton>
+                <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg212" Width="20" Height="20" Margin="93,181,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Canvas.ToolTip>
+                    <ToolTip Background="Black" Foreground="White" Content="Sets the path as a global path variable instead.&#x0a;Affects all platforms (including Steam)&#x0a;Changes will be permanant until you click Disable Mods"/>
+                </Canvas.ToolTip>
+                <Canvas.RenderTransform>
+                    <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <!--Unknown tag: sodipodi:namedview-->
+                <Canvas Name="layer2">
+                    <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="6.6452413" Canvas.Top="4.3774209" Width="6.3288012" Height="11.233622" Name="rect1394" Fill="#FFFFFFFF"/>
+                </Canvas>
+                <Canvas Name="layer1">
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path132" Fill="#FF2D2D2D" StrokeThickness="0.0314462" Data="M 9.2823047 18.944299 C 8.8555678 18.915263 8.2431141 18.813268 7.7782229 18.693833 4.0607639 17.738774 1.365457 14.534418 1.061293 10.708308 0.97692739 9.647099 1.0585054 8.7241111 1.3274547 7.6956213 1.628118 6.5459892 2.2341846 5.343603 2.9956575 4.3860425 3.2847541 4.0225006 4.0248721 3.2878669 4.4081395 2.9840267 5.1259081 2.4150066 5.9155764 1.9592587 6.7351601 1.6410145 9.0682902 0.73506078 11.683756 0.83883085 13.920622 1.9261024 c 2.138319 1.0393696 3.791084 2.9083314 4.563907 5.1609085 0.582502 1.6978431 0.643453 3.5762011 0.171678 5.2907731 -1.00455 3.650836 -4.222316 6.295361 -7.990536 6.567033 -0.486585 0.03508 -0.8623542 0.03494 -1.3833663 -5.18e-4 z m 2.5314203 -5.360236 v -0.896218 h -0.45597 -0.45597 V 10.439101 8.1903606 l -1.3443262 0.00818 -1.3443259 0.00818 v 0.8962178 0.8962174 l 0.448108 0.00872 0.4481098 0.0087 v 1.335601 1.335601 h -0.4559708 -0.45597 v 0.896217 0.896218 h 1.8081581 1.808157 z M 10.262364 7.2635762 c 0.217434 -0.064574 0.41845 -0.2270974 0.53001 -0.4285246 0.08205 -0.1481434 0.09369 -0.2004102 0.09369 -0.4207274 0 -0.2201087 -0.01167 -0.2726443 -0.09334 -0.4200845 C 10.492942 5.4530022 9.8065954 5.3513462 9.3738525 5.7840882 8.9053518 6.252589 9.0862541 7.0343988 9.7132735 7.2509753 c 0.2043029 0.070571 0.3431665 0.073755 0.5490905 0.012607 z"/>
+                </Canvas>
+            </Canvas>
+            <TextBlock HorizontalAlignment="Right" Margin="0,18,200,0" Text="Select Profile:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
+            <ListBox HorizontalAlignment="Right" Height="160" Margin="0,43,30,0" VerticalAlignment="Top" Width="260"/>
+            <Separator Height="10" Margin="0,215,0,0" VerticalAlignment="Top"/>
+            <Button HorizontalAlignment="Center" Margin="175,0,175,27" VerticalAlignment="Bottom" Width="230" Height="54">
+                <TextBlock x:Name="btn_enable_text1" Text="Launch with Mods enabled" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
+            </Button>
         </Grid>
-        <Image VerticalAlignment="Top" Margin="118,5,119,0" Width="300" HorizontalAlignment="Center">
+        <Image VerticalAlignment="Top" Margin="144,5,146,0" Width="300">
             <Image.Source>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -73,6 +101,25 @@
                 </DrawingImage>
             </Image.Source>
         </Image>
+        <Button HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="96" Height="26">
+            <TextBlock x:Name="btn_disable_text" Text="Disable Mods" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
+        </Button>
+        <Button HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="25" Height="25" Click="ButtonSettings_Click" >
+
+            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg21" Width="20" Height="20" Margin="-1">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="0" Y="0"/>
+                </Canvas.RenderTransform>
+                <Canvas.Resources/>
+                <Canvas>
+                    <Canvas.RenderTransform>
+                        <MatrixTransform Matrix="0.01937812 0 0 0.01937812 0.07654627 0.07912296"/>
+                    </Canvas.RenderTransform>
+                    <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path18" Fill="#FFFFFFFF" Opacity="1" Data="m 418.03 87.15 c 4.35 -2.02 9.24 -1.93 13.93 -1.89 55 0.03 110 -0.03 165 0.03 10.59 -0.29 20.32 8.17 21.8 18.59 5.31 37.47 10.61 74.95 15.91 112.42 25.73 10.82 50 25.03 72.12 42.04 35.44 -14.37 70.89 -28.72 106.39 -42.95 9.42 -3.86 21.08 0.46 25.92 9.35 28.45 49.22 56.86 98.47 85.25 147.73 5.17 8.62 3.15 20.79 -4.82 27.03 -30.17 23.61 -60.35 47.21 -90.52 70.83 3.81 27.6 3.84 55.65 -0.01 83.26 29.97 23.51 59.98 46.98 89.92 70.54 8.1 6.22 10.56 18.5 5.27 27.28 -27.54 47.7 -55.07 95.4 -82.59 143.11 -2.25 4 -4.45 8.23 -8.24 11.02 -5.84 4.52 -14.08 5.59 -20.92 2.86 -35.3 -14.26 -70.57 -28.61 -105.91 -42.79 -22.05 17.1 -46.4 31.17 -72.07 42.08 -5.33 37.47 -10.6 74.94 -15.92 112.41 -1.11 8.3 -7.46 15.59 -15.53 17.8 -3.59 1 -7.35 0.74 -11.02 0.77 -53.34 -0.01 -106.68 -0.01 -160.01 0 -3.66 -0.03 -7.39 0.23 -10.95 -0.76 -8.11 -2.19 -14.5 -9.51 -15.58 -17.84 -5.31 -37.46 -10.58 -74.92 -15.91 -112.38 -25.7 -10.87 -49.92 -25.14 -72.08 -42.08 -33.25 13.36 -66.46 26.82 -99.66 40.28 -4.45 1.74 -8.87 4.07 -13.77 4.12 -7.72 0.21 -15.31 -4.19 -19.02 -10.95 C 156.63 749.83 128.2 700.62 99.8 651.4 c -5.4 -9.02 -2.77 -21.69 5.85 -27.74 29.77 -23.37 59.56 -46.72 89.34 -70.07 -3.85 -27.6 -3.82 -55.66 -0.01 -83.27 -30.12 -23.64 -60.26 -47.25 -90.38 -70.88 -7.66 -6.23 -9.96 -18.07 -4.94 -26.62 28.51 -49.51 57.08 -98.97 85.66 -148.43 5 -8.8 16.71 -12.67 26.05 -8.86 35.37 14.2 70.72 28.45 106.03 42.82 22.04 -17.14 46.4 -31.23 72.14 -42.04 5.3 -37.47 10.6 -74.95 15.91 -112.42 0.97 -7.26 5.88 -13.8 12.58 -16.74 m 75.53 276.66 c -23.98 2.88 -47.24 11.74 -66.98 25.67 -27.75 19.21 -48.61 48.14 -57.94 80.59 -11.91 40.42 -5.77 85.81 16.91 121.38 19.51 31.22 50.97 54.79 86.53 64.43 22.94 6.41 47.46 7.1 70.77 2.22 36.08 -7.43 68.98 -28.96 90.37 -58.93 23.31 -31.98 32.73 -73.49 25.95 -112.43 -5.93 -35.6 -25.4 -68.73 -53.67 -91.18 -30.93 -25.28 -72.37 -36.78 -111.94 -31.75 z"/>
+                </Canvas>
+            </Canvas>
+
+        </Button>
 
     </Grid>
 </Window>

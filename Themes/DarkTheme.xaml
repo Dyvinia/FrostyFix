@@ -85,7 +85,7 @@
         <Setter Property="Foreground" Value="{StaticResource ControlDefaultForeground}"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="1"/>
@@ -3025,12 +3025,12 @@
 
     <!-- Tab Control -->
     <Style TargetType="{x:Type TabControl}">
-        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Padding" Value="0"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="{StaticResource BackgroundColour}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlDefaultBorderBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{StaticResource ControlDefaultForeground}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -3092,7 +3092,7 @@
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Foreground" Value="{StaticResource ControlDefaultForeground}"/>
         <Setter Property="Background" Value="{StaticResource ControlDarkerBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlDarkerBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ContainerGridBackground}"/>
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="6,4,6,4"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -3103,8 +3103,8 @@
                     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
                         <Border x:Name="mainBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1,1,1,0" Background="{TemplateBinding Background}" Margin="0">
                             <Border x:Name="innerBorder" 
-                                    BorderBrush="{StaticResource ControlDefaultBorderBrush}" BorderThickness="1,1,1,0" 
-                                    Background="{StaticResource BackgroundColour}" Margin="-1" Opacity="0"/>
+                                    BorderBrush="{StaticResource ContainerGridBackground}" BorderThickness="1,1,1,1" 
+                                    Background="{StaticResource ContainerGridBackground}" Margin="-1" Opacity="0"/>
                         </Border>
                         <ContentPresenter x:Name="contentPresenter" ContentSource="Header" Focusable="False" HorizontalAlignment="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
                     </Grid>
@@ -3115,7 +3115,7 @@
                                 <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Left"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource ControlMouseOverBackground}"/>
-                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource ControlMouseOverBorderBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource ContainerGridBackground}"/>
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,0,1"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,0,1"/>
                         </MultiDataTrigger>
@@ -3125,7 +3125,7 @@
                                 <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Bottom"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource ControlMouseOverBackground}"/>
-                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource ControlMouseOverBorderBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource ContainerGridBackground}"/>
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,0,1,1"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,0,1,1"/>
                         </MultiDataTrigger>
@@ -3135,7 +3135,7 @@
                                 <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Right"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource ControlMouseOverBackground}"/>
-                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource ControlMouseOverBorderBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource ContainerGridBackground}"/>
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="0,1,1,1"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="0,1,1,1"/>
                         </MultiDataTrigger>
@@ -3145,7 +3145,7 @@
                                 <Condition Binding="{Binding TabStripPlacement, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}" Value="Top"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Background" TargetName="mainBorder" Value="{StaticResource ControlMouseOverBackground}"/>
-                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource ControlMouseOverBorderBrush}"/>
+                            <Setter Property="BorderBrush" TargetName="mainBorder" Value="{StaticResource ContainerGridBackground}"/>
                             <Setter Property="BorderThickness" TargetName="innerBorder" Value="1,1,1,0"/>
                             <Setter Property="BorderThickness" TargetName="mainBorder" Value="1,1,1,0"/>
                         </MultiDataTrigger>
@@ -4053,13 +4053,13 @@
                                       Background="{StaticResource WindowTitleColour}"
                                       VerticalAlignment="Top" Margin="0">
                                     <DockPanel Margin="0,0,130,0">
-                                        
-                                        
+
+
                                         <!-- CUSTOM ICON -->
 
                                         <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,1,0,0" Height="28">
                                             <Image.Source>
-                                                
+
                                                 <DrawingImage>
                                                     <DrawingImage.Drawing>
                                                         <DrawingGroup ClipGeometry="M0,0 V256 H256 V0 H0 Z">
@@ -4070,17 +4070,17 @@
                                                         </DrawingGroup>
                                                     </DrawingImage.Drawing>
                                                 </DrawingImage>
-                                            
+
                                             </Image.Source>
                                         </Image>
-                                        
+
                                         <!-- CUSTOM ICON END -->
-                                        
-                                        <TextBlock Margin="2,4"
+
+                                        <TextBlock Margin="2,6"
                                                    VerticalAlignment="Top"
                                                    HorizontalAlignment="Stretch"
                                                    TextWrapping="NoWrap"
-                                                   FontFamily="/Fonts/GillSansNova-Bold.ttf #Gill Sans Nova Bold" FontSize="14" Width="Auto"
+                                                   FontFamily="Calibri" FontWeight="Bold" FontSize="14" Width="1000"
                                                    Foreground="{StaticResource ControlDefaultForeground}"
                                                    Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"   
                                                    Grid.Column="1" TextAlignment="Left"/>
@@ -4097,6 +4097,15 @@
                                                 Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10px"
                                                 RenderOptions.ClearTypeHint="Auto" TextOptions.TextRenderingMode="Aliased"  TextOptions.TextFormattingMode="Display"
                                                 >
+                                            <Button.Style>
+                                                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ResizeMode, RelativeSource={RelativeSource AncestorType=Window}}" Value="NoResize">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
                                         </Button>
 
 
@@ -4118,6 +4127,9 @@
                                                         <DataTrigger Binding="{Binding WindowState, RelativeSource={RelativeSource AncestorType=Window}}" Value="Maximized">
                                                             <Setter Property="Content" Value="&#xE923;"/>
                                                         </DataTrigger>
+                                                        <DataTrigger Binding="{Binding ResizeMode, RelativeSource={RelativeSource AncestorType=Window}}" Value="NoResize">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
                                             </Button.Style>
@@ -4127,90 +4139,6 @@
                                                 BorderBrush="Transparent"
                                                 Template="{DynamicResource CloseWindowButton}"
                                                 Width="45"
-                                                WindowChrome.IsHitTestVisibleInChrome="True" 
-                                                Click="CloseWindow_Event"
-                                                Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10px"
-                                                RenderOptions.ClearTypeHint="Auto" TextOptions.TextRenderingMode="Aliased"  TextOptions.TextFormattingMode="Display"
-                                                >
-                                        </Button>
-                                    </StackPanel>
-                                </Grid>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="WindowState" Value="Maximized">
-                <Setter Property="BorderThickness" Value="8"/>
-            </Trigger>
-            <Trigger Property="WindowState" Value="Normal">
-                <Setter Property="BorderThickness" Value="1"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-
-    <!-- Same window but auto maximize/minimize button removed. Tool window -->
-
-    <Style x:Key="CustomToolWindowStyle" TargetType="{x:Type Window}">
-        <Setter Property="BorderBrush" Value="{StaticResource WindowBorderColour}" />
-        <Setter Property="Background" Value="{StaticResource BackgroundColour}" />
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="ResizeMode" Value="NoResize"/>
-        <Setter Property="WindowStyle" Value="SingleBorderWindow"/>
-        <Setter Property="WindowChrome.WindowChrome">
-            <Setter.Value>
-                <WindowChrome CaptionHeight="26"
-                              ResizeBorderThickness="0"
-                              CornerRadius="0"
-                              GlassFrameThickness="1"
-                              NonClientFrameEdges="None"
-                              UseAeroCaptionButtons="False"/>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Window}">
-                    <Grid>
-                        <Border Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid>
-                                <AdornerDecorator Margin="0,30,0,0">
-                                    <ContentPresenter />
-                                </AdornerDecorator>
-                                <Grid Height="30" x:Name="titlebar"
-                                      Background="{StaticResource WindowTitleColour}"
-                                      VerticalAlignment="Top" Margin="0">
-                                    <DockPanel Margin="0,0,130,0">
-                                        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,4,0,0" Source="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}" Height="24"  />
-                                        <TextBlock Margin="5,3"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Stretch"
-                                                   FontSize="14" Width="Auto"
-                                                   Foreground="{StaticResource ControlDefaultForeground}"
-                                                   Text="{Binding Title, RelativeSource={RelativeSource TemplatedParent}}"   
-                                                   Grid.Column="1" TextAlignment="Left"/>
-                                    </DockPanel>
-                                    <StackPanel Orientation="Horizontal"
-                                        Grid.Column="0" HorizontalAlignment="Right">
-                                        <Button x:Name="btnMinimize"
-                                                Background="Transparent"
-                                                BorderBrush="Transparent"
-                                                Width="40"
-                                                VerticalContentAlignment="Bottom"
-                                                WindowChrome.IsHitTestVisibleInChrome="True" 
-                                                Click="Minimize_Event"
-                                                Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10px"
-                                                RenderOptions.ClearTypeHint="Auto" TextOptions.TextRenderingMode="Aliased"  TextOptions.TextFormattingMode="Display"
-                                                >
-                                        </Button>
-                                        <Button x:Name="btnClose"
-                                                Background="Transparent"
-                                                BorderBrush="Transparent"
-                                                Template="{DynamicResource CloseWindowButton}"
-                                                Width="40"
                                                 WindowChrome.IsHitTestVisibleInChrome="True" 
                                                 Click="CloseWindow_Event"
                                                 Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10px"

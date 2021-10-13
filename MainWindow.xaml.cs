@@ -19,12 +19,21 @@ namespace FrostyFix4 {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        SettingsWindow settingsWindow = new SettingsWindow();
         public MainWindow() {
             InitializeComponent();
+
+            
+
         }
 
         private void window_MouseDown(object sender, MouseButtonEventArgs e) {
             Keyboard.ClearFocus();
+        }
+
+        private void ButtonSettings_Click(object sender, RoutedEventArgs e) {
+            settingsWindow.Show();
+            settingsWindow.Focus();
         }
     }
 }
