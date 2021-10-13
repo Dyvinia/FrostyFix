@@ -21,17 +21,21 @@ namespace FrostyFix4 {
     public partial class SettingsWindow : Window {
         public SettingsWindow() {
             InitializeComponent();
+            refresh();
 
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
             txt_Version.Text = "v" + version;
         }
 
         public void refresh() {
-
+            MainWindow.ifLaunchGame = (bool)chkbLaunchGame.IsChecked;
+            
         }
 
         private void chkbLaunchGame_Checked(object sender, RoutedEventArgs e) {
             refresh();
+            
+
         }
 
         private void window_MouseDown(object sender, MouseButtonEventArgs e) {

@@ -20,7 +20,7 @@
     <SolidColorBrush x:Key="ControlDefaultBorderBrush"           Color="#FF323232" />
     <SolidColorBrush x:Key="ControlBrightDefaultBackground"      Color="#FF343434" />
     <SolidColorBrush x:Key="ControlBrightDefaultBorderBrush"     Color="#FF3C3C3C" />
-    <SolidColorBrush x:Key="ControlDisabledBackground"           Color="#FF424242" />
+    <SolidColorBrush x:Key="ControlDisabledBackground"           Color="#FF212121" />
     <SolidColorBrush x:Key="ControlDisabledBorderBrush"          Color="#FF464646" />
     <SolidColorBrush x:Key="ControlMouseOverBackground"          Color="#FF3F3F3F" />
     <SolidColorBrush x:Key="ControlMouseOverBorderBrush"         Color="#FF414141"/>
@@ -120,9 +120,7 @@
                             <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ControlSelectedBorderBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Background" TargetName="border" Value="{StaticResource ControlBrightDefaultBackground}"/>
-                            <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource ControlBrightDefaultBorderBrush}"/>
-                            <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource ControlDisabledGlythColour}"/>
+                            <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -2071,7 +2069,7 @@
                                         HorizontalAlignment="Center" VerticalAlignment="Center" 
                                         Height="16" Width="16">
                             <Grid x:Name="markGrid" Margin="2">
-                                <Ellipse x:Name="optionMark" Fill="{StaticResource ControlGlythColour}" MinWidth="6" MinHeight="6" Opacity="0"/>
+                                <Ellipse x:Name="optionMark" Fill="{StaticResource ControlGlythColour}" MinWidth="5" MinHeight="5" Opacity="0"/>
                             </Grid>
                         </Border>
                         <ContentPresenter x:Name="contentPresenter" 
@@ -2094,6 +2092,7 @@
                             <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource ControlDisabledBackground}"/>
                             <Setter Property="BorderBrush" TargetName="radioButtonBorder" Value="{StaticResource ControlDisabledBorderBrush}"/>
                             <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource ControlDisabledGlythColour}"/>
+                            <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" TargetName="radioButtonBorder" Value="{StaticResource ControlSelectedBackground}"/>

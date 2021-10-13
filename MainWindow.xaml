@@ -18,26 +18,26 @@
     <Grid>
         <Grid Background="#FF141414" Margin="5,75,5,5">
             <ComboBox Name="GameSelectorDropdown" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top" Width="240">
-                <ComboBoxItem Content="Star Wars: Battlefront"/>
-                <ComboBoxItem Content="Star Wars: Battlefront II"/>
-                <ComboBoxItem Content="Battlefield One"/>
-                <ComboBoxItem Content="Need for Speed"/>
-                <ComboBoxItem Content="Need for Speed: Payback"/>
-                <ComboBoxItem Content="Mass Effect: Andromeda"/>
-                <ComboBoxItem Content="Plants vs. Zombies: Garden Warfare 2"/>
-                <ComboBoxItem Content="Dragon Age: Inquisition"/>
+                <ComboBoxItem Name="GSD_BF2015"  Content="Star Wars: Battlefront" Selected="GSD_BF2015_Selected"/>
+                <ComboBoxItem Name="GSD_BF2017" Content="Star Wars: Battlefront II" Selected="GSD_BF2017_Selected"/>
+                <ComboBoxItem Name="GSD_BF1" Content="Battlefield One" Selected="GSD_BF1_Selected"/>
+                <ComboBoxItem Name="GSD_MEA" Content="Mass Effect: Andromeda" Selected="GSD_MEA_Selected"/>
+                <ComboBoxItem Name="GSD_NFS" Content="Need for Speed" Selected="GSD_NFS_Selected"/>
+                <ComboBoxItem Name="GSD_NFSPayback" Content="Need for Speed: Payback" Selected="GSD_NFSPayback_Selected"/>
+                <ComboBoxItem Name="GSD_GW2" Content="Plants vs. Zombies: Garden Warfare 2" Selected="GSD_GW2_Selected"/>
+                <ComboBoxItem Name="GSD_DAI" Content="Dragon Age: Inquisition" Selected="GSD_DAI_Selected"/>
             </ComboBox>
             <TextBlock HorizontalAlignment="Left" Margin="32,18,0,0" Text="Select Game:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="32,79,0,0" Text="Select Platform:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
-            <RadioButton Name="EADPlat"  Content="EA Desktop" HorizontalAlignment="Left" Margin="32,104,0,0" VerticalAlignment="Top"/>
-            <RadioButton Name="EGSPlat" Content="Epic Games Store" HorizontalAlignment="Left" Margin="32,129,0,0" VerticalAlignment="Top"/>
-            <RadioButton Name="OriginPlat" Content="Origin" HorizontalAlignment="Left" Margin="32,154,0,0" VerticalAlignment="Top"/>
-            <RadioButton Name="GlobalPlat" Content="Global" HorizontalAlignment="Left" Margin="32,179,0,0" VerticalAlignment="Top">
+            <RadioButton Name="EADPlat"  Content="EA Desktop" HorizontalAlignment="Left" Margin="32,104,0,0" VerticalAlignment="Top" Checked="Plat_Checked"/>
+            <RadioButton Name="EGSPlat" Content="Epic Games Store" HorizontalAlignment="Left" Margin="32,129,0,0" VerticalAlignment="Top" Checked="Plat_Checked"/>
+            <RadioButton Name="OriginPlat" Content="Origin" HorizontalAlignment="Left" Margin="32,154,0,0" VerticalAlignment="Top" Checked="Plat_Checked"/>
+            <RadioButton Name="GlobalPlat" Content="Global" HorizontalAlignment="Left" Margin="32,179,0,0" VerticalAlignment="Top" Checked="GlobalPlat_Checked" >
                 <RadioButton.ToolTip>
                     <ToolTip Background="Black" Foreground="White" Content="Sets the path as a global path variable instead.&#x0a;Affects all platforms (including Steam)&#x0a;Changes will be permanant until you click Disable Mods"/>
                 </RadioButton.ToolTip>
             </RadioButton>
-                <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg212" Width="20" Height="20" Margin="93,181,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg212" Width="20" Height="20" Margin="93,181,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Canvas.ToolTip>
                     <ToolTip Background="Black" Foreground="White" Content="Sets the path as a global path variable instead.&#x0a;Affects all platforms (including Steam)&#x0a;Changes will be permanant until you click Disable Mods"/>
                 </Canvas.ToolTip>
@@ -54,13 +54,23 @@
                 </Canvas>
             </Canvas>
             <TextBlock HorizontalAlignment="Right" Margin="0,18,200,0" Text="Select Profile:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
-            <ListBox HorizontalAlignment="Right" Height="160" Margin="0,43,30,0" VerticalAlignment="Top" Width="260"/>
+            <ListBox x:Name="ProfileList" HorizontalAlignment="Right" Height="160" Margin="0,43,30,0" VerticalAlignment="Top" Width="260">
+                <ListBoxItem Content="ModData" IsSelected="True"/>
+            </ListBox>
             <Separator Height="10" Margin="0,215,0,0" VerticalAlignment="Top"/>
-            <Button HorizontalAlignment="Center" Margin="175,0,175,27" VerticalAlignment="Bottom" Width="230" Height="54">
-                <TextBlock x:Name="btn_enable_text1" Text="Launch with Mods enabled" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
+            <TextBlock x:Name="lbl_enabled" Margin="0,0,5,5" TextWrapping="Wrap" Text="Game" Width="300" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <TextBlock.ToolTip>
+                    <ToolTip x:Name="lbl_enabled_tooltip" Background="Black" Foreground="White"/>
+                </TextBlock.ToolTip>
+            </TextBlock>
+            <TextBlock x:Name="lbl_profile" Margin="0,0,5,20" TextWrapping="Wrap" Text="Profile" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="lbl_platform" Margin="0,0,5,35" TextWrapping="Wrap" Text="Platform" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <Button Name="LaunchButton" HorizontalAlignment="Center" Margin="175,0,175,27" VerticalAlignment="Bottom" Width="230" Height="54" Click="LaunchButton_Click" IsEnabled="False">
+                <TextBlock x:Name="LaunchButton_text" Text="Launch with Mods enabled" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
             </Button>
+
         </Grid>
-        <Image VerticalAlignment="Top" Margin="144,5,146,0" Width="300">
+        <Image VerticalAlignment="Top" Margin="145,5,145,0" Width="300">
             <Image.Source>
                 <DrawingImage>
                     <DrawingImage.Drawing>
@@ -101,9 +111,10 @@
                 </DrawingImage>
             </Image.Source>
         </Image>
-        <Button HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="96" Height="26">
+        <Button HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="96" Height="26" Click="DisableButton_Click">
             <TextBlock x:Name="btn_disable_text" Text="Disable Mods" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
         </Button>
+
         <Button HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="25" Height="25" Click="ButtonSettings_Click" >
 
             <Canvas xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Name="svg21" Width="20" Height="20" Margin="-1">
