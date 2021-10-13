@@ -1,28 +1,23 @@
-# FrostyFix 3
+# FrostyFix 4
 [![Latest Release](https://img.shields.io/github/v/release/Dyvine57/FrostyFix?style=for-the-badge&color=blueviolet&label=Latest%20Release&cacheSeconds=3600)](https://github.com/Dyvine57/FrostyFix/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Dyvine57/FrostyFix/total?style=for-the-badge&color=blueviolet&label=Downloads&cacheSeconds=3600)](https://github.com/Dyvine57/FrostyFix/releases)
 
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
 
-![image](https://i.imgur.com/4exzvfi.png)
+![image](https://i.imgur.com/my1mfUG.png)
 
 ## Instructions
 
 ### [Download the latest version here](https://github.com/Dulana57/FrostyFix/releases)
 
 1. Launch FrostyFix
-2. Pick game (or choose custom)
+2. Choose Game and Profile
 3. Select the Platform you intend to use
-4. If you are using the Frosty Alpha, when clicking Launch you will have to select a profile folder.
-5. Launch game through Frosty
-6. To disable Frosty Fix, you can click **Close all Platforms**, manually close and open the game launcher, or Restart your PC
-
-[Video Tutorial](https://youtu.be/N_b7J1NPYD0)
+4. Click Launch
+5. To disable Frosty Fix, you can click **Disable Mods**
 
 ## Info
 #### **You must disable this whenever you play any other Frostbite game or if you encounter issues with other games.**
-It is recommended to launch the game with Frosty after enabling mods.
-It works directly from Origin/EA Desktop but it's better to launch Battlefront from Frosty Mod Manager/Editor to guarantee everything is working fine and to refresh your mod list.
 **You must run this program again every time you want to play another Frostbite game**, so you can either disable mods or select the other game.
 
 ## FAQ
@@ -39,9 +34,9 @@ It works directly from Origin/EA Desktop but it's better to launch Battlefront f
 > 
 > **A:** You **MUST** disable mods before playing any other Frostbite game 
 
-> **Q:** Why are some games greyed out?
+> **Q:** Why are some games missing?
 > 
-> **A:** If FrostyFix cannot locate a game, it greys out the option making it unselectable to prevent an empty variable to be set.
+> **A:** If FrostyFix cannot locate a game, it hides the game in the dropdown.
 
 ## Unsupported Games
 These games are confirmed to be unsupported because they DO NOT USE a environment variable unlike most other Frostbite Games. They will not be able to be fixed through FrostyFix
@@ -49,14 +44,11 @@ These games are confirmed to be unsupported because they DO NOT USE a environmen
 - Madden 20
 - Need For Speed: Heat
 
-## FrostyFix 1.0
-The old FrostyFix [Github](https://github.com/Dulana57/FrostyFix-Old)
-
 ## Support
 For more information and/or support about FrostyFix, join [my Discord Server](https://discord.gg/57sJ6fj) or join the [BattlefrontModding Discord Server](https://discord.gg/EzXSJfUDmq)
 
 ## Credits
-Created by [Dulana57](https://Dulana57.com)
+Created by [Dyvine57](https://Dyvine57.com)
 
 [![Donate](https://img.shields.io/badge/Donate-Paypal-informational?style=for-the-badge)](https://www.paypal.me/DulanaG)
 
