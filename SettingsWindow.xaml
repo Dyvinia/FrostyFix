@@ -111,7 +111,7 @@ VictorPL - Original Script</TextBox>
             </TabItem>
             <TabItem Header="Settings">
                 <Grid Background="#FF141414">
-                    <CheckBox x:Name="chkbLaunchGame" Content="Launch Game" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" Checked="chkbLaunchGame_Checked" Unchecked="chkbLaunchGame_Checked"/>
+                    <CheckBox x:Name="chkbLaunchGame" Content="Launch Game" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,10,0,0" VerticalAlignment="Top" Checked="chkbLaunchGame_Checked" Unchecked="chkbLaunchGame_Checked"/>
                 </Grid>
             </TabItem>
         </TabControl>

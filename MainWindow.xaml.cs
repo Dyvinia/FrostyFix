@@ -44,7 +44,7 @@ namespace FrostyFix4 {
             locatePaths();
             checkStatus();
             checkLaunchEnable();
-            refreshLaunchGame();
+            refreshSettings();
         }
 
 
@@ -299,7 +299,8 @@ namespace FrostyFix4 {
             Process.Start(game);
         }
 
-        public void refreshLaunchGame() {
+        public void refreshSettings() {
+            ifLaunchGame = Properties.Settings.Default.launchGame;
             if (ifLaunchGame == true) {
                 LaunchButton_text.Text = "Launch Game with Mods enabled";
             }
@@ -387,7 +388,7 @@ namespace FrostyFix4 {
 
         private void Plat_Checked(object sender, RoutedEventArgs e) {
             checkLaunchEnable();
-            refreshLaunchGame();
+            refreshSettings();
         }
 
         private void GlobalPlat_Checked(object sender, RoutedEventArgs e) {

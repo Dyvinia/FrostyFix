@@ -21,15 +21,21 @@ namespace FrostyFix4 {
     public partial class SettingsWindow : Window {
         public SettingsWindow() {
             InitializeComponent();
+            loadSettings();
             refresh();
 
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
             txt_Version.Text = "v" + version;
         }
 
+
+        public void loadSettings() {
+            chkbLaunchGame.IsChecked = Properties.Settings.Default.launchGame;
+        }
+
         public void refresh() {
-            MainWindow.ifLaunchGame = (bool)chkbLaunchGame.IsChecked;
-            
+            Properties.Settings.Default.launchGame = (bool)chkbLaunchGame.IsChecked;
+            Properties.Settings.Default.Save();
         }
 
         private void chkbLaunchGame_Checked(object sender, RoutedEventArgs e) {
