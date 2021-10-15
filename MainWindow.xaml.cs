@@ -1,21 +1,11 @@
-﻿using FrostyFix4.Themes;
-using Gapotchenko.FX.Diagnostics;
+﻿using Gapotchenko.FX.Diagnostics;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 
 
 namespace FrostyFix4 {
@@ -169,13 +159,12 @@ namespace FrostyFix4 {
                 }
             }
             if (isenabled == Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User)) {
+                lbl_platform.Text = "Global";
+            }
+            if (isenabled == null) {
                 lbl_platform.Text = "";
             }
 
-            if (isenabled == null) {
-                isenabled = null;
-                lbl_platform.Text = "";
-            }
 
             if (isenabled != null) {
                 string frostyprofile = new DirectoryInfo(isenabled).Name;
@@ -184,7 +173,6 @@ namespace FrostyFix4 {
                 lbl_profile.Text = frostyprofile;
                 if (isenabled == "\\ModData" || !isenabled.Contains("ModData")) {
                     lbl_enabled.Text = "User Error when selecting path. Please click Disable Mods and try again";
-                    lbl_enabled.Foreground = Brushes.Orange;
                 }
                 else if (bf2015 != null && isenabled.Contains(bf2015)) {
                     lbl_enabled.Text = "Star Wars: Battlefront";
@@ -253,38 +241,34 @@ namespace FrostyFix4 {
         }
 
         public async void launchWithMods() {
-            Mouse.OverrideCursor = Cursors.Wait;
-
             disableMods();
+
+            Mouse.OverrideCursor = Cursors.Wait;
 
             //Find new DataDir
             dynamic profile = ProfileList.SelectedItem as dynamic;
-            string datadir2 = datadir + "ModData\\" + profile;
-
-            await Task.Delay(1000);
+            string moddatadir = datadir + "ModData\\" + profile;
 
             if (GlobalPlat.IsChecked == false) {
                 Process p = new Process();
                 p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p.StartInfo.FileName = "cmd.exe";
                 if (OriginPlat.IsChecked == true) {
-                    p.StartInfo.Arguments = "/C set \"GAME_DATA_DIR=" + datadir2 + "\\\" && start \"\" \"" + origindir + "\\Origin.exe\"";
+                    p.StartInfo.Arguments = "/C set \"GAME_DATA_DIR=" + moddatadir + "\\\" && start \"\" \"" + origindir + "\\Origin.exe\"";
                     p.StartInfo.WorkingDirectory = origindir;
                 }
                 else if (EADPlat.IsChecked == true) {
-                    p.StartInfo.Arguments = "/C set \"GAME_DATA_DIR=" + datadir2 + "\" && start \"\" \"" + Path.GetDirectoryName(eaddir) + "\\EADesktop.exe\"";
+                    p.StartInfo.Arguments = "/C set \"GAME_DATA_DIR=" + moddatadir + "\" && start \"\" \"" + Path.GetDirectoryName(eaddir) + "\\EADesktop.exe\"";
                     p.StartInfo.WorkingDirectory = Path.GetDirectoryName(eaddir);
                 }
                 else if (EGSPlat.IsChecked == true) {
-                    p.StartInfo.Arguments = "/C set \"GAME_DATA_DIR=" + datadir2 + "\\\" && start \"\" \"" + epicdir + "Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe\"";
+                    p.StartInfo.Arguments = "/C set \"GAME_DATA_DIR=" + moddatadir + "\\\" && start \"\" \"" + epicdir + "Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe\"";
                     p.StartInfo.WorkingDirectory = epicdir + "Launcher\\Portal\\Binaries\\Win32\\";
-                }
-                else if (GlobalPlat.IsChecked == true) {
                 }
                 p.Start();
             }
             else {
-                Environment.SetEnvironmentVariable("GAME_DATA_DIR", datadir, EnvironmentVariableTarget.User);
+                Environment.SetEnvironmentVariable("GAME_DATA_DIR", moddatadir, EnvironmentVariableTarget.User);
             }
 
             Mouse.OverrideCursor = null;
@@ -294,17 +278,26 @@ namespace FrostyFix4 {
 
         public async void launchGame() {
             await Task.Delay(15000);
-            string[] files = System.IO.Directory.GetFiles(datadir, "*.exe");
+            string[] files = Directory.GetFiles(datadir, "*.exe");
             string game = files[0];
             Process.Start(game);
         }
 
         public void refreshSettings() {
             ifLaunchGame = Properties.Settings.Default.launchGame;
-            if (ifLaunchGame == true) {
-                LaunchButton_text.Text = "Launch Game with Mods enabled";
+
+            if ((bool)GlobalPlat.IsChecked) {
+                if (ifLaunchGame == true) {
+                    LaunchButton_text.Text = "Apply Mods Globally & Launch Game";
+                }
+                else LaunchButton_text.Text = "Apply Mods Globally";
             }
-            else LaunchButton_text.Text = "Launch with Mods enabled";
+            else {
+                if (ifLaunchGame == true) {
+                    LaunchButton_text.Text = "Launch Game with Mods enabled";
+                }
+                else LaunchButton_text.Text = "Launch with Mods enabled";
+            }
         }
 
         public async void disableMods() {
@@ -389,11 +382,6 @@ namespace FrostyFix4 {
         private void Plat_Checked(object sender, RoutedEventArgs e) {
             checkLaunchEnable();
             refreshSettings();
-        }
-
-        private void GlobalPlat_Checked(object sender, RoutedEventArgs e) {
-            checkLaunchEnable();
-            LaunchButton_text.Text = "Apply Mods Globally";
         }
     }
 }

@@ -32,7 +32,7 @@
             <RadioButton Name="EADPlat"  Content="EA Desktop" HorizontalAlignment="Left" Margin="32,104,0,0" VerticalAlignment="Top" Checked="Plat_Checked"/>
             <RadioButton Name="EGSPlat" Content="Epic Games Store" HorizontalAlignment="Left" Margin="32,129,0,0" VerticalAlignment="Top" Checked="Plat_Checked"/>
             <RadioButton Name="OriginPlat" Content="Origin" HorizontalAlignment="Left" Margin="32,154,0,0" VerticalAlignment="Top" Checked="Plat_Checked"/>
-            <RadioButton Name="GlobalPlat" Content="Global" HorizontalAlignment="Left" Margin="32,179,0,0" VerticalAlignment="Top" Checked="GlobalPlat_Checked" >
+            <RadioButton Name="GlobalPlat" Content="Global" HorizontalAlignment="Left" Margin="32,179,0,0" VerticalAlignment="Top" Checked="Plat_Checked" >
                 <RadioButton.ToolTip>
                     <ToolTip Background="Black" Foreground="White" Content="Sets the path as a global path variable instead.&#x0a;Affects all platforms (including Steam)&#x0a;Changes will be permanant until you click Disable Mods"/>
                 </RadioButton.ToolTip>
