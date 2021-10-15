@@ -288,15 +288,15 @@ namespace FrostyFix4 {
 
             if ((bool)GlobalPlat.IsChecked) {
                 if (ifLaunchGame == true) {
-                    LaunchButton_text.Text = "Apply Mods Globally & Launch Game";
+                    LaunchButton_text.Text = "Enable Mods Globally & Launch Game";
                 }
-                else LaunchButton_text.Text = "Apply Mods Globally";
+                else LaunchButton_text.Text = "Enable Mods Globally";
             }
             else {
                 if (ifLaunchGame == true) {
-                    LaunchButton_text.Text = "Launch Game with Mods enabled";
+                    LaunchButton_text.Text = "Launch Game with Mods Enabled";
                 }
-                else LaunchButton_text.Text = "Launch with Mods enabled";
+                else LaunchButton_text.Text = "Launch with Mods Enabled";
             }
         }
 
