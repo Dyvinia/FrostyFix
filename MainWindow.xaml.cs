@@ -245,7 +245,7 @@ namespace FrostyFix4 {
 
             Mouse.OverrideCursor = Cursors.Wait;
 
-            //Find new DataDir
+            //Find ModData dir
             dynamic profile = ProfileList.SelectedItem as dynamic;
             string moddatadir = datadir + "ModData\\" + profile;
 
