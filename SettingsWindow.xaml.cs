@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 
@@ -37,6 +38,11 @@ namespace FrostyFix4 {
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e) {
             System.Diagnostics.Process.Start(e.Uri.ToString());
+        }
+
+        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+            TabItem ti = Tabs.SelectedItem as TabItem;
+            this.Title = "FrostyFix 4: " + ti.Header;
         }
     }
 }
