@@ -215,8 +215,7 @@ namespace FrostyFix4 {
             Directory.CreateDirectory(datadir + "\\ModData");
             ProfileList.Items.Clear();
 
-            if (Directory.Exists(datadir + "\\ModData\\Data")) ProfileList.Items.Add("ModData");
-            if (Directory.GetDirectories(datadir + "\\ModData").Length == 0) ProfileList.Items.Add("ModData");
+            if (Directory.Exists(datadir + "\\ModData\\Data") || (Directory.GetDirectories(datadir + "\\ModData").Length == 0)) ProfileList.Items.Add("ModData");
 
             else {
                 String[] dirs = Directory.GetDirectories(datadir + "\\ModData\\");
