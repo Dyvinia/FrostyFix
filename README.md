@@ -1,5 +1,5 @@
 # FrostyFix 4
-[![Latest Release](https://img.shields.io/github/v/release/Dyvine57/FrostyFix?style=for-the-badge&color=blueviolet&label=Latest%20Release&cacheSeconds=360)](https://github.com/Dyvine57/FrostyFix/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/Dyvine57/FrostyFix?style=for-the-badge&color=blueviolet&label=Latest%20Release&cacheSeconds=3600)](https://github.com/Dyvine57/FrostyFix/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Dyvine57/FrostyFix/total?style=for-the-badge&color=blueviolet&label=Downloads&cacheSeconds=3600)](https://github.com/Dyvine57/FrostyFix/releases)
 
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
@@ -11,10 +11,10 @@ A tool to fix Frosty Support with games on platforms other than Origin (EA Deskt
 ### [Download the latest version here](https://github.com/Dulana57/FrostyFix/releases)
 
 1. Launch FrostyFix
-2. Choose Game and Profile
+2. Select Game and Profile
 3. Select the Platform you intend to use
-4. Click Launch
-5. To disable Frosty Fix, you can click **Disable Mods**
+4. Click Enable/Launch
+5. To disable Frosty Fix, click **Disable Mods**
 
 ## Info
 #### **You must disable this whenever you play any other Frostbite game or if you encounter issues with other games.**
