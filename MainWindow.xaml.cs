@@ -247,6 +247,8 @@ namespace FrostyFix4 {
             //Find ModData dir
             dynamic profile = ProfileList.SelectedItem as dynamic;
             string moddatadir = datadir + "ModData\\" + profile;
+            if (profile.Contains("ModData")) moddatadir = datadir + "ModData\\";
+            
 
             if (GlobalPlat.IsChecked == false) {
                 Process p = new Process();
