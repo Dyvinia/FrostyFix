@@ -1,4 +1,9 @@
-﻿using System.Reflection;
+﻿using FrostyFix4.Properties;
+using Microsoft.Win32;
+using System;
+using System.Configuration;
+using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -20,12 +25,12 @@ namespace FrostyFix4 {
 
 
         public void loadSettings() {
-            chkbLaunchGame.IsChecked = Properties.Settings.Default.launchGame;
+            chkbLaunchGame.IsChecked = Settings.Default.launchGame;
         }
 
         public void refresh() {
-            Properties.Settings.Default.launchGame = (bool)chkbLaunchGame.IsChecked;
-            Properties.Settings.Default.Save();
+            Settings.Default.launchGame = (bool)chkbLaunchGame.IsChecked;
+            Settings.Default.Save();
         }
 
         private void chkbLaunchGame_Checked(object sender, RoutedEventArgs e) {
@@ -44,5 +49,25 @@ namespace FrostyFix4 {
             TabItem ti = Tabs.SelectedItem as TabItem;
             this.Title = "FrostyFix 4: " + ti.Header;
         }
+
+        private void btn_frostyselect_Click(object sender, RoutedEventArgs e) {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select Frosty EXE";
+            dialog.Filter = "Frosty (*.exe) |*.exe";
+            dialog.FilterIndex = 2;
+            //dialog.InitialDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
+            Nullable<bool> result = dialog.ShowDialog();
+            if (result == true) {
+                Settings.Default.frostyPath = dialog.FileName;
+                Settings.Default.Save();
+                //txtb_frostypath.Text = dialog.FileName;
+            }
+        }
+
+        private void Reset_Settings(object sender, RoutedEventArgs e) {
+            Settings.Default.Reset();
+        }
+
     }
 }

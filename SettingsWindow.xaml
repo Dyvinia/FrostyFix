@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:FrostyFix4.Properties"
         xmlns:local="clr-namespace:FrostyFix4"
         mc:Ignorable="d"
         ResizeMode="NoResize"
@@ -111,7 +112,16 @@ VictorPL - Original Script</TextBox>
             </TabItem>
             <TabItem Header="Settings">
                 <Grid Background="#FF141414">
-                    <CheckBox x:Name="chkbLaunchGame" Content="Launch Game" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,10,0,0" VerticalAlignment="Top" Checked="chkbLaunchGame_Checked" Unchecked="chkbLaunchGame_Checked"/>
+                    <CheckBox x:Name="chkbLaunchGame" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=launchGame, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Launch Game" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,10,0,0" VerticalAlignment="Top" Checked="chkbLaunchGame_Checked" Unchecked="chkbLaunchGame_Checked"/>
+                    <TextBlock Text="Frosty Installation:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" />
+                    <TextBox x:Name="txtb_frostypath" Text="{Binding Source={x:Static p:Settings.Default}, Path=frostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="10,57,77,0" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" VerticalAlignment="Top" TextWrapping="NoWrap" IsReadOnly="True" VerticalScrollBarVisibility="Disabled">
+                        <TextBox.ToolTip>
+                            <ToolTip Content="{Binding Source={x:Static p:Settings.Default}, Path=frostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="Black" Foreground="White"/>
+                        </TextBox.ToolTip>
+                    </TextBox>
+                    <Button x:Name="btn_frostyselect" Content="Select..." Margin="216,57,0,0" Height="20" HorizontalAlignment="Left" Width="62" Click="btn_frostyselect_Click" VerticalAlignment="Top"/>
+
+                    <Button x:Name="btn_reset" Content="Reset Settings" Height="20" HorizontalAlignment="Center" Width="92" Click="Reset_Settings" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
                 </Grid>
             </TabItem>
         </TabControl>
