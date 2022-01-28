@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="FrostyFix 4: Info"
-        Height="350" Width="300"
+        Height="340" Width="300"
         WindowStartupLocation="CenterScreen"
         MouseDown="window_MouseDown"
         Style="{DynamicResource CustomWindowStyle}">
@@ -67,7 +67,7 @@
 Dyvinia - Creator of FrostyFix 
 BattleDash - Environment Variables
 VictorPL - Original Script</TextBox>
-                    <TextBlock Margin="10,195,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                    <TextBlock Margin="10,174,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
             GitHub: 
             <Hyperlink 
             NavigateUri="https://github.com/Dyvinia/FrostyFix"
@@ -75,7 +75,7 @@ VictorPL - Original Script</TextBox>
             https://github.com/Dyvinia/FrostyFix
             </Hyperlink>
                     </TextBlock>
-                    <TextBlock Margin="10,215,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                    <TextBlock Margin="10,195,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
             FAQ: 
             <Hyperlink 
             NavigateUri="https://github.com/Dyvinia/FrostyFix#faq"
@@ -83,7 +83,7 @@ VictorPL - Original Script</TextBox>
             https://github.com/Dyvinia/FrostyFix#FAQ
             </Hyperlink>
                     </TextBlock>
-                    <TextBlock Margin="10,237,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                    <TextBlock Margin="10,219,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
             BattlefrontModding: 
             <Hyperlink 
             NavigateUri="https://discord.gg/advqsyv"
@@ -91,12 +91,12 @@ VictorPL - Original Script</TextBox>
             https://discord.gg/advqsyv
             </Hyperlink>
                     </TextBlock>
-                    <TextBlock Margin="10,257,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                    <TextBlock Margin="10,243,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
             Donate: 
             <Hyperlink 
-            NavigateUri="https://www.dyvine57.com/donate"
+            NavigateUri="https://dyy.vin/donate"
             RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
-            https://Dyvine57.com/Donate
+            https://Dyy.vin/Donate
             </Hyperlink>
                     </TextBlock>
 

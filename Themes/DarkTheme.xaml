@@ -4108,7 +4108,7 @@
                                         </Button>
 
 
-                                        <Button x:Name="btnRestore"
+                                        <!--<Button x:Name="btnRestore"
                                                 Background="Transparent"
                                                 BorderBrush="Transparent"
                                                 Width="45"
@@ -4132,7 +4132,8 @@
                                                     </Style.Triggers>
                                                 </Style>
                                             </Button.Style>
-                                        </Button>
+                                        </Button>-->
+                                        
                                         <Button x:Name="btnClose"
                                                 Background="Transparent"
                                                 BorderBrush="Transparent"
@@ -4166,7 +4167,7 @@
     <ControlTemplate x:Key="CloseWindowButton" TargetType="{x:Type Button}">
         <Border x:Name="border" 
                 BorderBrush="{TemplateBinding BorderBrush}" 
-                BorderThickness="{TemplateBinding BorderThickness}" 
+                BorderThickness="0" 
                 Background="{TemplateBinding Background}" 
                 SnapsToDevicePixels="true"
                 HorizontalAlignment="Stretch" 
