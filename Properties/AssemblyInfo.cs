@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("FrostyFix 4")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Dyvine57")]
+[assembly: AssemblyCompany("Dyvinia")]
 [assembly: AssemblyProduct("FrostyFix 4")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
