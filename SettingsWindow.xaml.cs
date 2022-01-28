@@ -55,13 +55,11 @@ namespace FrostyFix4 {
             dialog.Title = "Select Frosty EXE";
             dialog.Filter = "Frosty (*.exe) |*.exe";
             dialog.FilterIndex = 2;
-            //dialog.InitialDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
 
             Nullable<bool> result = dialog.ShowDialog();
             if (result == true) {
                 Settings.Default.frostyPath = dialog.FileName;
                 Settings.Default.Save();
-                //txtb_frostypath.Text = dialog.FileName;
             }
         }
 

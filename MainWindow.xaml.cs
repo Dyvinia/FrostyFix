@@ -1,4 +1,5 @@
-﻿using Gapotchenko.FX.Diagnostics;
+﻿using FrostyFix4.Properties;
+using Gapotchenko.FX.Diagnostics;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
@@ -278,23 +279,34 @@ namespace FrostyFix4 {
         }
 
         public async void launchGame() {
-            await Task.Delay(15000);
-            string[] files = Directory.GetFiles(datadir, "*.exe");
-            string game = files[0];
-            Process.Start(game);
+            await Task.Delay(5000);
+
+            //string[] files = Directory.GetFiles(datadir, "*.exe");
+            //string game = files[0];
+            //Process.Start(game);
+
+            if (Settings.Default.launchGame == true && Settings.Default.frostyPath != null) {
+                dynamic profile = ProfileList.SelectedItem as dynamic;
+                using (Process frostyLaunch = new Process()) {
+                    frostyLaunch.StartInfo.FileName = Settings.Default.frostyPath;
+                    frostyLaunch.StartInfo.UseShellExecute = false;
+                    frostyLaunch.StartInfo.WorkingDirectory = Path.GetDirectoryName(Settings.Default.frostyPath);
+                    frostyLaunch.StartInfo.Arguments = "-launch \"" + profile + "\"";
+                    frostyLaunch.Start();
+                }
+            }
         }
 
         public void refreshSettings() {
-            ifLaunchGame = Properties.Settings.Default.launchGame;
 
             if ((bool)GlobalPlat.IsChecked) {
-                if (ifLaunchGame == true) {
+                if (Settings.Default.launchGame == true && Settings.Default.frostyPath != null) {
                     LaunchButton_text.Text = "Enable Mods Globally & Launch Game";
                 }
                 else LaunchButton_text.Text = "Enable Mods Globally";
             }
             else {
-                if (ifLaunchGame == true) {
+                if (Settings.Default.launchGame == true && Settings.Default.frostyPath != null) {
                     LaunchButton_text.Text = "Launch Game with Mods Enabled";
                 }
                 else LaunchButton_text.Text = "Launch with Mods Enabled";
@@ -373,7 +385,7 @@ namespace FrostyFix4 {
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e) {
             launchWithMods();
-            if (ifLaunchGame == true) launchGame();
+            if (Settings.Default.launchGame == true) launchGame();
         }
 
         private void DisableButton_Click(object sender, RoutedEventArgs e) {
