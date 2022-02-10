@@ -1,5 +1,6 @@
 ﻿using FrostyFix4.Properties;
 using Gapotchenko.FX.Diagnostics;
+using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
@@ -8,10 +9,11 @@ using System.IO;
 using System.Net;
 using System.Net.Cache;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-
+using System.Windows.Threading;
 
 namespace FrostyFix4 {
     /// <summary>
@@ -41,6 +43,10 @@ namespace FrostyFix4 {
             checkLaunchEnable();
             refreshSettings();
             checkVersion();
+
+            Thread checkGameStatus = new Thread(checkGameStatusThread);
+            checkGameStatus.IsBackground = true;
+            checkGameStatus.Start();
         }
 
         public void checkVersion() {
@@ -241,6 +247,33 @@ namespace FrostyFix4 {
                 lbl_profile.Text = "";
             }
 
+        }
+
+        public void checkGameStatusThread() {
+            bool found = false;
+            while (true) {
+
+                Process[] swbf2 = Process.GetProcessesByName("starwarsbattlefrontii");
+
+                if (swbf2.Length != 0) {
+                    foreach (var process in swbf2) {
+                        string game = "Star Wars Battlefront 2";
+                        var env = process.ReadEnvironmentVariables();
+                        string profile = "";
+                        if (env["GAME_DATA_DIR"] != null) profile = new DirectoryInfo(env["GAME_DATA_DIR"]).Name;
+                        else profile = "None";
+
+                        if (found != true)
+                        new ToastContentBuilder()
+                            .AddText(game + " is running with profile: " + profile)
+                            .Show();
+                        found = true;
+                    }
+                }
+                else found = false;
+
+                Thread.Sleep(6000);
+            }
         }
 
         public void checkModData() {
