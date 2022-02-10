@@ -40,6 +40,9 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\FrostyFix.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
@@ -115,6 +118,7 @@
     <Resource Include="Fonts\GillSansNovaInline-Bold.ttf" />
     <Resource Include="Fonts\GillSansNova-SemiBold.ttf" />
     <Resource Include="Fonts\GillSansNova-Book.ttf" />
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -137,6 +141,9 @@
     </PackageReference>
     <PackageReference Include="Gapotchenko.FX.Diagnostics.Process">
       <Version>2021.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

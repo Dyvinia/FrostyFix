@@ -1,9 +1,13 @@
 ﻿using FrostyFix4.Properties;
 using Gapotchenko.FX.Diagnostics;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
+using System.Net.Cache;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -36,6 +40,33 @@ namespace FrostyFix4 {
             checkStatus();
             checkLaunchEnable();
             refreshSettings();
+            checkVersion();
+        }
+
+        public void checkVersion() {
+            try {
+                using (var client = new WebClient()) {
+                    client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
+                    client.Headers.Add(HttpRequestHeader.UserAgent, "request");
+
+                    dynamic results = JsonConvert.DeserializeObject<dynamic>(client.DownloadString("https://api.github.com/repos/Dyvinia/FrostyFix/releases/latest"));
+                    string latestVersionString = results.tag_name;
+                    var latestVersion = new Version(latestVersionString.Substring(1));
+                    var version = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                    
+                    var result = version.CompareTo(latestVersion);
+                    if (result < 0) {
+                        MessageBoxResult Result = MessageBox.Show("You are using an outdated version of FrostyFix 4." + Environment.NewLine + "Would you like to download the latest version?", "Outdated", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                        if (Result == MessageBoxResult.Yes) {
+                            Process.Start("https://github.com/Dyvinia/FrostyFix/releases/latest");
+                        }
+                    }
+                }
+            }
+            catch (Exception e) {
+                e = e.InnerException;
+                //MessageBox.Show(e.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
 
