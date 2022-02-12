@@ -48,7 +48,7 @@ These games are confirmed to be unsupported because they DO NOT USE a environmen
 For more information and/or support about FrostyFix, join [my Discord Server](https://discord.gg/57sJ6fj) or join the [BattlefrontModding Discord Server](https://discord.gg/EzXSJfUDmq)
 
 ## Credits
-Created by [Dyvine57](https://Dyvine57.com)
+Created by [Dyvinia](https://twitter.com/Dyvinia)
 
 [![Donate](https://img.shields.io/badge/Donate-Paypal-informational?style=for-the-badge)](https://www.paypal.me/DulanaG)
 
