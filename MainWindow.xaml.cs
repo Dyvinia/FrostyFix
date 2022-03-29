@@ -144,29 +144,16 @@ namespace FrostyFix4 {
 
             //Get Launcher paths
             using (RegistryKey origindirkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Electronic Arts\EA Core"))
-                if (origindirkey != null) {
-                    origindir = (string)origindirkey.GetValue("EADM6InstallDir");
-                }
-                else {
-                    OriginPlat.IsEnabled = false;
-                    //OriginPlat.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
-                }
+                if (origindirkey != null) origindir = (string)origindirkey.GetValue("EADM6InstallDir");
+                else OriginPlat.IsEnabled = false;
+
             using (RegistryKey eaddirkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Electronic Arts\EA Desktop"))
-                if (eaddirkey != null) {
-                    eaddir = (string)eaddirkey.GetValue("DesktopAppPath");
-                }
-                else {
-                    EADPlat.IsEnabled = false;
-                    //EADPlat.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
-                }
+                if (eaddirkey != null) eaddir = (string)eaddirkey.GetValue("DesktopAppPath");
+                else EADPlat.IsEnabled = false;
+
             using (RegistryKey epicdirkey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\EpicGames\Unreal Engine"))
-                if (epicdirkey != null) {
-                    epicdir = (string)epicdirkey.GetValue("INSTALLDIR");
-                }
-                else {
-                    EGSPlat.IsEnabled = false;
-                    //EGSPlat.Foreground = new SolidColorBrush(Color.FromArgb(255, 140, 140, 140));
-                }
+                if (epicdirkey != null) epicdir = (string)epicdirkey.GetValue("INSTALLDIR");
+                else EGSPlat.IsEnabled = false;
         }
 
         public void checkStatus() {
@@ -344,10 +331,6 @@ namespace FrostyFix4 {
 
         public async void launchGame() {
             await Task.Delay(5000);
-
-            //string[] files = Directory.GetFiles(datadir, "*.exe");
-            //string game = files[0];
-            //Process.Start(game);
 
             if (Settings.Default.launchGame == true && Settings.Default.frostyPath != null) {
                 dynamic profile = ProfileList.SelectedItem as dynamic;
