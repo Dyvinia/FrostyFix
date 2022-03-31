@@ -43,10 +43,16 @@ namespace FrostyFix4 {
             checkLaunchEnable();
             refreshSettings();
             checkVersion();
+            backgroundThreadStart();
 
-            Thread checkGameStatus = new Thread(checkGameStatusThread);
-            checkGameStatus.IsBackground = true;
-            checkGameStatus.Start();
+        }
+
+        public void backgroundThreadStart() {
+            if (Settings.Default.backgroundThread) {
+                Thread checkGameStatus = new Thread(checkGameStatusThread);
+                checkGameStatus.IsBackground = true;
+                checkGameStatus.Start();
+            }
         }
 
         public void checkVersion() {

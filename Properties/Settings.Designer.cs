@@ -46,5 +46,17 @@ namespace FrostyFix4.Properties {
                 this["frostyPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool backgroundThread {
+            get {
+                return ((bool)(this["backgroundThread"]));
+            }
+            set {
+                this["backgroundThread"] = value;
+            }
+        }
     }
 }

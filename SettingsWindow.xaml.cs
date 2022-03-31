@@ -30,6 +30,7 @@ namespace FrostyFix4 {
 
         public void refresh() {
             Settings.Default.launchGame = (bool)chkbLaunchGame.IsChecked;
+            Settings.Default.backgroundThread = (bool)chkbBackground.IsChecked;
             Settings.Default.Save();
         }
 

@@ -124,13 +124,35 @@ VictorPL - Original Script</TextBox>
                             <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path132" Fill="#FF2D2D2D" StrokeThickness="0.0314462" Data="M 9.2823047 18.944299 C 8.8555678 18.915263 8.2431141 18.813268 7.7782229 18.693833 4.0607639 17.738774 1.365457 14.534418 1.061293 10.708308 0.97692739 9.647099 1.0585054 8.7241111 1.3274547 7.6956213 1.628118 6.5459892 2.2341846 5.343603 2.9956575 4.3860425 3.2847541 4.0225006 4.0248721 3.2878669 4.4081395 2.9840267 5.1259081 2.4150066 5.9155764 1.9592587 6.7351601 1.6410145 9.0682902 0.73506078 11.683756 0.83883085 13.920622 1.9261024 c 2.138319 1.0393696 3.791084 2.9083314 4.563907 5.1609085 0.582502 1.6978431 0.643453 3.5762011 0.171678 5.2907731 -1.00455 3.650836 -4.222316 6.295361 -7.990536 6.567033 -0.486585 0.03508 -0.8623542 0.03494 -1.3833663 -5.18e-4 z m 2.5314203 -5.360236 v -0.896218 h -0.45597 -0.45597 V 10.439101 8.1903606 l -1.3443262 0.00818 -1.3443259 0.00818 v 0.8962178 0.8962174 l 0.448108 0.00872 0.4481098 0.0087 v 1.335601 1.335601 h -0.4559708 -0.45597 v 0.896217 0.896218 h 1.8081581 1.808157 z M 10.262364 7.2635762 c 0.217434 -0.064574 0.41845 -0.2270974 0.53001 -0.4285246 0.08205 -0.1481434 0.09369 -0.2004102 0.09369 -0.4207274 0 -0.2201087 -0.01167 -0.2726443 -0.09334 -0.4200845 C 10.492942 5.4530022 9.8065954 5.3513462 9.3738525 5.7840882 8.9053518 6.252589 9.0862541 7.0343988 9.7132735 7.2509753 c 0.2043029 0.070571 0.3431665 0.073755 0.5490905 0.012607 z"/>
                         </Canvas>
                     </Canvas>
-                    <TextBlock Text="Frosty Installation:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,38,0,0" />
-                    <TextBox x:Name="txtb_frostypath" Text="{Binding Source={x:Static p:Settings.Default}, Path=frostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="10,57,73,0" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" VerticalAlignment="Top" TextWrapping="NoWrap" IsReadOnly="True" VerticalScrollBarVisibility="Disabled">
+                    <TextBlock Text="Frosty Installation:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,33,0,0" />
+                    <TextBox x:Name="txtb_frostypath" Text="{Binding Source={x:Static p:Settings.Default}, Path=frostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="10,52,73,0" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" VerticalAlignment="Top" TextWrapping="NoWrap" IsReadOnly="True" VerticalScrollBarVisibility="Disabled">
                         <TextBox.ToolTip>
                             <ToolTip Content="{Binding Source={x:Static p:Settings.Default}, Path=frostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="Black" Foreground="White"/>
                         </TextBox.ToolTip>
                     </TextBox>
-                    <Button x:Name="btn_frostyselect" Content="Select..." Margin="220,57,0,0" Height="20" HorizontalAlignment="Left" Width="58" Click="btn_frostyselect_Click" VerticalAlignment="Top"/>
+                    <Button x:Name="btn_frostyselect" Content="Select..." Margin="220,52,0,0" Height="20" HorizontalAlignment="Left" Width="58" Click="btn_frostyselect_Click" VerticalAlignment="Top"/>
+
+                    <CheckBox x:Name="chkbBackground" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=backgroundThread, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,85,0,0" VerticalAlignment="Top" Checked="chkbLaunchGame_Checked" Unchecked="chkbLaunchGame_Checked">
+                        <CheckBox.ToolTip>
+                            <ToolTip Content="Checks Game's info in the background&#x0a;Supported only for SWBF2" Background="Black" Foreground="White"/>
+                        </CheckBox.ToolTip>
+                    </CheckBox>
+                    <Canvas Width="20" Height="20" Margin="139,88,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Canvas.ToolTip>
+                            <ToolTip Background="Black" Foreground="White" Content="Checks Game's info in the background&#x0a;Supported only for SWBF2"/>
+                        </Canvas.ToolTip>
+                        <Canvas.RenderTransform>
+                            <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
+                        </Canvas.RenderTransform>
+                        <Canvas.Resources/>
+                        <Canvas>
+                            <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="6.6452413" Canvas.Top="4.3774209" Width="6.3288012" Height="11.233622" Fill="#FFFFFFFF"/>
+                        </Canvas>
+                        <Canvas>
+                            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#FF2D2D2D" StrokeThickness="0.0314462" Data="M 9.2823047 18.944299 C 8.8555678 18.915263 8.2431141 18.813268 7.7782229 18.693833 4.0607639 17.738774 1.365457 14.534418 1.061293 10.708308 0.97692739 9.647099 1.0585054 8.7241111 1.3274547 7.6956213 1.628118 6.5459892 2.2341846 5.343603 2.9956575 4.3860425 3.2847541 4.0225006 4.0248721 3.2878669 4.4081395 2.9840267 5.1259081 2.4150066 5.9155764 1.9592587 6.7351601 1.6410145 9.0682902 0.73506078 11.683756 0.83883085 13.920622 1.9261024 c 2.138319 1.0393696 3.791084 2.9083314 4.563907 5.1609085 0.582502 1.6978431 0.643453 3.5762011 0.171678 5.2907731 -1.00455 3.650836 -4.222316 6.295361 -7.990536 6.567033 -0.486585 0.03508 -0.8623542 0.03494 -1.3833663 -5.18e-4 z m 2.5314203 -5.360236 v -0.896218 h -0.45597 -0.45597 V 10.439101 8.1903606 l -1.3443262 0.00818 -1.3443259 0.00818 v 0.8962178 0.8962174 l 0.448108 0.00872 0.4481098 0.0087 v 1.335601 1.335601 h -0.4559708 -0.45597 v 0.896217 0.896218 h 1.8081581 1.808157 z M 10.262364 7.2635762 c 0.217434 -0.064574 0.41845 -0.2270974 0.53001 -0.4285246 0.08205 -0.1481434 0.09369 -0.2004102 0.09369 -0.4207274 0 -0.2201087 -0.01167 -0.2726443 -0.09334 -0.4200845 C 10.492942 5.4530022 9.8065954 5.3513462 9.3738525 5.7840882 8.9053518 6.252589 9.0862541 7.0343988 9.7132735 7.2509753 c 0.2043029 0.070571 0.3431665 0.073755 0.5490905 0.012607 z"/>
+                        </Canvas>
+                    </Canvas>
+
 
                     <Button x:Name="btn_reset" Content="Reset Settings" Height="25" HorizontalAlignment="Center" Width="120" Click="Reset_Settings" Margin="0,0,0,10" VerticalAlignment="Bottom"/>
                 </Grid>
