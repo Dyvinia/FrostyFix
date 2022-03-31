@@ -61,7 +61,7 @@
                                 </DrawingImage>
                             </Image.Source>
                         </Image>
-                        <TextBlock x:Name="txt_Version" VerticalAlignment="Top" TextWrapping="NoWrap" TextAlignment="Left" FontFamily="/Fonts/GillSansNova-Bold.ttf #Gill Sans Nova" Text="v4.0.0" FontSize="11" Height="14" Width="32" Canvas.Left="218" Canvas.Top="27"/>
+                        <TextBlock x:Name="txt_Version" VerticalAlignment="Top" TextWrapping="NoWrap" TextAlignment="Left" FontFamily="/Fonts/GillSansNova-Bold.ttf #Gill Sans Nova" Text="v4.x.x" FontSize="11" Height="14" Width="32" Canvas.Left="218" Canvas.Top="27"/>
                     </Canvas>
                     <TextBox Name="txt_Credits" Margin="10,70,10,0" TextWrapping="Wrap" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova" VerticalAlignment="Top" Height="97" TextAlignment="Left" FontSize="14" Padding="10, 5" xml:space="preserve" IsReadOnly="True">Credits:
 Dyvinia - Creator of FrostyFix 
