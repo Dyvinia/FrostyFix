@@ -4,7 +4,7 @@
 
 A tool to fix Frosty Support with games on platforms other than Origin (EA Desktop, Epic Games Store, Steam)
 
-![image](https://i.imgur.com/pQDaMj7.png)
+![image](https://i.imgur.com/9m6QuVI.png)
 
 ## Instructions
 
