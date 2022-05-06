@@ -38,11 +38,11 @@ namespace FrostyFix4 {
 
         public MainWindow() {
             InitializeComponent();
+            checkVersion();
             locatePaths();
             checkStatus();
             checkLaunchEnable();
             refreshSettings();
-            checkVersion();
             backgroundThreadStart();
 
         }
