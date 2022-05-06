@@ -8,7 +8,7 @@ A tool to fix Frosty Support with games on platforms other than Origin (EA Deskt
 
 ## Instructions
 
-### [Download the latest version here](https://github.com/Dulana57/FrostyFix/releases)
+### [Download the latest version here](https://github.com/Dyvinia/FrostyFix/releases)
 
 1. Launch FrostyFix
 2. Select Game and Profile
@@ -45,7 +45,7 @@ These games are confirmed to be unsupported because they DO NOT USE a environmen
 - Need For Speed: Heat
 
 ## Support
-For more information and/or support about FrostyFix, join [my Discord Server](https://discord.gg/57sJ6fj) or join the [BattlefrontModding Discord Server](https://discord.gg/EzXSJfUDmq)
+For more information and/or support about FrostyFix, join the [BattlefrontModding Discord Server](https://discord.gg/EzXSJfUDmq)
 
 ## Credits
 Created by [Dyvinia](https://twitter.com/Dyvinia)
