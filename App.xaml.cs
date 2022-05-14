@@ -13,7 +13,10 @@ namespace FrostyFix4 {
     /// </summary>
     public partial class App : Application {
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
-            MessageBox.Show(e.Exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            if (e.Exception.InnerException != null)
+                MessageBox.Show(e.Exception.Message + Environment.NewLine + Environment.NewLine + "Inner Exception:" + Environment.NewLine + e.Exception.InnerException, "Frosty Fix 4", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+                MessageBox.Show(e.Exception.Message, "Frosty Fix 4", MessageBoxButton.OK, MessageBoxImage.Error);
             e.Handled = true;
             App.Current.Shutdown();
         }
