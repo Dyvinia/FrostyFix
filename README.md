@@ -45,7 +45,7 @@ These games are confirmed to be unsupported because they DO NOT USE a environmen
 - Need For Speed: Heat
 
 ## Support
-For more information and/or support about FrostyFix, join the [BattlefrontModding Discord Server](https://discord.gg/EzXSJfUDmq)
+For more information and/or support about FrostyFix, join the [BattlefrontModding Discord Server](https://discord.gg/advqsyv)
 
 ## Credits
 Created by [Dyvinia](https://twitter.com/Dyvinia)
