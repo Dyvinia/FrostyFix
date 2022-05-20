@@ -21,14 +21,11 @@ namespace FrostyFix4 {
             string message = e.Exception.Message;
             if (e.Exception.InnerException != null)
                 message += Environment.NewLine + Environment.NewLine + e.Exception.InnerException;
-
             Clipboard.SetText(message);
-            message += "\n\nException copied to clipboard";
 
             MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
 
             e.Handled = true;
-
             App.Current.Shutdown();
         }
     }
