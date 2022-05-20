@@ -12,11 +12,16 @@ namespace FrostyFix4 {
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application {
+        public App() {
+            DispatcherUnhandledException += Application_DispatcherUnhandledException;
+        }
+
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
+            string title = "FrostyFix 4";
             if (e.Exception.InnerException != null)
-                MessageBox.Show(e.Exception.Message + Environment.NewLine + Environment.NewLine + e.Exception.InnerException, "Frosty Fix 4", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(e.Exception.Message + Environment.NewLine + Environment.NewLine + e.Exception.InnerException, title, MessageBoxButton.OK, MessageBoxImage.Error);
             else
-                MessageBox.Show(e.Exception.Message, "Frosty Fix 4", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(e.Exception.Message, title, MessageBoxButton.OK, MessageBoxImage.Error);
             e.Handled = true;
             App.Current.Shutdown();
         }
