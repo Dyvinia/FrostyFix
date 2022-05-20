@@ -10,7 +10,7 @@
         Height="440" Width="600"
         WindowStartupLocation="CenterScreen"
         MouseDown="window_MouseDown"
-        Icon="Resources/FrostyFix.ico"
+        Icon="/Resources/FrostyFix.ico"
         Style="{DynamicResource CustomWindowStyle}" ResizeMode="CanMinimize" >
     <Window.Resources>
         <DropShadowBitmapEffect x:Key="NormalShadow" ShadowDepth="2" Softness="0.2" Opacity="0.64"/>

@@ -18,11 +18,17 @@ namespace FrostyFix4 {
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
             string title = "FrostyFix 4";
+            string message = e.Exception.Message;
             if (e.Exception.InnerException != null)
-                MessageBox.Show(e.Exception.Message + Environment.NewLine + Environment.NewLine + e.Exception.InnerException, title, MessageBoxButton.OK, MessageBoxImage.Error);
-            else
-                MessageBox.Show(e.Exception.Message, title, MessageBoxButton.OK, MessageBoxImage.Error);
+                message += Environment.NewLine + Environment.NewLine + e.Exception.InnerException;
+
+            Clipboard.SetText(message);
+            message += "\n\nException copied to clipboard";
+
+            MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
+
             e.Handled = true;
+
             App.Current.Shutdown();
         }
     }

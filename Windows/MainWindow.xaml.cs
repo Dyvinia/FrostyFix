@@ -76,8 +76,13 @@ namespace FrostyFix4 {
                 }
             }
             catch (Exception e) {
-                e = e.InnerException;
-                //MessageBox.Show(e.Message, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                string title = "FrostyFix 4";
+                string message = "Unable to check updates:\n" + e.Message;
+                if (e.InnerException != null)
+                    message += Environment.NewLine + Environment.NewLine + e.InnerException;
+                Clipboard.SetText(message);
+
+                MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
