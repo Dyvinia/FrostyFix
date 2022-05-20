@@ -9,7 +9,6 @@
         MinHeight="440" MinWidth="600"
         Height="440" Width="600"
         WindowStartupLocation="CenterScreen"
-        MouseDown="window_MouseDown"
         Icon="/Resources/FrostyFix.ico"
         Style="{DynamicResource CustomWindowStyle}" ResizeMode="CanMinimize" >
     <Window.Resources>
@@ -17,15 +16,7 @@
     </Window.Resources>
     <Grid>
         <Grid Background="#FF141414" Margin="5,75,5,5">
-            <ComboBox Name="GameSelectorDropdown" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top" Width="240">
-                <ComboBoxItem Name="GSD_BF2015"  Content="Star Wars: Battlefront" Selected="GSD_BF2015_Selected"/>
-                <ComboBoxItem Name="GSD_BF2017" Content="Star Wars: Battlefront II" Selected="GSD_BF2017_Selected"/>
-                <ComboBoxItem Name="GSD_BF1" Content="Battlefield One" Selected="GSD_BF1_Selected"/>
-                <ComboBoxItem Name="GSD_MEA" Content="Mass Effect: Andromeda" Selected="GSD_MEA_Selected"/>
-                <ComboBoxItem Name="GSD_NFS" Content="Need for Speed" Selected="GSD_NFS_Selected"/>
-                <ComboBoxItem Name="GSD_NFSPayback" Content="Need for Speed: Payback" Selected="GSD_NFSPayback_Selected"/>
-                <ComboBoxItem Name="GSD_GW2" Content="Plants vs. Zombies: Garden Warfare 2" Selected="GSD_GW2_Selected"/>
-                <ComboBoxItem Name="GSD_DAI" Content="Dragon Age: Inquisition" Selected="GSD_DAI_Selected"/>
+            <ComboBox Name="GameSelectorDropdown" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top" Width="240" DisplayMemberPath="DisplayName" SelectionChanged="GameSelectorDropdown_SelectionChanged">
             </ComboBox>
             <TextBlock HorizontalAlignment="Left" Margin="32,18,0,0" Text="Select Game:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="32,79,0,0" Text="Select Platform:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
