@@ -190,20 +190,35 @@ namespace FrostyFix4 {
                     Process[] games = gameList.SelectMany(game => Process.GetProcessesByName(game.FileName)).ToArray();
 
                     if (games.Length != 0) {
-                        foreach (Process process in games) {
-                            string game = gameList.Where(file => file.FileName == process.ProcessName).FirstOrDefault().DisplayName;
-                            var env = process.ReadEnvironmentVariables();
-                            string[] args = process.ReadArgumentList().ToArray();
-                            string pack;
-                            if (env["GAME_DATA_DIR"] != null) pack = new DirectoryInfo(env["GAME_DATA_DIR"]).Name;
-                            else if (args.Length > 2) pack = new DirectoryInfo(args[2]).Name;
-                            else pack = "None";
+                        try {
+                            foreach (Process process in games) {
+                                string game = gameList.Where(file => file.FileName == process.ProcessName).FirstOrDefault().DisplayName;
+                                var env = process.ReadEnvironmentVariables();
+                                string[] args = process.ReadArgumentList().ToArray();
+                                string pack;
+                                if (env["GAME_DATA_DIR"] != null) pack = new DirectoryInfo(env["GAME_DATA_DIR"]).Name;
+                                else if (args.Length > 2) pack = new DirectoryInfo(args[2]).Name;
+                                else pack = "None";
 
-                            if (found != true)
-                                new ToastContentBuilder()
-                                    .AddText(game + " is running with profile: " + pack)
-                                    .Show();
-                            found = true;
+                                if (found != true)
+                                    new ToastContentBuilder()
+                                        .AddText(game + " is running with profile: " + pack)
+                                        .Show();
+                                found = true;
+                            }
+                        }
+                        catch (Exception ex) {
+                            Settings.Default.backgroundThread = false;
+                            Settings.Default.Save();
+
+                            string title = "FrostyFix 4";
+                            string message = "Background thread has encountered an error and has been disabled:\n" + ex.Message;
+                            if (ex.InnerException != null)
+                                message += Environment.NewLine + Environment.NewLine + ex.InnerException;
+
+                            Task.Run(() => {
+                                MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
+                            });
                         }
                     }
                     else found = false;
