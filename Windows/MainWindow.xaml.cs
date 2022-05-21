@@ -44,6 +44,7 @@ namespace FrostyFix4 {
             InitializeComponent();
 
             GameSelectorDropdown.ItemsSource = gameList;
+            GameSelectorDropdown.DisplayMemberPath = "DisplayName";
             GameSelectorDropdown.SelectionChanged += (s, e) => checkModData();
             MouseDown += (s, e) => Keyboard.ClearFocus();
 

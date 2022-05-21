@@ -16,7 +16,7 @@
     </Window.Resources>
     <Grid>
         <Grid Background="#FF141414" Margin="5,75,5,5">
-            <ComboBox Name="GameSelectorDropdown" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top" Width="240" DisplayMemberPath="DisplayName"/>
+            <ComboBox Name="GameSelectorDropdown" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top" Width="240"/>
             <TextBlock HorizontalAlignment="Left" Margin="32,18,0,0" Text="Select Game:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="32,79,0,0" Text="Select Platform:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
             <RadioButton Name="EADPlat"  Content="EA Desktop" HorizontalAlignment="Left" Margin="32,104,0,0" VerticalAlignment="Top" Checked="Plat_Checked"/>
