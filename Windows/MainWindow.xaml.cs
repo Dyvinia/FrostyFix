@@ -189,8 +189,10 @@ namespace FrostyFix4 {
                         foreach (Process process in games) {
                             string game = gameList.Where(file => file.FileName == process.ProcessName).FirstOrDefault().DisplayName;
                             var env = process.ReadEnvironmentVariables();
+                            string[] args = process.ReadArgumentList().ToArray();
                             string pack;
                             if (env["GAME_DATA_DIR"] != null) pack = new DirectoryInfo(env["GAME_DATA_DIR"]).Name;
+                            if (args[2] != null) pack = new DirectoryInfo(args[2]).Name;
                             else pack = "None";
 
                             if (found != true)
