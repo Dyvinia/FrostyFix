@@ -61,6 +61,7 @@ namespace FrostyFix4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
         public int selectedGame {
             get {
                 return ((int)(this["selectedGame"]));
@@ -72,7 +73,7 @@ namespace FrostyFix4.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
         public int selectedPlatform {
             get {
                 return ((int)(this["selectedPlatform"]));
