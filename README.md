@@ -14,7 +14,7 @@ A tool to fix Frosty Support with games on platforms other than Origin (EA Deskt
 2. Select Game and Profile
 3. Select the Platform you intend to use
 4. Click Enable/Launch
-5. To disable Frosty Fix, click **Disable Mods**
+5. To disable FrostyFix, click **Disable Mods**
 
 ## Info
 #### **You must disable this whenever you play any other Frostbite game or if you encounter issues with other games.**
