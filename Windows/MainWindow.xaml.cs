@@ -344,10 +344,10 @@ namespace FrostyFix4 {
         private void loadSelections() {
             List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
-            GameSelectorDropdown.SelectedIndex = Settings.Default.selectedGame;
-            radioButtons[Settings.Default.selectedPlatform].IsChecked = true;
+            if (Settings.Default.selectedGame < GameSelectorDropdown.Items.Count - 1)
+                GameSelectorDropdown.SelectedIndex = Settings.Default.selectedGame;
 
-            Settings.Default.Save();
+            radioButtons[Settings.Default.selectedPlatform].IsChecked = true;
         }
 
         private void GameSelectorDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e) {
