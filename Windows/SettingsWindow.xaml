@@ -94,7 +94,7 @@ VictorPL - Original Script</TextBox>
             <Hyperlink 
             NavigateUri="https://dyy.vin/donate"
             RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
-            https://Dyy.vin/Donate
+            https://dyy.vin/Donate
             </Hyperlink>
                     </TextBlock>
 
