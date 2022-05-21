@@ -223,7 +223,7 @@ namespace FrostyFix4 {
                     }
                     else found = false;
 
-                    if (found == true) Thread.Sleep(15000);
+                    if (found) Thread.Sleep(15000);
                     else Thread.Sleep(5000);
                 }
             }
