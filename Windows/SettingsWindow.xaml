@@ -64,8 +64,8 @@
 Dyvinia - Creator of FrostyFix 
 BattleDash - Environment Variables
 VictorPL - Original Script</TextBox>
-                    
-                    <TextBlock Margin="10,172,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+
+                    <TextBlock Margin="10,171,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
             GitHub: 
             <Hyperlink 
             NavigateUri="https://github.com/Dyvinia/FrostyFix"
@@ -73,7 +73,7 @@ VictorPL - Original Script</TextBox>
             https://github.com/Dyvinia/FrostyFix
             </Hyperlink>
                     </TextBlock>
-                    <TextBlock Margin="5,192,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                    <TextBlock Margin="5,191,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
             FAQ: 
             <Hyperlink 
             NavigateUri="https://github.com/Dyvinia/FrostyFix#faq"
@@ -81,7 +81,7 @@ VictorPL - Original Script</TextBox>
             https://github.com/Dyvinia/FrostyFix#FAQ
             </Hyperlink>
                     </TextBlock>
-                    <TextBlock Margin="5,212,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                    <TextBlock Margin="5,211,5,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
             BattlefrontModding: 
             <Hyperlink 
             NavigateUri="https://discord.gg/advqsyv"
@@ -89,7 +89,7 @@ VictorPL - Original Script</TextBox>
             https://discord.gg/advqsyv
             </Hyperlink>
                     </TextBlock>
-                    <TextBlock Margin="10,230,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                    <TextBlock Margin="10,229,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FFF1F1F1" Height="20" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
             Donate: 
             <Hyperlink 
             NavigateUri="https://dyy.vin/donate"
