@@ -48,6 +48,7 @@ namespace FrostyFix4 {
             checkStatus();
             checkLaunchEnable();
             refreshLaunchButton();
+            loadSelections();
 
             Thread checkGameStatus = new Thread(gameStatusThread);
             checkGameStatus.IsBackground = true;
@@ -317,6 +318,7 @@ namespace FrostyFix4 {
         }
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e) {
+            saveSelections();
             launchWithMods();
             if (Settings.Default.launchGame == true) launchGame();
         }
@@ -328,6 +330,24 @@ namespace FrostyFix4 {
         private void Plat_Checked(object sender, RoutedEventArgs e) {
             checkLaunchEnable();
             refreshLaunchButton();
+        }
+
+        private void saveSelections() {
+            List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
+
+            Settings.Default.selectedGame = GameSelectorDropdown.SelectedIndex;
+            Settings.Default.selectedPlatform = radioButtons.IndexOf(radioButtons.FirstOrDefault(r => (bool)r.IsChecked));
+
+            Settings.Default.Save();
+        }
+
+        private void loadSelections() {
+            List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
+
+            GameSelectorDropdown.SelectedIndex = Settings.Default.selectedGame;
+            radioButtons[Settings.Default.selectedPlatform].IsChecked = true;
+
+            Settings.Default.Save();
         }
 
         private void GameSelectorDropdown_SelectionChanged(object sender, SelectionChangedEventArgs e) {

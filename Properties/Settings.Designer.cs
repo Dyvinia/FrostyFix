@@ -58,5 +58,28 @@ namespace FrostyFix4.Properties {
                 this["backgroundThread"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public int selectedGame {
+            get {
+                return ((int)(this["selectedGame"]));
+            }
+            set {
+                this["selectedGame"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int selectedPlatform {
+            get {
+                return ((int)(this["selectedPlatform"]));
+            }
+            set {
+                this["selectedPlatform"] = value;
+            }
+        }
     }
 }
