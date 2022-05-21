@@ -122,10 +122,6 @@ namespace FrostyFix4 {
                 else EGSPlat.IsEnabled = false;
         }
 
-        public string getSelectedModData() {
-            return ((GameListItem)GameSelectorDropdown.SelectedItem).Path + "ModData\\";
-        }
-
         public void checkStatus() {
             string enabledPath = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
             Process[] origin = Process.GetProcessesByName("Origin");
@@ -230,7 +226,7 @@ namespace FrostyFix4 {
         }
 
         public void checkModData() {
-            string path = getSelectedModData();
+            string path = (GameSelectorDropdown.SelectedItem as GameListItem).Path + "ModData\\";
             Directory.CreateDirectory(path);
             ProfileList.Items.Clear();
 
@@ -258,7 +254,7 @@ namespace FrostyFix4 {
             Mouse.OverrideCursor = Cursors.Wait;
 
             // Locate ModData
-            string path = getSelectedModData();
+            string path = (GameSelectorDropdown.SelectedItem as GameListItem).Path + "ModData\\";
             string pack = ProfileList.SelectedItem.ToString();
             string packPath = path + pack;
 
@@ -348,6 +344,7 @@ namespace FrostyFix4 {
         }
 
         private void DisableButton_Click(object sender, RoutedEventArgs e) {
+            saveSelections();
             disableMods();
         }
 

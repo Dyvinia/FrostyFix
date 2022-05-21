@@ -11,9 +11,6 @@
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/FrostyFix.ico"
         Style="{DynamicResource CustomWindowStyle}" ResizeMode="CanMinimize" >
-    <Window.Resources>
-        <DropShadowBitmapEffect x:Key="NormalShadow" ShadowDepth="2" Softness="0.2" Opacity="0.64"/>
-    </Window.Resources>
     <Grid>
         <Grid Background="#FF141414" Margin="5,75,5,5">
             <ComboBox Name="GameSelectorDropdown" HorizontalAlignment="Left" Margin="32,43,0,0" VerticalAlignment="Top" Width="240"/>
