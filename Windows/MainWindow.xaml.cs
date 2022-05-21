@@ -26,6 +26,7 @@ namespace FrostyFix4 {
     public partial class MainWindow : Window {
         public class GameListItem {
             public string DisplayName { get; set; }
+            public string FileName { get; set; }
             public string Path { get; set; }
         }
 
@@ -87,20 +88,20 @@ namespace FrostyFix4 {
 
         public void locatePaths() {
             // Get Game Paths
-            Dictionary<string, string> gameKeys = new Dictionary<string, string>();
+            List<GameListItem> gameKeys = new List<GameListItem>();
 
-            gameKeys.Add("Star Wars: Battlefront", @"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront");
-            gameKeys.Add("Star Wars: Battlefront II", @"SOFTWARE\EA Games\STAR WARS Battlefront II");
-            gameKeys.Add("Battlefield One", @"SOFTWARE\WOW6432Node\EA Games\Battlefield 1");
-            gameKeys.Add("Mass Effect: Andromeda", @"SOFTWARE\WOW6432Node\BioWare\Mass Effect Andromeda");
-            gameKeys.Add("Need for Speed", @"SOFTWARE\EA Games\Need for Speed");
-            gameKeys.Add("Need for Speed: Payback", @"SOFTWARE\EA Games\Need for Speed Payback");
-            gameKeys.Add("Plants vs. Zombies: Garden Warfare 2", @"SOFTWARE\PopCap\Plants vs Zombies GW2");
-            gameKeys.Add("Dragon Age: Inquisition", @"SOFTWARE\Wow6432Node\Bioware\Dragon Age Inquisition");
+            gameKeys.Add(new GameListItem { DisplayName = "Star Wars: Battlefront", FileName = "starwarsbattlefront", Path = @"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront" });
+            gameKeys.Add(new GameListItem { DisplayName = "Star Wars: Battlefront II", FileName = "starwarsbattlefrontii", Path = @"SOFTWARE\EA Games\STAR WARS Battlefront II" });
+            gameKeys.Add(new GameListItem { DisplayName = "Battlefield One", FileName = "bf1", Path = @"SOFTWARE\WOW6432Node\EA Games\Battlefield 1" });
+            gameKeys.Add(new GameListItem { DisplayName = "Mass Effect: Andromeda", FileName = "MassEffectAndromeda", Path = @"SOFTWARE\WOW6432Node\BioWare\Mass Effect Andromeda" });
+            gameKeys.Add(new GameListItem { DisplayName = "Need for Speed", FileName = "NFS16", Path = @"SOFTWARE\EA Games\Need for Speed" });
+            gameKeys.Add(new GameListItem { DisplayName = "Need for Speed: Payback", FileName = "NeedForSpeedPayback", Path = @"SOFTWARE\EA Games\Need for Speed Payback" });
+            gameKeys.Add(new GameListItem { DisplayName = "Plants vs. Zombies: Garden Warfare 2", FileName = "GW2.Main_Win64_Retail", Path = @"SOFTWARE\PopCap\Plants vs Zombies GW2" });
+            gameKeys.Add(new GameListItem { DisplayName = "Dragon Age: Inquisition", FileName = "DragonAgeInquisition", Path = @"SOFTWARE\Wow6432Node\Bioware\Dragon Age Inquisition" });
 
-            foreach (var game in gameKeys) {
-                RegistryKey path = Registry.LocalMachine.OpenSubKey(game.Value);
-                if (path != null) gameList.Add(new GameListItem { DisplayName = game.Key, Path = path.GetValue("Install Dir").ToString() });
+            foreach (GameListItem game in gameKeys) {
+                RegistryKey path = Registry.LocalMachine.OpenSubKey(game.Path);
+                if (path != null) gameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path.GetValue("Install Dir").ToString() });
             }
 
             //Get Launcher paths
@@ -182,26 +183,27 @@ namespace FrostyFix4 {
 
             while (true) {
                 while (Settings.Default.backgroundThread) {
-                    Process[] swbf2 = Process.GetProcessesByName("starwarsbattlefrontii");
+                    Process[] games = gameList.SelectMany(game => Process.GetProcessesByName(game.FileName)).ToArray();
 
-                    if (swbf2.Length != 0) {
-                        foreach (var process in swbf2) {
-                            string game = "Star Wars Battlefront 2";
+                    if (games.Length != 0) {
+                        foreach (Process process in games) {
+                            string game = gameList.Where(file => file.FileName == process.ProcessName).FirstOrDefault().DisplayName;
                             var env = process.ReadEnvironmentVariables();
-                            string profile = "";
-                            if (env["GAME_DATA_DIR"] != null) profile = new DirectoryInfo(env["GAME_DATA_DIR"]).Name;
-                            else profile = "None";
+                            string pack;
+                            if (env["GAME_DATA_DIR"] != null) pack = new DirectoryInfo(env["GAME_DATA_DIR"]).Name;
+                            else pack = "None";
 
                             if (found != true)
                                 new ToastContentBuilder()
-                                    .AddText(game + " is running with profile: " + profile)
+                                    .AddText(game + " is running with profile: " + pack)
                                     .Show();
                             found = true;
                         }
                     }
                     else found = false;
 
-                    Thread.Sleep(6000);
+                    if (found == true) Thread.Sleep(15000);
+                    else Thread.Sleep(5000);
                 }
             }
         }
