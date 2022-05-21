@@ -10,7 +10,6 @@
         Title="FrostyFix 4: Info"
         Height="340" Width="300"
         WindowStartupLocation="CenterScreen"
-        MouseDown="window_MouseDown"
         Style="{DynamicResource CustomWindowStyle}">
     <Window.Resources>
         <DropShadowBitmapEffect x:Key="NormalShadow" ShadowDepth="2" Softness="0.2" Opacity="0.64"/>
@@ -104,7 +103,7 @@ VictorPL - Original Script</TextBox>
             </TabItem>
             <TabItem Header="Settings">
                 <Grid Background="#FF141414">
-                    <CheckBox x:Name="chkbLaunchGame" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=launchGame, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Launch Game w/ Frosty" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,10,0,0" VerticalAlignment="Top" Checked="chkbLaunchGame_Checked" Unchecked="chkbLaunchGame_Checked">
+                    <CheckBox x:Name="chkbLaunchGame" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=launchGame, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Launch Game w/ Frosty" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,10,0,0" VerticalAlignment="Top">
                         <CheckBox.ToolTip>
                             <ToolTip Content="Launches game using selected Frosty Installation&#x0a;Make sure proper game is selected within Frosty" Background="Black" Foreground="White"/>
                         </CheckBox.ToolTip>
@@ -132,14 +131,14 @@ VictorPL - Original Script</TextBox>
                     </TextBox>
                     <Button x:Name="btn_frostyselect" Content="Select..." Margin="220,52,0,0" Height="20" HorizontalAlignment="Left" Width="58" Click="btn_frostyselect_Click" VerticalAlignment="Top"/>
 
-                    <CheckBox x:Name="chkbBackground" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=backgroundThread, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,85,0,0" VerticalAlignment="Top" Checked="chkbLaunchGame_Checked" Unchecked="chkbLaunchGame_Checked">
+                    <CheckBox x:Name="chkbBackground" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=backgroundThread, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,85,0,0" VerticalAlignment="Top">
                         <CheckBox.ToolTip>
-                            <ToolTip Content="Checks Game's info in the background&#x0a;Supported only for SWBF2" Background="Black" Foreground="White"/>
+                            <ToolTip Content="Checks Game's info in the background" Background="Black" Foreground="White"/>
                         </CheckBox.ToolTip>
                     </CheckBox>
                     <Canvas Width="20" Height="20" Margin="139,88,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                         <Canvas.ToolTip>
-                            <ToolTip Background="Black" Foreground="White" Content="Checks Game's info in the background&#x0a;Supported only for SWBF2"/>
+                            <ToolTip Background="Black" Foreground="White" Content="Checks Game's info in the background"/>
                         </Canvas.ToolTip>
                         <Canvas.RenderTransform>
                             <ScaleTransform ScaleX="0.7" ScaleY="0.7"/>
@@ -153,8 +152,7 @@ VictorPL - Original Script</TextBox>
                         </Canvas>
                     </Canvas>
 
-
-                    <Button x:Name="btn_reset" Content="Reset Settings" Height="25" HorizontalAlignment="Center" Width="120" Click="Reset_Settings" Margin="0,0,0,10" VerticalAlignment="Bottom"/>
+                    <Button x:Name="btn_reset" Content="Reset Settings" Height="25" HorizontalAlignment="Center" Width="120" Margin="0,0,0,10" VerticalAlignment="Bottom"/>
                 </Grid>
             </TabItem>
         </TabControl>

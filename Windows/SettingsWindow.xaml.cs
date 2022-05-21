@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -16,37 +17,20 @@ namespace FrostyFix4 {
     public partial class SettingsWindow : Window {
         public SettingsWindow() {
             InitializeComponent();
-            loadSettings();
-            refresh();
 
-            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
-            txt_Version.Text = "v" + version;
-        }
+            txt_Version.Text = App.Version;
 
-
-        public void loadSettings() {
-            chkbLaunchGame.IsChecked = Settings.Default.launchGame;
-        }
-
-        public void refresh() {
-            Settings.Default.launchGame = (bool)chkbLaunchGame.IsChecked;
-            Settings.Default.backgroundThread = (bool)chkbBackground.IsChecked;
-            Settings.Default.Save();
-        }
-
-        private void chkbLaunchGame_Checked(object sender, RoutedEventArgs e) {
-            refresh();
-        }
-
-        private void window_MouseDown(object sender, MouseButtonEventArgs e) {
-            Keyboard.ClearFocus();
+            MouseDown += (s, e) => Keyboard.ClearFocus();
+            chkbLaunchGame.Click += (s, e) => Settings.Default.Save();
+            chkbBackground.Click += (s, e) => Settings.Default.Save();
+            btn_reset.Click += (s, e) => Settings.Default.Reset();
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e) {
-            System.Diagnostics.Process.Start(e.Uri.ToString());
+            Process.Start(e.Uri.ToString());
         }
 
-        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e) {
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             TabItem ti = Tabs.SelectedItem as TabItem;
             this.Title = "FrostyFix 4: " + ti.Header;
         }
@@ -63,10 +47,5 @@ namespace FrostyFix4 {
                 Settings.Default.Save();
             }
         }
-
-        private void Reset_Settings(object sender, RoutedEventArgs e) {
-            Settings.Default.Reset();
-        }
-
     }
 }
