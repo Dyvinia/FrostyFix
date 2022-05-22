@@ -49,10 +49,9 @@ namespace FrostyFix4.Dialogs {
             Height = height + headerHeight;
 
             CopyButton.Click += (s, e) => Clipboard.SetText(message);
-            CloseButton.Click += (s, e) => {
-                if (isCrash) Environment.Exit(0);
-                this.Close();
-            };
+
+            if (isCrash) CloseButton.Click += (s, e) => Environment.Exit(0);
+            else CloseButton.Click += (s, e) => this.Close();
 
             SystemSounds.Hand.Play();
         }
