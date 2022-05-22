@@ -4069,7 +4069,7 @@
 
                                         <!-- CUSTOM ICON -->
 
-                                        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,1,0,0" Height="28">
+                                        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Margin="2,1" Height="28">
                                             <Image.Source>
 
                                                 <DrawingImage>
