@@ -106,17 +106,16 @@ namespace FrostyFix4 {
             }
 
             //Get Launcher paths
-            using (RegistryKey origin = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Origin"))
-                if (origin != null) platforms.Origin = origin.GetValue("OriginPath").ToString();
-                else OriginPlat.IsEnabled = false;
+            platforms.Origin = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Origin")?.GetValue("OriginPath")?.ToString();
+            
+            platforms.EADesktop = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Electronic Arts\EA Desktop")?.GetValue("ClientPath")?.ToString();
 
-            using (RegistryKey eaDesktop = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Electronic Arts\EA Desktop"))
-                if (eaDesktop != null) platforms.EADesktop = eaDesktop.GetValue("ClientPath").ToString();
-                else EADPlat.IsEnabled = false;
+            platforms.EpicGames = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\EpicGames\Unreal Engine")?.GetValue("INSTALLDIR")?.ToString();
+            if (platforms.EpicGames != null) platforms.EpicGames += "Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe\"";
 
-            using (RegistryKey epicGames = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\EpicGames\Unreal Engine"))
-                if (epicGames != null) platforms.EpicGames = epicGames.GetValue("INSTALLDIR").ToString() + "Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe\"";
-                else EGSPlat.IsEnabled = false;
+            if (platforms.Origin == null) OriginPlat.IsEnabled = false;
+            if (platforms.EADesktop == null) EADPlat.IsEnabled = false;
+            if (platforms.EpicGames == null) EGSPlat.IsEnabled = false;
         }
 
         public void checkStatus() {
