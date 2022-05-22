@@ -24,7 +24,7 @@ namespace FrostyFix4.Dialogs {
     /// </summary>
     public partial class MessageBoxDialog : Window {
 
-        public MessageBoxResult result = MessageBoxResult.Cancel;
+        public MessageBoxResult result;
 
         public MessageBoxDialog(string message, string title, MessageBoxButton buttons, DialogSound sound) {
             InitializeComponent();
