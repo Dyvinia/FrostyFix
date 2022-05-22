@@ -27,7 +27,7 @@ namespace FrostyFix4.Dialogs {
 
             // Calculate Window Height & Play according sounds
             int headerHeight = 30;
-            int height = 220;
+            int height = 250;
             if (!isCrash) {
                 headerHeight = 5;
                 height -= 25;
@@ -44,11 +44,12 @@ namespace FrostyFix4.Dialogs {
                 message = messagePrefix + Environment.NewLine + message;
             if (ex.InnerException != null)
                 message += Environment.NewLine + Environment.NewLine + ex.InnerException;
+            message += Environment.NewLine + Environment.NewLine + ex.StackTrace;
             ExceptionText.Text = message;
 
             if (isCrash) CloseButton.Click += (s, e) => Environment.Exit(0);
             else CloseButton.Click += (s, e) => Close();
-            CopyButton.Click += (s, e) => Clipboard.SetText(message);
+            CopyButton.Click += (s, e) => Clipboard.SetDataObject(message);
         }
 
         public static void Show(Exception ex, string title, bool isCrash = false, string messagePrefix = null) {

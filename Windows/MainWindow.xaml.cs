@@ -50,7 +50,7 @@ namespace FrostyFix4 {
             MouseDown += (s, e) => Keyboard.ClearFocus();
 
             checkVersion();
-            locatePaths();
+            locateInstalls();
             checkStatus();
             checkLaunchEnable();
             refreshLaunchButton();
@@ -87,8 +87,8 @@ namespace FrostyFix4 {
             }
         }
 
-        public void locatePaths() {
-            // Get Game Paths
+        public void locateInstalls() {
+            // Get Games
             List<GameListItem> gameKeys = new List<GameListItem>();
 
             gameKeys.Add(new GameListItem { DisplayName = "Star Wars: Battlefront", FileName = "starwarsbattlefront", Path = @"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront" });
@@ -101,21 +101,33 @@ namespace FrostyFix4 {
             gameKeys.Add(new GameListItem { DisplayName = "Dragon Age: Inquisition", FileName = "DragonAgeInquisition", Path = @"SOFTWARE\Wow6432Node\Bioware\Dragon Age Inquisition" });
 
             foreach (GameListItem game in gameKeys) {
-                RegistryKey path = Registry.LocalMachine.OpenSubKey(game.Path);
-                if (path != null) gameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path.GetValue("Install Dir").ToString() });
+                string path = Registry.LocalMachine.OpenSubKey(game.Path)?.GetValue("Install Dir")?.ToString();
+                if (File.Exists(path + game.FileName + ".exe")) gameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
             }
 
-            //Get Launcher paths
-            platforms.Origin = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Origin")?.GetValue("OriginPath")?.ToString();
+            //Get Launchers
+            string origin = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Origin")?.GetValue("OriginPath")?.ToString();
+            if (File.Exists(origin))
+                platforms.Origin = origin;
+            else
+                OriginPlat.IsEnabled = false;
             
-            platforms.EADesktop = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Electronic Arts\EA Desktop")?.GetValue("ClientPath")?.ToString();
+            string eaDesktop = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Electronic Arts\EA Desktop")?.GetValue("ClientPath")?.ToString();
+            if (File.Exists(eaDesktop))
+                platforms.EADesktop = eaDesktop;
+            else
+                EADPlat.IsEnabled = false;
 
-            platforms.EpicGames = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\EpicGames\Unreal Engine")?.GetValue("INSTALLDIR")?.ToString();
-            if (platforms.EpicGames != null) platforms.EpicGames += "Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe\"";
+            string epicGames = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\EpicGames\Unreal Engine")?.GetValue("INSTALLDIR")?.ToString() + "Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe";
+            if (File.Exists(epicGames))
+                platforms.EpicGames = epicGames;
+            else
+                EGSPlat.IsEnabled = false;
 
-            if (platforms.Origin == null) OriginPlat.IsEnabled = false;
-            if (platforms.EADesktop == null) EADPlat.IsEnabled = false;
-            if (platforms.EpicGames == null) EGSPlat.IsEnabled = false;
+
+            OriginPlat.ToolTip = platforms.Origin;
+            EADPlat.ToolTip = platforms.EADesktop;
+            EGSPlat.ToolTip = platforms.EpicGames;
         }
 
         public void checkStatus() {
