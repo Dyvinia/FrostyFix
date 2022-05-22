@@ -2,20 +2,19 @@
 
 namespace FrostyFix4.Themes
 {
-    public partial class DarkTheme
-    {
-        private void CloseWindow_Event(object sender, RoutedEventArgs e)
-        {
+    public partial class DarkTheme {
+
+        private void CloseWindow_Event(object sender, RoutedEventArgs e) {
             if (e.Source != null)
                 try { CloseWind(Window.GetWindow((FrameworkElement)e.Source)); } catch { }
         }
-        private void AutoMinimize_Event(object sender, RoutedEventArgs e)
-        {
+
+        private void AutoMinimize_Event(object sender, RoutedEventArgs e) {
             if (e.Source != null)
                 try { MaximizeRestore(Window.GetWindow((FrameworkElement)e.Source)); } catch { }
         }
-        private void Minimize_Event(object sender, RoutedEventArgs e)
-        {
+
+        private void Minimize_Event(object sender, RoutedEventArgs e) {
             if (e.Source != null)
                 try { MinimizeWind(Window.GetWindow((FrameworkElement)e.Source)); } catch { }
         }
@@ -24,20 +23,19 @@ namespace FrostyFix4.Themes
             window.Close();
         }
 
-        public void MaximizeRestore(Window window)
-        {
+        public void MaximizeRestore(Window window) {
             if (window.WindowState == WindowState.Maximized) {
                 window.WindowState = WindowState.Normal;
             }
-                
+
             else if (window.WindowState == WindowState.Normal) {
                 window.WindowState = WindowState.Maximized;
             }
-                
+
         }
 
-        public const string WrapperGridName = "WrapperGrid";
-
         public void MinimizeWind(Window window) => window.WindowState = WindowState.Minimized;
+
+        public const string WrapperGridName = "WrapperGrid";
     }
 }
