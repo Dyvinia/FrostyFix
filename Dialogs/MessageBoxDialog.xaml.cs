@@ -11,9 +11,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FrostyFix4.Dialogs {
+    public enum DialogSound {
+        None,
+        Notify,
+        Error
+    }
+
     /// <summary>
     /// Interaction logic for MessageBoxDialog.xaml
     /// </summary>
@@ -21,7 +26,7 @@ namespace FrostyFix4.Dialogs {
 
         public MessageBoxResult result = MessageBoxResult.Cancel;
 
-        public MessageBoxDialog(string message, string title, MessageBoxButton buttons, Sound sound) {
+        public MessageBoxDialog(string message, string title, MessageBoxButton buttons, DialogSound sound) {
             InitializeComponent();
             SetVisibilityOfButtons(buttons);
             PlaySound(sound);
@@ -37,7 +42,7 @@ namespace FrostyFix4.Dialogs {
             CancelButton.Click += OnClose;
         }
 
-        public static MessageBoxResult Show(string message, string title, MessageBoxButton buttons, Sound sound = Sound.None) {
+        public static MessageBoxResult Show(string message, string title, MessageBoxButton buttons, DialogSound sound = DialogSound.None) {
             MessageBoxResult msgBoxResult = MessageBoxResult.None;
             Application.Current.Dispatcher.Invoke(() => {
                 MessageBoxDialog window = new MessageBoxDialog(message, title, buttons, sound);
@@ -45,6 +50,20 @@ namespace FrostyFix4.Dialogs {
                 msgBoxResult = window.result;
             });
             return msgBoxResult;
+        }
+
+        private void OnClose(object sender, RoutedEventArgs e) {
+            if (sender == OKButton)
+                result = MessageBoxResult.OK;
+            else if (sender == YesButton)
+                result = MessageBoxResult.Yes;
+            else if (sender == NoButton)
+                result = MessageBoxResult.No;
+            else if (sender == CancelButton)
+                result = MessageBoxResult.Cancel;
+            else
+                result = MessageBoxResult.None;
+            Close();
         }
 
         private void SetVisibilityOfButtons(MessageBoxButton button) {
@@ -74,40 +93,17 @@ namespace FrostyFix4.Dialogs {
             }
         }
 
-        private void PlaySound(Sound sound) {
+        private void PlaySound(DialogSound sound) {
             switch (sound) {
-                case Sound.None:
+                case DialogSound.None:
                     break;
-                case Sound.Asterik:
+                case DialogSound.Notify:
                     SystemSounds.Exclamation.Play();
                     break;
-                case Sound.Beep:
-                    SystemSounds.Beep.Play();
-                    break;
-                case Sound.Exclamation:
-                    SystemSounds.Exclamation.Play();
-                    break;
-                case Sound.Hand:
+                case DialogSound.Error:
                     SystemSounds.Hand.Play();
                     break;
-                case Sound.Question:
-                    SystemSounds.Question.Play();
-                    break;
             }
-        }
-
-        private void OnClose(object sender, RoutedEventArgs e) {
-            if (sender == OKButton)
-                result = MessageBoxResult.OK;
-            else if (sender == YesButton)
-                result = MessageBoxResult.Yes;
-            else if (sender == NoButton)
-                result = MessageBoxResult.No;
-            else if (sender == CancelButton)
-                result = MessageBoxResult.Cancel;
-            else
-                result = MessageBoxResult.None;
-            Close();
         }
     }
 }

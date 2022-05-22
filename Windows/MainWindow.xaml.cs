@@ -56,9 +56,6 @@ namespace FrostyFix4 {
             refreshLaunchButton();
             loadSelections();
 
-            MessageBoxResult Result = MessageBoxDialog.Show("message", "title", MessageBoxButton.YesNoCancel, Sound.Hand);
-            MessageBoxDialog.Show(Result.ToString(), "title", MessageBoxButton.YesNoCancel);
-
             Thread checkGameStatus = new Thread(gameStatusThread);
             checkGameStatus.IsBackground = true;
             checkGameStatus.Start();
@@ -77,7 +74,8 @@ namespace FrostyFix4 {
                     
                     var result = version.CompareTo(latestVersion);
                     if (result < 0) {
-                        MessageBoxResult Result = MessageBox.Show("You are using an outdated version of FrostyFix 4." + Environment.NewLine + "Would you like to download the latest version?", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Information);
+                        string message = "You are using an outdated version of FrostyFix 4. \nWould you like to download the latest version?";
+                        MessageBoxResult Result = MessageBoxDialog.Show(message, this.Title, MessageBoxButton.YesNo, DialogSound.Notify);
                         if (Result == MessageBoxResult.Yes) {
                             Process.Start("https://github.com/Dyvinia/FrostyFix/releases/latest");
                         }
