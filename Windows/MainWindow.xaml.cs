@@ -82,12 +82,7 @@ namespace FrostyFix4 {
                 }
             }
             catch (Exception e) {
-                string message = "Unable to check updates:\n" + e.Message;
-                if (e.InnerException != null)
-                    message += Environment.NewLine + Environment.NewLine + e.InnerException;
-                Clipboard.SetText(message);
-
-                MessageBox.Show(message, this.Title, MessageBoxButton.OK, MessageBoxImage.Warning);
+                ExceptionDialog.Show(e, this.Title, false, "Unable to check for updates:");
             }
         }
 

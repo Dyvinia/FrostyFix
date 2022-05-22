@@ -45,7 +45,7 @@ namespace FrostyFix4.Dialogs {
             ExceptionText.Text = message;
 
             if (isCrash) CloseButton.Click += (s, e) => Environment.Exit(0);
-            else CloseButton.Click += (s, e) => this.Close();
+            else CloseButton.Click += (s, e) => Close();
             CopyButton.Click += (s, e) => Clipboard.SetText(message);
 
             SystemSounds.Hand.Play();
