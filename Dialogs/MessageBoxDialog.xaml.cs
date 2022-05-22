@@ -14,15 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace FrostyFix4.Dialogs {
-    public enum MessageBoxType {
-        ConfirmationWithYesNo = 0,
-        ConfirmationWithYesNoCancel,
-        Information,
-        Error,
-        Warning
-    }
-
-
     /// <summary>
     /// Interaction logic for MessageBoxDialog.xaml
     /// </summary>
