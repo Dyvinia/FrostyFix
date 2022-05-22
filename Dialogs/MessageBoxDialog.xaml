@@ -15,7 +15,9 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="32"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="MessageText" Grid.Row="0" Padding="5" IsReadOnly="True" VerticalScrollBarVisibility="Auto" BorderThickness="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Border Grid.Row="0" Padding="5">
+                <TextBlock Text="Message" x:Name="MessageText" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
+            </Border>
             <Separator Height="1" Margin="0" VerticalAlignment="Bottom"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
