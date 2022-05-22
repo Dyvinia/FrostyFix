@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="HeaderText" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="19">
-            <Run Text="FrostyFix 4" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova" />
+            <Run Text="FrostyFix" FontFamily="/Fonts/GillSansNova-Bold.ttf #Gill Sans Nova" />
             <Run Text="has crashed" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova" />
         </TextBlock>
         <Grid Background="#FF141414" Margin="5,0,5,5" Grid.Row="1">
@@ -26,7 +26,7 @@
             <TextBox x:Name="ExceptionText" Grid.Row="0" Padding="5" IsReadOnly="True" VerticalScrollBarVisibility="Auto" BorderThickness="0"/>
             <Separator Height="1" Margin="0" VerticalAlignment="Bottom"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
-                <Button x:Name="CopyButton" Content="Copy to Clipboard" Height="22" Width="130" HorizontalAlignment="Right" Margin="0,5,5,5" Padding="0,-2,0,0" />
+                <Button x:Name="CopyButton" Content="Copy to Clipboard" Height="22" Width="135" HorizontalAlignment="Right" Margin="0,5,5,5" Padding="0,-2,0,0" />
                 <Button x:Name="CloseButton" Content="Close" Height="22" Width="75" HorizontalAlignment="Right" Margin="0,5,5,5" Padding="0,-2,0,0" />
             </StackPanel>
         </Grid>
