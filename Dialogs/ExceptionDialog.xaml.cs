@@ -25,7 +25,7 @@ namespace FrostyFix4.Dialogs {
             Window mainWindow = Application.Current.MainWindow;
             Icon = mainWindow.Icon;
 
-            // Calculate Window Height
+            // Calculate Window Height & Play according sounds
             int headerHeight = 30;
             int height = 220;
             if (!isCrash) {
