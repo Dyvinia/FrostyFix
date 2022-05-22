@@ -208,13 +208,9 @@ namespace FrostyFix4 {
                             Settings.Default.backgroundThread = false;
                             Settings.Default.Save();
 
-                            string title = this.Title;
-                            string message = "Background thread has encountered an error and has been disabled:\n" + ex.Message;
-                            if (ex.InnerException != null)
-                                message += Environment.NewLine + Environment.NewLine + ex.InnerException;
-
+                            string title = "FrostyFix 4";
                             Task.Run(() => {
-                                MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
+                                ExceptionDialog.Show(ex, title, false, "Background thread has encountered an error and has been disabled:");
                             });
                         }
                     }

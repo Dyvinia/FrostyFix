@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Media;
 using System.Text;
@@ -17,7 +18,7 @@ namespace FrostyFix4.Dialogs {
     /// Interaction logic for ExceptionWindow.xaml
     /// </summary>
     public partial class ExceptionDialog : Window {
-        public ExceptionDialog(Exception ex, string title, bool isCrash) {
+        public ExceptionDialog(Exception ex, string title, bool isCrash, string messagePrefix) {
             InitializeComponent();
 
             Title = title;
@@ -34,6 +35,10 @@ namespace FrostyFix4.Dialogs {
             }
 
             string message = ex.Message;
+
+            if (messagePrefix != null) 
+                message = messagePrefix + Environment.NewLine + message;
+
             if (ex.InnerException != null)
                 message += Environment.NewLine + Environment.NewLine + ex.InnerException;
             else height -= 50;
@@ -44,18 +49,20 @@ namespace FrostyFix4.Dialogs {
             Height = height + headerHeight;
 
             CopyButton.Click += (s, e) => Clipboard.SetText(message);
-            CloseButton.Click += (s, e) => this.Close();
+            CloseButton.Click += (s, e) => {
+                if (isCrash) Environment.Exit(0);
+                this.Close();
+            };
 
             SystemSounds.Hand.Play();
         }
 
 
-        public static void Show(Exception ex, string title, bool isCrash = false) {
+        public static void Show(Exception ex, string title, bool isCrash = false, string messagePrefix = null) {
             Application.Current.Dispatcher.Invoke(() => {
-                ExceptionDialog window = new ExceptionDialog(ex, title, isCrash);
+                ExceptionDialog window = new ExceptionDialog(ex, title, isCrash, messagePrefix);
                 window.ShowDialog();
             });
         }
-
     }
 }

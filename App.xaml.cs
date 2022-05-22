@@ -27,7 +27,7 @@ namespace FrostyFix4 {
             string title = "FrostyFix 4";
             ExceptionDialog.Show(e.Exception, title, true);
             e.Handled = true;
-            Environment.Exit(0);
+            
         }
     }
 }
