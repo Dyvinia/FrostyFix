@@ -102,7 +102,8 @@ namespace FrostyFix4 {
 
             foreach (GameListItem game in gameKeys) {
                 string path = Registry.LocalMachine.OpenSubKey(game.Path)?.GetValue("Install Dir")?.ToString();
-                if (File.Exists(path + game.FileName + ".exe")) gameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
+                if (File.Exists(path + game.FileName + ".exe")) 
+                    gameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
             }
 
             //Get Launchers
@@ -282,6 +283,7 @@ namespace FrostyFix4 {
                     p.StartInfo.Arguments += platforms.EpicGames;
                     p.StartInfo.WorkingDirectory = Path.GetDirectoryName(platforms.EpicGames);
                 }
+                p.StartInfo.Arguments += "\"";
                 p.Start();
             }
             else Environment.SetEnvironmentVariable("GAME_DATA_DIR", packPath, EnvironmentVariableTarget.User);
