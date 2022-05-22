@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FrostyFix4.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -24,15 +25,9 @@ namespace FrostyFix4 {
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
             string title = "FrostyFix 4";
-            string message = e.Exception.Message;
-            if (e.Exception.InnerException != null)
-                message += Environment.NewLine + Environment.NewLine + e.Exception.InnerException;
-            Clipboard.SetText(message);
-
-            MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Error);
-
+            ExceptionDialog.Show(e.Exception, title, true);
             e.Handled = true;
-            App.Current.Shutdown();
+            Environment.Exit(0);
         }
     }
 }

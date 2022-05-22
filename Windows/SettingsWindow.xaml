@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         Style="{DynamicResource CustomWindowStyle}">
     <Grid>
-        <TabControl x:Name="Tabs" Margin="5,5,5,5" SelectionChanged="TabControl_SelectionChanged">
+        <TabControl x:Name="Tabs" Margin="5" SelectionChanged="TabControl_SelectionChanged">
             <TabItem Header="Info">
                 <Grid Background="#FF141414">
                     <Canvas Margin="15,10,15,242">

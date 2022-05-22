@@ -1,4 +1,5 @@
-﻿using FrostyFix4.Properties;
+﻿using FrostyFix4.Dialogs;
+using FrostyFix4.Properties;
 using Gapotchenko.FX.Diagnostics;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.Win32;
