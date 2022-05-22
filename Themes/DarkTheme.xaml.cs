@@ -21,10 +21,7 @@ namespace FrostyFix4.Themes
         }
 
         public void CloseWind(Window window) {
-            if (window.Title == "FrostyFix 4") {
-                Application.Current.Shutdown();
-            }
-            else window.Hide();
+            window.Close();
         }
 
         public void MaximizeRestore(Window window)
