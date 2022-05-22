@@ -14,12 +14,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace FrostyFix4.Dialogs {
+    public enum Sound {
+        None,
+        Asterik,
+        Beep,
+        Exclamation,
+        Hand,
+        Question
+    }
+
     /// <summary>
     /// Interaction logic for ExceptionWindow.xaml
     /// </summary>
     public partial class ExceptionDialog : Window {
-        public ExceptionDialog(Exception ex, string title, bool isCrash, string messagePrefix) {
+        public ExceptionDialog(Exception ex, string title, bool isCrash, string messagePrefix, Sound sound = Sound.Hand) {
             InitializeComponent();
+            PlaySound(sound);
 
             Title = title;
             Window mainWindow = Application.Current.MainWindow;
@@ -47,15 +57,35 @@ namespace FrostyFix4.Dialogs {
             if (isCrash) CloseButton.Click += (s, e) => Environment.Exit(0);
             else CloseButton.Click += (s, e) => Close();
             CopyButton.Click += (s, e) => Clipboard.SetText(message);
-
-            SystemSounds.Hand.Play();
         }
 
-        public static void Show(Exception ex, string title, bool isCrash = false, string messagePrefix = null) {
+        public static void Show(Exception ex, string title, bool isCrash = false, string messagePrefix = null, Sound sound = Sound.Hand) {
             Application.Current.Dispatcher.Invoke(() => {
-                ExceptionDialog window = new ExceptionDialog(ex, title, isCrash, messagePrefix);
+                ExceptionDialog window = new ExceptionDialog(ex, title, isCrash, messagePrefix, sound);
                 window.ShowDialog();
             });
+        }
+
+        private void PlaySound(Sound sound) {
+            switch (sound) {
+                case Sound.None:
+                    break;
+                case Sound.Asterik:
+                    SystemSounds.Exclamation.Play();
+                    break;
+                case Sound.Beep:
+                    SystemSounds.Beep.Play();
+                    break;
+                case Sound.Exclamation:
+                    SystemSounds.Exclamation.Play();
+                    break;
+                case Sound.Hand:
+                    SystemSounds.Hand.Play();
+                    break;
+                case Sound.Question:
+                    SystemSounds.Question.Play();
+                    break;
+            }
         }
     }
 }

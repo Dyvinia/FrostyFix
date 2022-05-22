@@ -56,6 +56,9 @@ namespace FrostyFix4 {
             refreshLaunchButton();
             loadSelections();
 
+            MessageBoxResult Result = MessageBoxDialog.Show("message", "title", MessageBoxButton.YesNoCancel, Sound.Hand);
+            MessageBoxDialog.Show(Result.ToString(), "title", MessageBoxButton.YesNoCancel);
+
             Thread checkGameStatus = new Thread(gameStatusThread);
             checkGameStatus.IsBackground = true;
             checkGameStatus.Start();
