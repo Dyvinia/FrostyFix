@@ -20,7 +20,7 @@ namespace FrostyFix4 {
 
             txt_Version.Text = App.Version;
 
-            MouseDown += (s, e) => Keyboard.ClearFocus();
+            MouseDown += (s, e) => FocusManager.SetFocusedElement(this, this);
             chkbLaunchGame.Click += (s, e) => Settings.Default.Save();
             chkbBackground.Click += (s, e) => Settings.Default.Save();
             btn_reset.Click += (s, e) => Settings.Default.Reset();
