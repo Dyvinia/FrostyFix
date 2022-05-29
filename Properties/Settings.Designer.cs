@@ -82,5 +82,17 @@ namespace FrostyFix4.Properties {
                 this["SelectedPlatform"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CustomGamePath {
+            get {
+                return ((string)(this["CustomGamePath"]));
+            }
+            set {
+                this["CustomGamePath"] = value;
+            }
+        }
     }
 }

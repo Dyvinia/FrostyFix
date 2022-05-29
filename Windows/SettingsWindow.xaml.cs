@@ -45,5 +45,16 @@ namespace FrostyFix4 {
                 Settings.Default.Save();
             }
         }
+
+        private void CustomGameSelect_Click(object sender, RoutedEventArgs e) {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Select Game EXE";
+            dialog.Filter = "Game Executable (*.exe) |*.exe";
+            dialog.FilterIndex = 2;
+            if (dialog.ShowDialog() == true) {
+                Settings.Default.CustomGamePath = dialog.FileName;
+                Settings.Default.Save();
+            }
+        }
     }
 }

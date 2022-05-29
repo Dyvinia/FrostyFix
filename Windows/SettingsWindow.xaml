@@ -69,6 +69,7 @@ VictorPL - Original Script</TextBox>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="20"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
@@ -89,7 +90,7 @@ VictorPL - Original Script</TextBox>
                             </Canvas>
                         </Grid>
                         <Separator Opacity="0" Height="2"/>
-                        <TextBlock Text="Frosty Installation:" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                        <TextBlock Text="Frosty Installation:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,1"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -102,8 +103,23 @@ VictorPL - Original Script</TextBox>
                     </StackPanel>
                     
                     <Separator Grid.Row="2"/>
-                    
+
                     <StackPanel Grid.Row="3" Orientation="Vertical" Margin="10,0">
+                        <TextBlock Text="Custom Game:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-3,0,1"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" x:Name="CustomGamePath" Text="{Binding Source={x:Static p:Settings.Default}, Path=CustomGamePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" IsReadOnly="True" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Source={x:Static p:Settings.Default}, Path=CustomGamePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Button Grid.Column="2" x:Name="CustomGameSelect" Content="Select..." Height="20" HorizontalAlignment="Right" Width="58" Click="CustomGameSelect_Click" VerticalAlignment="Top"/>
+                        </Grid>
+                    </StackPanel>
+
+                    <Separator Grid.Row="4"/>
+
+                    <StackPanel Grid.Row="5" Orientation="Vertical" Margin="10,0">
                         <Grid ToolTip="Checks Game's info in the background">
                             <CheckBox x:Name="BackgroundOption" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=BackgroundThread, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" VerticalAlignment="Top" />
                             <Canvas Width="20" Height="20" Margin="139,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -121,13 +137,9 @@ VictorPL - Original Script</TextBox>
                         </Grid>
                     </StackPanel>
 
-                    <Separator Grid.Row="4"/>
+                    <Separator Grid.Row="6"/>
 
-
-
-
-
-                    <Button Grid.Row="6" x:Name="ResetButton" Content="Reset Settings" Height="25" Margin="10" VerticalAlignment="Bottom"/>
+                    <Button Grid.Row="7" x:Name="ResetButton" Content="Reset Settings" Height="25" Margin="10" VerticalAlignment="Bottom"/>
                 </Grid>
             </TabItem>
         </TabControl>
