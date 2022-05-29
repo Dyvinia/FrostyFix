@@ -50,13 +50,13 @@
             <TextBlock x:Name="CurrentPack" Margin="0,0,5,20" TextWrapping="Wrap" Text="Pack" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <TextBlock x:Name="CurrentPlat" Margin="0,0,5,35" TextWrapping="Wrap" Text="Platform" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <Button Name="LaunchButton" HorizontalAlignment="Center" Margin="175,0,175,27" VerticalAlignment="Bottom" Width="230" Height="54" Click="LaunchButton_Click" IsEnabled="False">
-                <TextBlock x:Name="LaunchButton_text" Text="Launch with Mods enabled" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
+                <TextBlock x:Name="LaunchButtonContent" Text="Launch with Mods enabled" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Margin="5,0,0,5" VerticalAlignment="Bottom" Width="96" Height="26" Click="DisableButton_Click">
+                <TextBlock Text="Disable Mods" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
             </Button>
         </Grid>
-        
-        <Button HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="96" Height="26" Click="DisableButton_Click">
-            <TextBlock x:Name="btn_disable_text" Text="Disable Mods" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
-        </Button>
 
         <Button HorizontalAlignment="Right" Margin="0,5,5,0" VerticalAlignment="Top" Width="25" Height="25" Click="ButtonSettings_Click" >
 

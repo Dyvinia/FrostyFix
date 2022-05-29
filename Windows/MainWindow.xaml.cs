@@ -317,15 +317,15 @@ namespace FrostyFix4 {
         public void RefreshLaunchButton() {
             if (GlobalPlat.IsChecked == true) {
                 if (Settings.Default.LaunchGame && Settings.Default.FrostyPath != null)
-                    LaunchButton_text.Text = "Enable Mods Globally & Launch Game";
+                    LaunchButtonContent.Text = "Enable Mods Globally & Launch Game";
                 else 
-                    LaunchButton_text.Text = "Enable Mods Globally";
+                    LaunchButtonContent.Text = "Enable Mods Globally";
             }
             else {
                 if (Settings.Default.LaunchGame && Settings.Default.FrostyPath != null)
-                    LaunchButton_text.Text = "Launch Game with Mods Enabled";
+                    LaunchButtonContent.Text = "Launch Game with Mods Enabled";
                 else 
-                    LaunchButton_text.Text = "Launch with Mods Enabled";
+                    LaunchButtonContent.Text = "Launch with Mods Enabled";
             }
         }
 
