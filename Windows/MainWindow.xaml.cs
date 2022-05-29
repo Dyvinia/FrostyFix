@@ -117,7 +117,7 @@ namespace FrostyFix4 {
             }
 
             // Restore index
-            if ((GameList.Count - 1) > index)
+            if ((GameList.Count) > index)
                 GameSelectorDropdown.SelectedIndex = index;
 
             // Get Launchers
