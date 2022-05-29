@@ -117,7 +117,7 @@ namespace FrostyFix4 {
             }
 
             // Restore index
-            if ((GameList.Count) > index)
+            if (GameList.Count > index)
                 GameSelectorDropdown.SelectedIndex = index;
 
             // Get Launchers
@@ -349,9 +349,9 @@ namespace FrostyFix4 {
             Environment.SetEnvironmentVariable("GAME_DATA_DIR", "", EnvironmentVariableTarget.User);
 
             foreach (Process process in Process.GetProcessesByName("EADesktop")) process.Kill();
-            foreach (var process in Process.GetProcessesByName("Origin")) process.Kill();
-            foreach (var process in Process.GetProcessesByName("EpicGamesLauncher")) process.Kill();
-            foreach (var process in Process.GetProcessesByName("steam")) process.Kill();
+            foreach (Process process in Process.GetProcessesByName("Origin")) process.Kill();
+            foreach (Process process in Process.GetProcessesByName("EpicGamesLauncher")) process.Kill();
+            foreach (Process process in Process.GetProcessesByName("steam")) process.Kill();
 
             await Task.Delay(2000);
             Mouse.OverrideCursor = null;
@@ -393,11 +393,10 @@ namespace FrostyFix4 {
         private void LoadSelections() {
             List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
-            if (Settings.Default.SelectedGame > -1) {
+            if (Settings.Default.SelectedGame > -1)
                 if (Settings.Default.SelectedGame < GameSelectorDropdown.Items.Count - 1)
                     GameSelectorDropdown.SelectedIndex = Settings.Default.SelectedGame;
-            }
-            
+
             if (Settings.Default.SelectedPlatform > -1)
                 radioButtons[Settings.Default.SelectedPlatform].IsChecked = true;
         }
