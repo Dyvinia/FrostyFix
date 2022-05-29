@@ -99,13 +99,27 @@ namespace FrostyFix4 {
             gameKeys.Add(new GameListItem { DisplayName = "Plants vs. Zombies: Garden Warfare 2", FileName = "GW2.Main_Win64_Retail", Path = @"SOFTWARE\PopCap\Plants vs Zombies GW2" });
             gameKeys.Add(new GameListItem { DisplayName = "Dragon Age: Inquisition", FileName = "DragonAgeInquisition", Path = @"SOFTWARE\Wow6432Node\Bioware\Dragon Age Inquisition" });
 
+            // Save selected Index, then clear
+            int index = GameSelectorDropdown.SelectedIndex;
+            GameSelectorDropdown.SelectedIndex = -1;
+            GameList.Clear();
+
+            // Fill Game List
             foreach (GameListItem game in gameKeys) {
                 string path = Registry.LocalMachine.OpenSubKey(game.Path)?.GetValue("Install Dir")?.ToString();
                 if (File.Exists(path + game.FileName + ".exe")) 
                     GameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
             }
 
-            //Get Launchers
+            if (Settings.Default.CustomGamePath != null) {
+                string fileName = Path.GetFileName(Settings.Default.CustomGamePath);
+                GameList.Add(new GameListItem { DisplayName = $"Custom Game ({fileName})", FileName = Path.GetFileNameWithoutExtension(fileName), Path = Path.GetDirectoryName(Settings.Default.CustomGamePath) + "\\" });
+            }
+
+            // Restore index
+            GameSelectorDropdown.SelectedIndex = index;
+
+            // Get Launchers
             string origin = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Origin")?.GetValue("OriginPath")?.ToString();
             if (File.Exists(origin))
                 Platforms.Origin = origin;
@@ -181,11 +195,7 @@ namespace FrostyFix4 {
 
             // Get Game & Pack Info
             GameListItem game = GameList.FirstOrDefault(s => dataDir.Contains(s.Path));
-            if (game != null)
-                CurrentGame.Text = game.DisplayName;
-            else
-                CurrentGame.Text = "Custom Game";
-
+            CurrentGame.Text = game.DisplayName;
             CurrentGame.ToolTip = dataDir;
             CurrentPack.Text = new DirectoryInfo(dataDir).Name;
 
@@ -237,19 +247,23 @@ namespace FrostyFix4 {
         }
 
         public void CheckModData() {
+            PackList.Items.Clear();
+
+            // Check to see if valid item
+            if (GameSelectorDropdown.SelectedItem == null) return;
+
+            // Fill list
             string path = (GameSelectorDropdown.SelectedItem as GameListItem).Path + "ModData\\";
             Directory.CreateDirectory(path);
-            ProfileList.Items.Clear();
 
             if (Directory.Exists(path + "\\Data") || (Directory.GetDirectories(path).Length == 0)) 
-                ProfileList.Items.Add("ModData");
+                PackList.Items.Add("ModData");
 
-            else {
+            else 
                 foreach (string dir in Directory.GetDirectories(path))
-                    ProfileList.Items.Add(new DirectoryInfo(dir).Name);
-            }
+                    PackList.Items.Add(new DirectoryInfo(dir).Name);
 
-            ProfileList.SelectedIndex = 0;
+            PackList.SelectedIndex = 0;
             CheckLaunchEnable();
         }
 
@@ -266,10 +280,10 @@ namespace FrostyFix4 {
 
             // Locate ModData
             string path = (GameSelectorDropdown.SelectedItem as GameListItem).Path + "ModData\\";
-            string pack = ProfileList.SelectedItem.ToString();
+            string pack = PackList.SelectedItem.ToString();
             string packPath = path + pack;
 
-            if (pack.Contains("ModData") && ProfileList.SelectedIndex == 0) 
+            if (pack.Contains("ModData") && PackList.SelectedIndex == 0) 
                 packPath = path;
 
             if (GlobalPlat.IsChecked == false) {
@@ -303,7 +317,7 @@ namespace FrostyFix4 {
             await Task.Delay(5000);
 
             if (Settings.Default.LaunchGame == true && Settings.Default.FrostyPath != null) {
-                string pack = ProfileList.SelectedItem.ToString();
+                string pack = PackList.SelectedItem.ToString();
                 using (Process frosty = new Process()) {
                     frosty.StartInfo.FileName = Settings.Default.FrostyPath;
                     frosty.StartInfo.UseShellExecute = false;
@@ -347,6 +361,7 @@ namespace FrostyFix4 {
             SettingsWindow settingsWindow = new SettingsWindow();
             settingsWindow.Owner = this;
             settingsWindow.ShowDialog();
+            LocateInstalls();
         }
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e) {

@@ -42,7 +42,7 @@
                 </Canvas>
             </Canvas>
             <TextBlock HorizontalAlignment="Right" Margin="0,18,212,0" Text="Select Pack:" FontSize="14" Height="20" FontWeight="Bold" VerticalAlignment="Top"/>
-            <ListBox x:Name="ProfileList" HorizontalAlignment="Right" Height="160" Margin="0,43,30,0" VerticalAlignment="Top" Width="260">
+            <ListBox x:Name="PackList" HorizontalAlignment="Right" Height="160" Margin="0,43,30,0" VerticalAlignment="Top" Width="260">
                 <ListBoxItem Content="ModData" IsSelected="True"/>
             </ListBox>
             <Separator Height="10" Margin="0,215,0,0" VerticalAlignment="Top"/>
