@@ -97,7 +97,7 @@ VictorPL - Original Script</TextBox>
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" x:Name="FrostyPath" Text="{Binding Source={x:Static p:Settings.Default}, Path=FrostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" IsReadOnly="True" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Source={x:Static p:Settings.Default}, Path=FrostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Grid.Column="0" x:Name="FrostyPath" Text="{Binding Source={x:Static p:Settings.Default}, Path=FrostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Source={x:Static p:Settings.Default}, Path=FrostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Button Grid.Column="2" x:Name="FrostySelect" Content="Select..." Height="20" HorizontalAlignment="Right" Width="58" Click="FrostySelect_Click" VerticalAlignment="Top"/>
                         </Grid>
                     </StackPanel>
@@ -112,7 +112,7 @@ VictorPL - Original Script</TextBox>
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" x:Name="CustomGamePath" Text="{Binding Source={x:Static p:Settings.Default}, Path=CustomGamePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" IsReadOnly="True" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Source={x:Static p:Settings.Default}, Path=CustomGamePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Grid.Column="0" x:Name="CustomGamePath" Text="{Binding Source={x:Static p:Settings.Default}, Path=CustomGamePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Source={x:Static p:Settings.Default}, Path=CustomGamePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Button Grid.Column="2" x:Name="CustomGameSelect" Content="Select..." Height="20" HorizontalAlignment="Right" Width="58" Click="CustomGameSelect_Click" VerticalAlignment="Top"/>
                         </Grid>
                     </StackPanel>

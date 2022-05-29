@@ -111,13 +111,14 @@ namespace FrostyFix4 {
                     GameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
             }
 
-            if (Settings.Default.CustomGamePath != null) {
+            if (File.Exists(Settings.Default.CustomGamePath)) {
                 string fileName = Path.GetFileName(Settings.Default.CustomGamePath);
                 GameList.Add(new GameListItem { DisplayName = $"Custom Game ({fileName})", FileName = Path.GetFileNameWithoutExtension(fileName), Path = Path.GetDirectoryName(Settings.Default.CustomGamePath) + "\\" });
             }
 
             // Restore index
-            GameSelectorDropdown.SelectedIndex = index;
+            if ((GameList.Count - 1) > index)
+                GameSelectorDropdown.SelectedIndex = index;
 
             // Get Launchers
             string origin = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Origin")?.GetValue("OriginPath")?.ToString();
