@@ -18,12 +18,12 @@ namespace FrostyFix4 {
         public SettingsWindow() {
             InitializeComponent();
 
-            txt_Version.Text = App.Version;
+            VersionText.Text = App.Version;
 
             MouseDown += (s, e) => FocusManager.SetFocusedElement(this, this);
-            chkbLaunchGame.Click += (s, e) => Settings.Default.Save();
-            chkbBackground.Click += (s, e) => Settings.Default.Save();
-            btn_reset.Click += (s, e) => Settings.Default.Reset();
+            LaunchGameOption.Click += (s, e) => Settings.Default.Save();
+            BackgroundOption.Click += (s, e) => Settings.Default.Save();
+            ResetButton.Click += (s, e) => Settings.Default.Reset();
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e) {
@@ -31,11 +31,11 @@ namespace FrostyFix4 {
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            TabItem ti = Tabs.SelectedItem as TabItem;
-            this.Title = "FrostyFix 4: " + ti.Header;
+            TabItem tab = Tabs.SelectedItem as TabItem;
+            this.Title = "FrostyFix 4: " + tab.Header;
         }
 
-        private void btn_frostyselect_Click(object sender, RoutedEventArgs e) {
+        private void FrostySelect_Click(object sender, RoutedEventArgs e) {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Select Frosty EXE";
             dialog.Filter = "Frosty (*.exe) |*.exe";

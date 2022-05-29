@@ -17,9 +17,9 @@
                 <Grid Background="#FF141414">
                     <Canvas Margin="15,10,15,242">
                         <Image VerticalAlignment="Top" Height="51" Width="229" Canvas.Left="4" Source="{StaticResource FrostyFixLogo}"/>
-                        <TextBlock x:Name="txt_Version" VerticalAlignment="Top" TextWrapping="NoWrap" TextAlignment="Left" FontFamily="/Fonts/GillSansNova-Bold.ttf #Gill Sans Nova" Text="v4.x.x" FontSize="11" Height="14" Width="32" Canvas.Left="218" Canvas.Top="27"/>
+                        <TextBlock x:Name="VersionText" VerticalAlignment="Top" TextWrapping="NoWrap" TextAlignment="Left" FontFamily="/Fonts/GillSansNova-Bold.ttf #Gill Sans Nova" Text="v4.x.x" FontSize="11" Height="14" Width="32" Canvas.Left="218" Canvas.Top="27"/>
                     </Canvas>
-                    <TextBox Name="txt_Credits" Margin="10,70,10,0" TextWrapping="Wrap" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova" VerticalAlignment="Top" Height="97" TextAlignment="Left" FontSize="14" Padding="10, 5" xml:space="preserve" IsReadOnly="True"
+                    <TextBox Name="Credits" Margin="10,70,10,0" TextWrapping="Wrap" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova" VerticalAlignment="Top" Height="97" TextAlignment="Left" FontSize="14" Padding="10, 5" xml:space="preserve" IsReadOnly="True"
 >Credits:
 Dyvinia - Creator of FrostyFix 
 BattleDash - Environment Variables
@@ -62,7 +62,7 @@ VictorPL - Original Script</TextBox>
             </TabItem>
             <TabItem Header="Settings">
                 <Grid Background="#FF141414">
-                    <CheckBox x:Name="chkbLaunchGame" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=launchGame, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Launch Game w/ Frosty" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,10,0,0" VerticalAlignment="Top">
+                    <CheckBox x:Name="LaunchGameOption" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=launchGame, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Launch Game w/ Frosty" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,10,0,0" VerticalAlignment="Top">
                         <CheckBox.ToolTip>
                             <ToolTip Content="Launches game using selected Frosty Installation&#x0a;Make sure proper game is selected within Frosty" Background="Black" Foreground="White"/>
                         </CheckBox.ToolTip>
@@ -83,14 +83,14 @@ VictorPL - Original Script</TextBox>
                         </Canvas>
                     </Canvas>
                     <TextBlock Text="Frosty Installation:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,33,0,0" />
-                    <TextBox x:Name="txtb_frostypath" Text="{Binding Source={x:Static p:Settings.Default}, Path=frostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="10,52,73,0" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" VerticalAlignment="Top" TextWrapping="NoWrap" IsReadOnly="True" VerticalScrollBarVisibility="Disabled">
+                    <TextBox x:Name="FrostyPath" Text="{Binding Source={x:Static p:Settings.Default}, Path=frostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="20" Margin="10,52,73,0" Background="#FF141414" BorderBrush="#FF323232" Foreground="#FFF1F1F1" VerticalAlignment="Top" TextWrapping="NoWrap" IsReadOnly="True" VerticalScrollBarVisibility="Disabled">
                         <TextBox.ToolTip>
                             <ToolTip Content="{Binding Source={x:Static p:Settings.Default}, Path=frostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="Black" Foreground="White"/>
                         </TextBox.ToolTip>
                     </TextBox>
-                    <Button x:Name="btn_frostyselect" Content="Select..." Margin="220,52,0,0" Height="20" HorizontalAlignment="Left" Width="58" Click="btn_frostyselect_Click" VerticalAlignment="Top"/>
+                    <Button x:Name="FrostySelect" Content="Select..." Margin="220,52,0,0" Height="20" HorizontalAlignment="Left" Width="58" Click="FrostySelect_Click" VerticalAlignment="Top"/>
 
-                    <CheckBox x:Name="chkbBackground" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=backgroundThread, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,85,0,0" VerticalAlignment="Top">
+                    <CheckBox x:Name="BackgroundOption" IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=backgroundThread, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" Margin="10,85,0,0" VerticalAlignment="Top">
                         <CheckBox.ToolTip>
                             <ToolTip Content="Checks Game's info in the background" Background="Black" Foreground="White"/>
                         </CheckBox.ToolTip>
@@ -111,7 +111,7 @@ VictorPL - Original Script</TextBox>
                         </Canvas>
                     </Canvas>
 
-                    <Button x:Name="btn_reset" Content="Reset Settings" Height="25" HorizontalAlignment="Center" Width="120" Margin="0,0,0,10" VerticalAlignment="Bottom"/>
+                    <Button x:Name="ResetButton" Content="Reset Settings" Height="25" HorizontalAlignment="Center" Width="120" Margin="0,0,0,10" VerticalAlignment="Bottom"/>
                 </Grid>
             </TabItem>
         </TabControl>

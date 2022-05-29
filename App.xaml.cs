@@ -15,11 +15,9 @@ namespace FrostyFix4 {
     /// </summary>
     public partial class App : Application {
 
-        public static string Version;
+        public static readonly string Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
 
         public App() {
-            Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
-
             DispatcherUnhandledException += Application_DispatcherUnhandledException;
         }
 

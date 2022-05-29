@@ -31,37 +31,36 @@ namespace FrostyFix4 {
             public string FileName { get; set; }
             public string Path { get; set; }
         }
-        public ObservableCollection<GameListItem> gameList = new ObservableCollection<GameListItem>();
+        public ObservableCollection<GameListItem> GameList = new ObservableCollection<GameListItem>();
 
-        public class Platforms {
-            public string Origin { get; set; }
-            public string EADesktop { get; set; }
-            public string EpicGames { get; set; }
+        public static class Platforms {
+            public static string Origin { get; set; }
+            public static string EADesktop { get; set; }
+            public static string EpicGames { get; set; }
         }
-        public Platforms platforms = new Platforms();
 
 
         public MainWindow() {
             InitializeComponent();
 
-            GameSelectorDropdown.ItemsSource = gameList;
+            GameSelectorDropdown.ItemsSource = GameList;
             GameSelectorDropdown.DisplayMemberPath = "DisplayName";
-            GameSelectorDropdown.SelectionChanged += (s, e) => checkModData();
+            GameSelectorDropdown.SelectionChanged += (s, e) => CheckModData();
             MouseDown += (s, e) => FocusManager.SetFocusedElement(this, this);
 
-            checkVersion();
-            locateInstalls();
-            checkStatus();
-            checkLaunchEnable();
-            refreshLaunchButton();
-            loadSelections();
+            CheckVersion();
+            LocateInstalls();
+            CheckStatus();
+            CheckLaunchEnable();
+            RefreshLaunchButton();
+            LoadSelections();
 
-            Thread checkGameStatus = new Thread(gameStatusThread);
+            Thread checkGameStatus = new Thread(GameStatusThread);
             checkGameStatus.IsBackground = true;
             checkGameStatus.Start();
         }
 
-        public void checkVersion() {
+        public void CheckVersion() {
             try {
                 using (var client = new WebClient()) {
                     client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
@@ -87,7 +86,7 @@ namespace FrostyFix4 {
             }
         }
 
-        public void locateInstalls() {
+        public void LocateInstalls() {
             // Get Games
             List<GameListItem> gameKeys = new List<GameListItem>();
 
@@ -103,101 +102,108 @@ namespace FrostyFix4 {
             foreach (GameListItem game in gameKeys) {
                 string path = Registry.LocalMachine.OpenSubKey(game.Path)?.GetValue("Install Dir")?.ToString();
                 if (File.Exists(path + game.FileName + ".exe")) 
-                    gameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
+                    GameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
             }
 
             //Get Launchers
             string origin = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Origin")?.GetValue("OriginPath")?.ToString();
             if (File.Exists(origin))
-                platforms.Origin = origin;
+                Platforms.Origin = origin;
             else
                 OriginPlat.IsEnabled = false;
             
             string eaDesktop = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Electronic Arts\EA Desktop")?.GetValue("ClientPath")?.ToString();
             if (File.Exists(eaDesktop))
-                platforms.EADesktop = eaDesktop;
+                Platforms.EADesktop = eaDesktop;
             else
                 EADPlat.IsEnabled = false;
 
             string epicGames = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\EpicGames\Unreal Engine")?.GetValue("INSTALLDIR")?.ToString() + "Launcher\\Portal\\Binaries\\Win32\\EpicGamesLauncher.exe";
             if (File.Exists(epicGames))
-                platforms.EpicGames = epicGames;
+                Platforms.EpicGames = epicGames;
             else
                 EGSPlat.IsEnabled = false;
 
-
-            OriginPlat.ToolTip = platforms.Origin;
-            EADPlat.ToolTip = platforms.EADesktop;
-            EGSPlat.ToolTip = platforms.EpicGames;
+            OriginPlat.ToolTip = Platforms.Origin;
+            EADPlat.ToolTip = Platforms.EADesktop;
+            EGSPlat.ToolTip = Platforms.EpicGames;
         }
 
-        public void checkStatus() {
-            string enabledPath = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
+        public void CheckStatus() {
+            string dataDir = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
             Process[] origin = Process.GetProcessesByName("Origin");
             Process[] eadesktop = Process.GetProcessesByName("EADesktop");
             Process[] epicgames = Process.GetProcessesByName("EpicGamesLauncher");
 
-            // Get Launcher Info
-            if (eadesktop.Length != 0) {
-                foreach (Process process in eadesktop) {
-                    var env = process.ReadEnvironmentVariables();
-                    enabledPath = env["GAME_DATA_DIR"];
-                    lbl_platform.Text = "EA Desktop";
-                }
-            }
-            if (epicgames.Length != 0 && enabledPath == null) {
-                foreach (Process process in epicgames) {
-                    var env = process.ReadEnvironmentVariables();
-                    enabledPath = env["GAME_DATA_DIR"];
-                    lbl_platform.Text = "Epic Games Launcher";
-                }
-            }
-            if (origin.Length != 0 && enabledPath == null) {
-                foreach (Process process in origin) {
-                    var env = process.ReadEnvironmentVariables();
-                    enabledPath = env["GAME_DATA_DIR"];
-                    lbl_platform.Text = "Origin";
-                }
-            }
-            if (enabledPath == Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User))
-                lbl_platform.Text = "Global";
-            if (enabledPath == null)
-                lbl_platform.Text = "";
-
-            // Get Game & Pack Info
-            if (enabledPath != null) {
-                GameListItem match = gameList.FirstOrDefault(s => enabledPath.Contains(s.Path));
-                string pack = new DirectoryInfo(enabledPath).Name;
-
-                lbl_enabled.Visibility = Visibility.Visible;
-                lbl_profile.Visibility = Visibility.Visible;
-                lbl_profile.Text = pack;
-                lbl_enabled_tooltip.Content = enabledPath;
-
-                if (match != null) 
-                    lbl_enabled.Text = match.DisplayName;
-                else if (enabledPath == "\\ModData" || !enabledPath.Contains("ModData")) 
-                    lbl_enabled.Text = "User Error when selecting path. Please click Disable Mods and try again";
-                else 
-                    lbl_enabled.Text = "Custom Game";
+            // Check if global, else try to get launcher
+            if (dataDir != null) {
+                CurrentPlat.Text = "Global";
             }
             else {
-                lbl_enabled.Visibility = Visibility.Collapsed;
-                lbl_profile.Visibility = Visibility.Collapsed;
+                if (eadesktop.Length != 0) {
+                    foreach (Process process in eadesktop) {
+                        var env = process.ReadEnvironmentVariables();
+                        dataDir = env["GAME_DATA_DIR"];
+                        CurrentPlat.Text = "EA Desktop";
+                    }
+                }
+                else if (epicgames.Length != 0) {
+                    foreach (Process process in epicgames) {
+                        var env = process.ReadEnvironmentVariables();
+                        dataDir = env["GAME_DATA_DIR"];
+                        CurrentPlat.Text = "Epic Games Launcher";
+                    }
+                }
+                else if (origin.Length != 0) {
+                    foreach (Process process in origin) {
+                        var env = process.ReadEnvironmentVariables();
+                        dataDir = env["GAME_DATA_DIR"];
+                        CurrentPlat.Text = "Origin";
+                    }
+                }
             }
+
+            // If still null, then nothing found
+            if (dataDir == null) {
+                CurrentGame.Visibility = Visibility.Collapsed;
+                CurrentPlat.Visibility = Visibility.Collapsed;
+                CurrentPack.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            // If invalid path, show error
+            if (dataDir == "\\ModData" || !dataDir.Contains("ModData")) {
+                string message = "Invalid ModData path found";
+                MessageBoxDialog.Show(message, this.Title, MessageBoxButton.OK, DialogSound.Error);
+                DisableMods();
+                return;
+            }
+
+            // Get Game & Pack Info
+            GameListItem game = GameList.FirstOrDefault(s => dataDir.Contains(s.Path));
+            if (game != null)
+                CurrentGame.Text = game.DisplayName;
+            else
+                CurrentGame.Text = "Custom Game";
+
+            CurrentGame.ToolTip = dataDir;
+            CurrentPack.Text = new DirectoryInfo(dataDir).Name;
+
+            CurrentGame.Visibility = Visibility.Visible;
+            CurrentPlat.Visibility = Visibility.Visible;
+            CurrentPack.Visibility = Visibility.Visible;
         }
 
-        public void gameStatusThread() {
+        public void GameStatusThread() {
             bool found = false;
-
             while (true) {
                 while (Settings.Default.backgroundThread) {
-                    Process[] games = gameList.SelectMany(game => Process.GetProcessesByName(game.FileName)).ToArray();
+                    Process[] games = GameList.SelectMany(game => Process.GetProcessesByName(game.FileName)).ToArray();
 
                     if (games.Length != 0) {
                         try {
                             foreach (Process process in games) {
-                                string game = gameList.Where(file => file.FileName == process.ProcessName).FirstOrDefault().DisplayName;
+                                string game = GameList.Where(file => file.FileName == process.ProcessName).FirstOrDefault().DisplayName;
                                 var env = process.ReadEnvironmentVariables();
                                 string[] args = process.ReadArgumentList().ToArray();
                                 string pack;
@@ -230,7 +236,7 @@ namespace FrostyFix4 {
             }
         }
 
-        public void checkModData() {
+        public void CheckModData() {
             string path = (GameSelectorDropdown.SelectedItem as GameListItem).Path + "ModData\\";
             Directory.CreateDirectory(path);
             ProfileList.Items.Clear();
@@ -244,17 +250,17 @@ namespace FrostyFix4 {
             }
 
             ProfileList.SelectedIndex = 0;
-            checkLaunchEnable();
+            CheckLaunchEnable();
         }
 
-        public async void checkLaunchEnable() {
+        public async void CheckLaunchEnable() {
             await Task.Delay(100);
             bool isChecked = EADPlat.IsChecked == true || EGSPlat.IsChecked == true || OriginPlat.IsChecked == true || GlobalPlat.IsChecked == true;
             LaunchButton.IsEnabled = GameSelectorDropdown.SelectedItem != null && isChecked;
         }
 
-        public async void launchWithMods() {
-            disableMods();
+        public async void LaunchWithMods() {
+            DisableMods();
 
             Mouse.OverrideCursor = Cursors.Wait;
 
@@ -272,16 +278,16 @@ namespace FrostyFix4 {
                 p.StartInfo.FileName = "cmd.exe";
                 p.StartInfo.Arguments = "/C set \"GAME_DATA_DIR=" + packPath + "\" && start \"\" \"";
                 if (OriginPlat.IsChecked == true) {
-                    p.StartInfo.Arguments += platforms.Origin;
-                    p.StartInfo.WorkingDirectory = Path.GetDirectoryName(platforms.Origin);
+                    p.StartInfo.Arguments += Platforms.Origin;
+                    p.StartInfo.WorkingDirectory = Path.GetDirectoryName(Platforms.Origin);
                 }
                 else if (EADPlat.IsChecked == true) {
-                    p.StartInfo.Arguments += platforms.EADesktop;
-                    p.StartInfo.WorkingDirectory = Path.GetDirectoryName(platforms.EADesktop);
+                    p.StartInfo.Arguments += Platforms.EADesktop;
+                    p.StartInfo.WorkingDirectory = Path.GetDirectoryName(Platforms.EADesktop);
                 }
                 else if (EGSPlat.IsChecked == true) {
-                    p.StartInfo.Arguments += platforms.EpicGames;
-                    p.StartInfo.WorkingDirectory = Path.GetDirectoryName(platforms.EpicGames);
+                    p.StartInfo.Arguments += Platforms.EpicGames;
+                    p.StartInfo.WorkingDirectory = Path.GetDirectoryName(Platforms.EpicGames);
                 }
                 p.StartInfo.Arguments += "\"";
                 p.Start();
@@ -290,10 +296,10 @@ namespace FrostyFix4 {
 
             Mouse.OverrideCursor = null;
             await Task.Delay(4000);
-            checkStatus();
+            CheckStatus();
         }
 
-        public async void launchGame() {
+        public async void LaunchGame() {
             await Task.Delay(5000);
 
             if (Settings.Default.launchGame == true && Settings.Default.frostyPath != null) {
@@ -308,7 +314,7 @@ namespace FrostyFix4 {
             }
         }
 
-        public void refreshLaunchButton() {
+        public void RefreshLaunchButton() {
             if (GlobalPlat.IsChecked == true) {
                 if (Settings.Default.launchGame && Settings.Default.frostyPath != null)
                     LaunchButton_text.Text = "Enable Mods Globally & Launch Game";
@@ -323,18 +329,18 @@ namespace FrostyFix4 {
             }
         }
 
-        public async void disableMods() {
+        public async void DisableMods() {
             Mouse.OverrideCursor = Cursors.Wait;
             Environment.SetEnvironmentVariable("GAME_DATA_DIR", "", EnvironmentVariableTarget.User);
 
-            foreach (var process in Process.GetProcessesByName("EADesktop")) process.Kill();
+            foreach (Process process in Process.GetProcessesByName("EADesktop")) process.Kill();
             foreach (var process in Process.GetProcessesByName("Origin")) process.Kill();
             foreach (var process in Process.GetProcessesByName("EpicGamesLauncher")) process.Kill();
             foreach (var process in Process.GetProcessesByName("steam")) process.Kill();
 
             await Task.Delay(2000);
             Mouse.OverrideCursor = null;
-            checkStatus();
+            CheckStatus();
         }
 
         private void ButtonSettings_Click(object sender, RoutedEventArgs e) {
@@ -344,22 +350,22 @@ namespace FrostyFix4 {
         }
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e) {
-            saveSelections();
-            launchWithMods();
-            if (Settings.Default.launchGame == true) launchGame();
+            SaveSelections();
+            LaunchWithMods();
+            if (Settings.Default.launchGame == true) LaunchGame();
         }
 
         private void DisableButton_Click(object sender, RoutedEventArgs e) {
-            saveSelections();
-            disableMods();
+            SaveSelections();
+            DisableMods();
         }
 
         private void Plat_Checked(object sender, RoutedEventArgs e) {
-            checkLaunchEnable();
-            refreshLaunchButton();
+            CheckLaunchEnable();
+            RefreshLaunchButton();
         }
 
-        private void saveSelections() {
+        private void SaveSelections() {
             List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
             Settings.Default.selectedGame = GameSelectorDropdown.SelectedIndex;
@@ -368,7 +374,7 @@ namespace FrostyFix4 {
             Settings.Default.Save();
         }
 
-        private void loadSelections() {
+        private void LoadSelections() {
             List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
             if (Settings.Default.selectedGame > -1) {

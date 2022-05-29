@@ -46,13 +46,9 @@
                 <ListBoxItem Content="ModData" IsSelected="True"/>
             </ListBox>
             <Separator Height="10" Margin="0,215,0,0" VerticalAlignment="Top"/>
-            <TextBlock x:Name="lbl_enabled" Margin="0,0,5,5" TextWrapping="Wrap" Text="Game" Width="300" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                <TextBlock.ToolTip>
-                    <ToolTip x:Name="lbl_enabled_tooltip" Background="Black" Foreground="White"/>
-                </TextBlock.ToolTip>
-            </TextBlock>
-            <TextBlock x:Name="lbl_profile" Margin="0,0,5,20" TextWrapping="Wrap" Text="Pack" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-            <TextBlock x:Name="lbl_platform" Margin="0,0,5,35" TextWrapping="Wrap" Text="Platform" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="CurrentGame" Margin="0,0,5,5" TextWrapping="Wrap" Text="Game" Width="300" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="CurrentPack" Margin="0,0,5,20" TextWrapping="Wrap" Text="Pack" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+            <TextBlock x:Name="CurrentPlat" Margin="0,0,5,35" TextWrapping="Wrap" Text="Platform" Width="502" TextAlignment="Right" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <Button Name="LaunchButton" HorizontalAlignment="Center" Margin="175,0,175,27" VerticalAlignment="Bottom" Width="230" Height="54" Click="LaunchButton_Click" IsEnabled="False">
                 <TextBlock x:Name="LaunchButton_text" Text="Launch with Mods enabled" TextWrapping="Wrap" TextAlignment="Center" Margin="2,0"/>
             </Button>
