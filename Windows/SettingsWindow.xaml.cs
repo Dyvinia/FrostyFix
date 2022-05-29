@@ -40,10 +40,8 @@ namespace FrostyFix4 {
             dialog.Title = "Select Frosty EXE";
             dialog.Filter = "Frosty (*.exe) |*.exe";
             dialog.FilterIndex = 2;
-
-            Nullable<bool> result = dialog.ShowDialog();
-            if (result == true) {
-                Settings.Default.frostyPath = dialog.FileName;
+            if (dialog.ShowDialog() == true) {
+                Settings.Default.FrostyPath = dialog.FileName;
                 Settings.Default.Save();
             }
         }

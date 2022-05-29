@@ -26,60 +26,60 @@ namespace FrostyFix4.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool launchGame {
+        public bool LaunchGame {
             get {
-                return ((bool)(this["launchGame"]));
+                return ((bool)(this["LaunchGame"]));
             }
             set {
-                this["launchGame"] = value;
+                this["LaunchGame"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string frostyPath {
+        public string FrostyPath {
             get {
-                return ((string)(this["frostyPath"]));
+                return ((string)(this["FrostyPath"]));
             }
             set {
-                this["frostyPath"] = value;
+                this["FrostyPath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool backgroundThread {
+        public bool BackgroundThread {
             get {
-                return ((bool)(this["backgroundThread"]));
+                return ((bool)(this["BackgroundThread"]));
             }
             set {
-                this["backgroundThread"] = value;
+                this["BackgroundThread"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("-1")]
-        public int selectedGame {
+        public int SelectedGame {
             get {
-                return ((int)(this["selectedGame"]));
+                return ((int)(this["SelectedGame"]));
             }
             set {
-                this["selectedGame"] = value;
+                this["SelectedGame"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("-1")]
-        public int selectedPlatform {
+        public int SelectedPlatform {
             get {
-                return ((int)(this["selectedPlatform"]));
+                return ((int)(this["SelectedPlatform"]));
             }
             set {
-                this["selectedPlatform"] = value;
+                this["SelectedPlatform"] = value;
             }
         }
     }
