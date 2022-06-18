@@ -50,7 +50,7 @@ By using this project or its source code, for any purpose and in any shape or fo
 - You **agree that Trans Rights are Human Rights** <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f3f3-26a7.png" width="15"/>
 - You **accept and recognize all LGBTQIA+ identities**
 - You **understand that Gender and Sex are not binary**
-- You **reject the false and hateful narratives in GOP propaganda and of other hateful political parties**
+- You **reject the false and hateful narratives in right-wing propaganda**
 
 ## Support
 If you still have questions and/or need support with FrostyFix **after reading the FAQ**, join the [BattlefrontModding Discord Server](https://discord.gg/advqsyv)
