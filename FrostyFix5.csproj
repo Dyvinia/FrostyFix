@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <OutputType>WinExe</OutputType>
+	  <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+	  <TargetPlatformVersion>10.0</TargetPlatformVersion>
+	  <Nullable>disable</Nullable>
+	  <UseWPF>true</UseWPF>
+	  <StartupObject>FrostyFix5.App</StartupObject>
+	  <ApplicationIcon>Resources\FrostyFix.ico</ApplicationIcon>
+
+	  <AssemblyName>FrostyFix</AssemblyName>
+	  <AssemblyTitle>FrostyFix 5</AssemblyTitle>
+	  <Version>5.0.0</Version>
+	  <Copyright>test</Copyright>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Fonts\GillSansNova-Bold.ttf" />
+    <None Remove="Fonts\GillSansNova-Book.ttf" />
+    <None Remove="Fonts\GillSansNova-CnBold.ttf" />
+    <None Remove="Fonts\GillSansNova-SemiBold.ttf" />
+    <None Remove="Fonts\GillSansNovaInline-Bold.ttf" />
+    <None Remove="Resources\FrostyFixNB.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\GillSansNova-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\GillSansNova-Book.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\GillSansNova-CnBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\GillSansNova-SemiBold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\GillSansNovaInline-Bold.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\FrostyFix.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\FrostyFixNB.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gapotchenko.FX.Diagnostics.Process" Version="2022.2.7" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

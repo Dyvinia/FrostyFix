@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace FrostyFix4.Dialogs {
+namespace FrostyFix5.Dialogs {
     public enum DialogSound {
         None,
         Notify,

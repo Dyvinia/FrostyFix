@@ -1,4 +1,4 @@
-﻿using FrostyFix4.Properties;
+﻿using FrostyFix5.Properties;
 using Microsoft.Win32;
 using System;
 using System.Configuration;
@@ -10,7 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 
-namespace FrostyFix4 {
+namespace FrostyFix5 {
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
     /// </summary>

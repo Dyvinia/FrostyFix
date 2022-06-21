@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace FrostyFix4.Themes
+namespace FrostyFix5.Themes
 {
     public partial class DarkTheme {
 

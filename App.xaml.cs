@@ -1,4 +1,4 @@
-﻿using FrostyFix4.Dialogs;
+﻿using FrostyFix5.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace FrostyFix4 {
+namespace FrostyFix5 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

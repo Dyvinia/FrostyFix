@@ -1,14 +1,14 @@
-﻿<Application x:Class="FrostyFix4.App"
+﻿<Application x:Class="FrostyFix5.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FrostyFix4"
+             xmlns:local="clr-namespace:FrostyFix5"
              StartupUri="Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            
+
             <!-- Logo -->
             <DrawingImage x:Key="FrostyFixLogo">
                 <DrawingImage.Drawing>

@@ -1,5 +1,5 @@
-﻿using FrostyFix4.Dialogs;
-using FrostyFix4.Properties;
+﻿using FrostyFix5.Dialogs;
+using FrostyFix5.Properties;
 using Gapotchenko.FX.Diagnostics;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.Win32;
@@ -20,7 +20,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace FrostyFix4 {
+namespace FrostyFix5 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
