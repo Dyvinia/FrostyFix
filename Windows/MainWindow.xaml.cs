@@ -178,7 +178,7 @@ namespace FrostyFix5 {
                 }
             }
 
-            // If still null, then nothing found
+            // Nothing found
             if (dataDir == null) {
                 CurrentGame.Visibility = Visibility.Collapsed;
                 CurrentPlat.Visibility = Visibility.Collapsed;
@@ -186,7 +186,7 @@ namespace FrostyFix5 {
                 return;
             }
 
-            // If invalid path, show error
+            // Check for invalid path
             if (dataDir == "\\ModData" || !dataDir.Contains("ModData")) {
                 string message = "Invalid ModData path found";
                 MessageBoxDialog.Show(message, this.Title, MessageBoxButton.OK, DialogSound.Error);
