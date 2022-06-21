@@ -32,7 +32,7 @@ namespace FrostyFix5 {
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             TabItem tab = Tabs.SelectedItem as TabItem;
-            this.Title = "FrostyFix 4: " + tab.Header;
+            this.Title = "FrostyFix 5: " + tab.Header;
         }
 
         private void FrostySelect_Click(object sender, RoutedEventArgs e) {

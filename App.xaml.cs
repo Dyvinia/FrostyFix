@@ -23,7 +23,7 @@ namespace FrostyFix5 {
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
             e.Handled = true;
-            string title = "FrostyFix 4";
+            string title = "FrostyFix 5";
             ExceptionDialog.Show(e.Exception, title, true);
         }
     }

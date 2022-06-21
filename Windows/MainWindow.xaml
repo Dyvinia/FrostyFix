@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FrostyFix5"
         mc:Ignorable="d"
-        Title="FrostyFix 4"
+        Title="FrostyFix 5"
         MinHeight="440" MinWidth="600"
         Height="440" Width="600"
         WindowStartupLocation="CenterScreen"

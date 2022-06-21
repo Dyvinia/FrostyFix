@@ -73,7 +73,7 @@ namespace FrostyFix5 {
                     
                     var result = version.CompareTo(latestVersion);
                     if (result < 0) {
-                        string message = "You are using an outdated version of FrostyFix 4. \nWould you like to download the latest version?";
+                        string message = "You are using an outdated version of FrostyFix. \nWould you like to download the latest version?";
                         MessageBoxResult Result = MessageBoxDialog.Show(message, this.Title, MessageBoxButton.YesNo, DialogSound.Notify);
                         if (Result == MessageBoxResult.Yes) {
                             Process.Start("https://github.com/Dyvinia/FrostyFix/releases/latest");
@@ -233,7 +233,7 @@ namespace FrostyFix5 {
                             Settings.Default.BackgroundThread = false;
                             Settings.Default.Save();
 
-                            string title = "FrostyFix 4";
+                            string title = "FrostyFix 5";
                             Task.Run(() => {
                                 ExceptionDialog.Show(ex, title, false, "Background thread has encountered an error and has been disabled:");
                             });
