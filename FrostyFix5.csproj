@@ -18,6 +18,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".gitattributes" />
+    <None Remove=".gitignore" />
     <None Remove="Fonts\GillSansNova-Bold.ttf" />
     <None Remove="Fonts\GillSansNova-Book.ttf" />
     <None Remove="Fonts\GillSansNova-CnBold.ttf" />
