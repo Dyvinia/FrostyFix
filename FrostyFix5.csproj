@@ -12,7 +12,8 @@
 	  <AssemblyName>FrostyFix</AssemblyName>
 	  <AssemblyTitle>FrostyFix 5</AssemblyTitle>
 	  <Version>5.0.0</Version>
-	  <Copyright>test</Copyright>
+	  <Copyright>Copyright © 2022 Dyvinia</Copyright>
+	  <Company>Dyvinia</Company>
 
   </PropertyGroup>
 
