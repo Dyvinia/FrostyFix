@@ -73,7 +73,7 @@ namespace FrostyFix4 {
                     
                     var result = version.CompareTo(latestVersion);
                     if (result < 0) {
-                        string message = "You are using an outdated version of FrostyFix 4. \nWould you like to download the latest version?";
+                        string message = "You are using an outdated version of FrostyFix. \nWould you like to download the latest version?";
                         MessageBoxResult Result = MessageBoxDialog.Show(message, this.Title, MessageBoxButton.YesNo, DialogSound.Notify);
                         if (Result == MessageBoxResult.Yes) {
                             Process.Start("https://github.com/Dyvinia/FrostyFix/releases/latest");
@@ -178,15 +178,15 @@ namespace FrostyFix4 {
                 }
             }
 
-            // If still null, then nothing found
-            if (dataDir == null) {
+            // Nothing found
+            if (String.IsNullOrEmpty(dataDir)) {
                 CurrentGame.Visibility = Visibility.Collapsed;
                 CurrentPlat.Visibility = Visibility.Collapsed;
                 CurrentPack.Visibility = Visibility.Collapsed;
                 return;
             }
 
-            // If invalid path, show error
+            // Check for invalid path
             if (dataDir == "\\ModData" || !dataDir.Contains("ModData")) {
                 string message = "Invalid ModData path found";
                 MessageBoxDialog.Show(message, this.Title, MessageBoxButton.OK, DialogSound.Error);
