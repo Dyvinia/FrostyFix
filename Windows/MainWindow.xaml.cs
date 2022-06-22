@@ -196,7 +196,12 @@ namespace FrostyFix4 {
 
             // Get Game & Pack Info
             GameListItem game = GameList.FirstOrDefault(s => dataDir.Contains(s.Path));
-            CurrentGame.Text = game.DisplayName;
+
+            if (game != null)
+                CurrentGame.Text = game.DisplayName;
+            else
+                CurrentGame.Text = "Custom Game";
+
             CurrentGame.ToolTip = dataDir;
             CurrentPack.Text = new DirectoryInfo(dataDir).Name;
 
