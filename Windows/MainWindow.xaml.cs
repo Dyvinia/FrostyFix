@@ -179,7 +179,7 @@ namespace FrostyFix5 {
             }
 
             // Nothing found
-            if (dataDir == null) {
+            if (String.IsNullOrEmpty(dataDir)) {
                 CurrentGame.Visibility = Visibility.Collapsed;
                 CurrentPlat.Visibility = Visibility.Collapsed;
                 CurrentPack.Visibility = Visibility.Collapsed;
