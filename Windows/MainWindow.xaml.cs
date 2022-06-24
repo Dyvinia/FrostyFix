@@ -148,7 +148,7 @@ namespace FrostyFix5 {
         public void CheckStatus() {
             // Check Global
             string dataDir = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
-            if (String.IsNullOrEmpty(dataDir))
+            if (!String.IsNullOrEmpty(dataDir))
                 CurrentPlat.Text = "Global";
 
             // Check Launchers
