@@ -88,9 +88,8 @@ namespace FrostyFix5 {
         }
 
         public void LocateInstalls() {
-            // Get Games
+            // List of games & registry keys. Add a new line to add new game
             List<GameListItem> gameKeys = new List<GameListItem>();
-
             gameKeys.Add(new GameListItem { DisplayName = "Star Wars: Battlefront", FileName = "starwarsbattlefront", Path = @"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront" });
             gameKeys.Add(new GameListItem { DisplayName = "Star Wars: Battlefront II", FileName = "starwarsbattlefrontii", Path = @"SOFTWARE\EA Games\STAR WARS Battlefront II" });
             gameKeys.Add(new GameListItem { DisplayName = "Battlefield One", FileName = "bf1", Path = @"SOFTWARE\WOW6432Node\EA Games\Battlefield 1" });
