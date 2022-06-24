@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -145,36 +146,32 @@ namespace FrostyFix5 {
         }
 
         public void CheckStatus() {
+            // Check Global
             string dataDir = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
-            Process[] origin = Process.GetProcessesByName("Origin");
-            Process[] eadesktop = Process.GetProcessesByName("EADesktop");
-            Process[] epicgames = Process.GetProcessesByName("EpicGamesLauncher");
-
-            // Check if global, else try to get launcher
-            if (dataDir != null) {
+            if (String.IsNullOrEmpty(dataDir))
                 CurrentPlat.Text = "Global";
+
+            // Check Launchers
+            foreach (Process p in Process.GetProcessesByName("EADesktop")) {
+                StringDictionary env = p.ReadEnvironmentVariables();
+                if (env.ContainsKey("GAME_DATA_DIR")) {
+                    dataDir = env["GAME_DATA_DIR"];
+                    CurrentPlat.Text = "EA Desktop";
+                }
+
             }
-            else {
-                if (eadesktop.Length != 0) {
-                    foreach (Process process in eadesktop) {
-                        var env = process.ReadEnvironmentVariables();
-                        dataDir = env["GAME_DATA_DIR"];
-                        CurrentPlat.Text = "EA Desktop";
-                    }
+            foreach (Process p in Process.GetProcessesByName("EpicGamesLauncher")) {
+                StringDictionary env = p.ReadEnvironmentVariables();
+                if (env.ContainsKey("GAME_DATA_DIR")) {
+                    dataDir = env["GAME_DATA_DIR"];
+                    CurrentPlat.Text = "Epic Games Launcher";
                 }
-                else if (epicgames.Length != 0) {
-                    foreach (Process process in epicgames) {
-                        var env = process.ReadEnvironmentVariables();
-                        dataDir = env["GAME_DATA_DIR"];
-                        CurrentPlat.Text = "Epic Games Launcher";
-                    }
-                }
-                else if (origin.Length != 0) {
-                    foreach (Process process in origin) {
-                        var env = process.ReadEnvironmentVariables();
-                        dataDir = env["GAME_DATA_DIR"];
-                        CurrentPlat.Text = "Origin";
-                    }
+            }
+            foreach (Process p in Process.GetProcessesByName("Origin")) {
+                StringDictionary env = p.ReadEnvironmentVariables();
+                if (env.ContainsKey("GAME_DATA_DIR")) {
+                    dataDir = env["GAME_DATA_DIR"];
+                    CurrentPlat.Text = "Origin";
                 }
             }
 
