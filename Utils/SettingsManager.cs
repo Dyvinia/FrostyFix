@@ -6,26 +6,32 @@ using System.Reflection;
 using System.Text.Json;
 
 public abstract class SettingsManager<T> where T : SettingsManager<T>, new() {
-    private static readonly string filePath = GetConfigPath($"config.json");
+    public static readonly string ConfigPath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+        Assembly.GetEntryAssembly().GetName().Name,
+        $"config.json"
+        );
 
     public static T Instance { get; private set; }
 
-    private static string GetConfigPath(string fileName) {
-        string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        return Path.Combine(appData, Assembly.GetEntryAssembly().GetName().Name, fileName);
-    }
-
     public static void Load() {
-        if (File.Exists(filePath))
-            Instance = JsonSerializer.Deserialize<T>(File.ReadAllText(filePath));
-        else
+        if (File.Exists(ConfigPath)) {
+            try {
+                Instance = JsonSerializer.Deserialize<T>(File.ReadAllText(ConfigPath));
+            }
+            catch {
+                Instance = new T();
+            }
+        }
+        else {
             Instance = new T();
+        } 
     }
 
     public static void Save() {
         string json = JsonSerializer.Serialize(Instance, new JsonSerializerOptions { WriteIndented = true });
-        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-        File.WriteAllText(filePath, json);
+        Directory.CreateDirectory(Path.GetDirectoryName(ConfigPath));
+        File.WriteAllText(ConfigPath, json);
     }
 
     public static void Reset() {
