@@ -1,4 +1,4 @@
-# FrostyFix 4
+# FrostyFix
 [![Latest Release](https://img.shields.io/github/v/release/Dyvinia/FrostyFix?style=for-the-badge&color=blueviolet&label=Latest%20Release&cacheSeconds=3600)](https://github.com/Dyvinia/FrostyFix/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/Dyvinia/FrostyFix/total?style=for-the-badge&color=blueviolet&label=Downloads&cacheSeconds=3600)](https://github.com/Dyvinia/FrostyFix/releases)
 
