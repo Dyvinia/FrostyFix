@@ -9,10 +9,10 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
-using FrostyFix5.Dialogs;
+using FrostyFix.Dialogs;
 using PropertyChanged;
 
-namespace FrostyFix5 {
+namespace FrostyFix {
 
     [AddINotifyPropertyChangedInterface]
     public class Settings : SettingsManager<Settings> {

@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace FrostyFix5.Dialogs {
+namespace FrostyFix.Dialogs {
     /// <summary>
     /// Interaction logic for ExceptionWindow.xaml
     /// </summary>

@@ -17,9 +17,9 @@ using Gapotchenko.FX.Diagnostics;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.Win32;
 using Newtonsoft.Json;
-using FrostyFix5.Dialogs;
+using FrostyFix.Dialogs;
 
-namespace FrostyFix5 {
+namespace FrostyFix {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

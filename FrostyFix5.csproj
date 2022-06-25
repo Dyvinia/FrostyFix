@@ -6,7 +6,7 @@
 	  <TargetPlatformVersion>10.0</TargetPlatformVersion>
 	  <Nullable>disable</Nullable>
 	  <UseWPF>true</UseWPF>
-	  <StartupObject>FrostyFix5.App</StartupObject>
+	  <StartupObject>FrostyFix.App</StartupObject>
 	  <ApplicationIcon>Resources\FrostyFix.ico</ApplicationIcon>
 
 	  <AssemblyName>FrostyFix</AssemblyName>

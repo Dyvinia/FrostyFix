@@ -10,7 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 
-namespace FrostyFix5 {
+namespace FrostyFix {
     /// <summary>
     /// Interaction logic for SettingsWindow.xaml
     /// </summary>
