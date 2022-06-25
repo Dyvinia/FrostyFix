@@ -31,12 +31,12 @@ namespace FrostyFix {
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e) {
-            Process.Start(e.Uri.ToString());
+            Process.Start(new ProcessStartInfo(e.Uri.ToString()) { UseShellExecute = true });
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e) {
             TabItem tab = Tabs.SelectedItem as TabItem;
-            this.Title = "FrostyFix 5: " + tab.Header;
+            Title = "FrostyFix: " + tab.Header;
         }
 
         private void FrostySelect_Click(object sender, RoutedEventArgs e) {
@@ -57,6 +57,22 @@ namespace FrostyFix {
             if (dialog.ShowDialog() == true) {
                 Settings.Instance.CustomGamePath = dialog.FileName;
             }
+        }
+
+        private void CreditButton_Click(object sender, RoutedEventArgs e) {
+            Button button = sender as Button;
+            string url;
+            switch (button.Content) {
+                case "Dyvinia": url = "https://github.com/Dyvinia"; break;
+                case "BattleDash": url = "https://battleda.sh/"; break;
+                case "VictorPL": url = "https://twitter.com/VictorPL2003/"; break;
+                default: return;
+            }
+            ProcessStartInfo p = new() {
+                FileName = url,
+                UseShellExecute = true
+            };
+            Process.Start(p);
         }
 
         private void KeyHandler(object sender, KeyEventArgs e) {

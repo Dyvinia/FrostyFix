@@ -22,6 +22,7 @@ namespace FrostyFix {
     public class Settings : SettingsManager<Settings> {
         public bool LaunchGame { get; set; } = false;
         public bool BackgroundThread { get; set; } = true;
+        public bool UpdateChecker { get; set; } = true;
 
         public string FrostyPath { get; set; }
         public string CustomGamePath { get; set; }
@@ -39,7 +40,9 @@ namespace FrostyFix {
 
         public App() {
             Settings.Load();
-            CheckVersion();
+
+            if (Settings.Instance.UpdateChecker) 
+                CheckVersion();
 
             DispatcherUnhandledException += Application_DispatcherUnhandledException;
         }

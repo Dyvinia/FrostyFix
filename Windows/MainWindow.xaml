@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="FrostyFix 5"
+        Title="FrostyFix"
         MinHeight="440" MinWidth="600"
         Height="440" Width="600"
         WindowStartupLocation="CenterScreen"

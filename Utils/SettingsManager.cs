@@ -11,8 +11,7 @@ namespace FrostyFix.Config {
         public static readonly string ConfigPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             Assembly.GetEntryAssembly().GetName().Name,
-            $"config.json"
-            );
+            "config.json");
 
         public static void Load() {
             try {
