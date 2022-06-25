@@ -1,5 +1,4 @@
 ﻿using FrostyFix5.Dialogs;
-using FrostyFix5.Properties;
 using Gapotchenko.FX.Diagnostics;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.Win32;
@@ -19,7 +18,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace FrostyFix5 {
     /// <summary>
@@ -111,9 +109,9 @@ namespace FrostyFix5 {
                     GameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
             }
 
-            if (File.Exists(Settings.Default.CustomGamePath)) {
-                string fileName = Path.GetFileName(Settings.Default.CustomGamePath);
-                GameList.Add(new GameListItem { DisplayName = $"Custom Game ({fileName})", FileName = Path.GetFileNameWithoutExtension(fileName), Path = Path.GetDirectoryName(Settings.Default.CustomGamePath) + "\\" });
+            if (File.Exists(Settings.Instance.CustomGamePath)) {
+                string fileName = Path.GetFileName(Settings.Instance.CustomGamePath);
+                GameList.Add(new GameListItem { DisplayName = $"Custom Game ({fileName})", FileName = Path.GetFileNameWithoutExtension(fileName), Path = Path.GetDirectoryName(Settings.Instance.CustomGamePath) + "\\" });
             }
 
             // Restore index
@@ -209,7 +207,7 @@ namespace FrostyFix5 {
         public void GameStatusThread() {
             bool found = false;
             while (true) {
-                while (Settings.Default.BackgroundThread) {
+                while (Settings.Instance.BackgroundThread) {
                     Process[] games = GameList.SelectMany(game => Process.GetProcessesByName(game.FileName)).ToArray();
 
                     if (games.Length != 0) {
@@ -231,8 +229,8 @@ namespace FrostyFix5 {
                             }
                         }
                         catch (Exception ex) {
-                            Settings.Default.BackgroundThread = false;
-                            Settings.Default.Save();
+                            Settings.Instance.BackgroundThread = false;
+                            Settings.Save();
 
                             string title = "FrostyFix 5";
                             Task.Run(() => {
@@ -318,12 +316,12 @@ namespace FrostyFix5 {
         public async void LaunchGame() {
             await Task.Delay(5000);
 
-            if (Settings.Default.LaunchGame == true && Settings.Default.FrostyPath != null) {
+            if (Settings.Instance.LaunchGame == true && Settings.Instance.FrostyPath != null) {
                 string pack = PackList.SelectedItem.ToString();
                 using (Process frosty = new Process()) {
-                    frosty.StartInfo.FileName = Settings.Default.FrostyPath;
+                    frosty.StartInfo.FileName = Settings.Instance.FrostyPath;
                     frosty.StartInfo.UseShellExecute = false;
-                    frosty.StartInfo.WorkingDirectory = Path.GetDirectoryName(Settings.Default.FrostyPath);
+                    frosty.StartInfo.WorkingDirectory = Path.GetDirectoryName(Settings.Instance.FrostyPath);
                     frosty.StartInfo.Arguments = "-launch \"" + pack + "\"";
                     frosty.Start();
                 }
@@ -332,13 +330,13 @@ namespace FrostyFix5 {
 
         public void RefreshLaunchButton() {
             if (GlobalPlat.IsChecked == true) {
-                if (Settings.Default.LaunchGame && Settings.Default.FrostyPath != null)
+                if (Settings.Instance.LaunchGame && Settings.Instance.FrostyPath != null)
                     LaunchButtonContent.Text = "Enable Mods Globally & Launch Game";
                 else 
                     LaunchButtonContent.Text = "Enable Mods Globally";
             }
             else {
-                if (Settings.Default.LaunchGame && Settings.Default.FrostyPath != null)
+                if (Settings.Instance.LaunchGame && Settings.Instance.FrostyPath != null)
                     LaunchButtonContent.Text = "Launch Game with Mods Enabled";
                 else 
                     LaunchButtonContent.Text = "Launch with Mods Enabled";
@@ -363,13 +361,14 @@ namespace FrostyFix5 {
             SettingsWindow settingsWindow = new SettingsWindow();
             settingsWindow.Owner = this;
             settingsWindow.ShowDialog();
+            Settings.Save();
             LocateInstalls();
         }
 
         private void LaunchButton_Click(object sender, RoutedEventArgs e) {
             SaveSelections();
             LaunchWithMods();
-            if (Settings.Default.LaunchGame == true) LaunchGame();
+            if (Settings.Instance.LaunchGame == true) LaunchGame();
         }
 
         private void DisableButton_Click(object sender, RoutedEventArgs e) {
@@ -385,21 +384,21 @@ namespace FrostyFix5 {
         private void SaveSelections() {
             List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
-            Settings.Default.SelectedGame = GameSelectorDropdown.SelectedIndex;
-            Settings.Default.SelectedPlatform = radioButtons.IndexOf(radioButtons.FirstOrDefault(r => (bool)r.IsChecked));
+            Settings.Instance.SelectedGame = GameSelectorDropdown.SelectedIndex;
+            Settings.Instance.SelectedPlatform = radioButtons.IndexOf(radioButtons.FirstOrDefault(r => (bool)r.IsChecked));
 
-            Settings.Default.Save();
+            Settings.Save();
         }
 
         private void LoadSelections() {
             List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
-            if (Settings.Default.SelectedGame > -1)
-                if (Settings.Default.SelectedGame < GameSelectorDropdown.Items.Count - 1)
-                    GameSelectorDropdown.SelectedIndex = Settings.Default.SelectedGame;
+            if (Settings.Instance.SelectedGame > -1)
+                if (Settings.Instance.SelectedGame < GameSelectorDropdown.Items.Count - 1)
+                    GameSelectorDropdown.SelectedIndex = Settings.Instance.SelectedGame;
 
-            if (Settings.Default.SelectedPlatform > -1)
-                radioButtons[Settings.Default.SelectedPlatform].IsChecked = true;
+            if (Settings.Instance.SelectedPlatform > -1)
+                radioButtons[Settings.Instance.SelectedPlatform].IsChecked = true;
         }
 
         protected override void OnClosed(EventArgs e) {

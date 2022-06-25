@@ -1,6 +1,6 @@
-﻿using FrostyFix5.Properties;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -19,11 +19,14 @@ namespace FrostyFix5 {
             InitializeComponent();
 
             VersionText.Text = App.Version;
+            DataContext = Settings.Instance;
 
             MouseDown += (s, e) => FocusManager.SetFocusedElement(this, this);
-            LaunchGameOption.Click += (s, e) => Settings.Default.Save();
-            BackgroundOption.Click += (s, e) => Settings.Default.Save();
-            ResetButton.Click += (s, e) => Settings.Default.Reset();
+
+            ResetButton.Click += (s, e) => {
+                Settings.Reset();
+                Settings.Save();
+            };
         }
 
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e) {
@@ -41,8 +44,7 @@ namespace FrostyFix5 {
             dialog.Filter = "Frosty (*.exe) |*.exe";
             dialog.FilterIndex = 2;
             if (dialog.ShowDialog() == true) {
-                Settings.Default.FrostyPath = dialog.FileName;
-                Settings.Default.Save();
+                Settings.Instance.FrostyPath = dialog.FileName;
             }
         }
 
@@ -52,8 +54,7 @@ namespace FrostyFix5 {
             dialog.Filter = "Game Executable (*.exe) |*.exe";
             dialog.FilterIndex = 2;
             if (dialog.ShowDialog() == true) {
-                Settings.Default.CustomGamePath = dialog.FileName;
-                Settings.Default.Save();
+                Settings.Instance.CustomGamePath = dialog.FileName;
             }
         }
     }

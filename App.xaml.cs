@@ -1,23 +1,42 @@
-﻿using FrostyFix5.Dialogs;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
+using FrostyFix5.Dialogs;
+using PropertyChanged;
 
 namespace FrostyFix5 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
+
+    [AddINotifyPropertyChangedInterface]
+    public class Settings : SettingsManager<Settings> {
+        public bool LaunchGame { get; set; } = false;
+        public bool BackgroundThread { get; set; } = true;
+
+        public string FrostyPath { get; set; }
+        public string CustomGamePath { get; set; }
+
+        public int SelectedGame { get; set; } = -1;
+        public int SelectedPlatform { get; set; } = -1;
+    }
+
+
     public partial class App : Application {
 
         public static readonly string Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
 
         public App() {
+            Settings.Load();
+
             DispatcherUnhandledException += Application_DispatcherUnhandledException;
         }
 
