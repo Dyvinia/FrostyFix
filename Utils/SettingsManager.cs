@@ -6,13 +6,13 @@ using System.Reflection;
 using System.Text.Json;
 
 public abstract class SettingsManager<T> where T : SettingsManager<T>, new() {
+    public static T Instance { get; private set; }
+
     public static readonly string ConfigPath = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         Assembly.GetEntryAssembly().GetName().Name,
         $"config.json"
         );
-
-    public static T Instance { get; private set; }
 
     public static void Load() {
         try {

@@ -13,9 +13,6 @@ using FrostyFix5.Dialogs;
 using PropertyChanged;
 
 namespace FrostyFix5 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
 
     [AddINotifyPropertyChangedInterface]
     public class Settings : SettingsManager<Settings> {
@@ -29,7 +26,9 @@ namespace FrostyFix5 {
         public int SelectedPlatform { get; set; } = -1;
     }
 
-
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// </summary>
     public partial class App : Application {
 
         public static readonly string Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
