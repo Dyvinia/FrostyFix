@@ -1,9 +1,4 @@
-﻿using FrostyFix5.Dialogs;
-using Gapotchenko.FX.Diagnostics;
-using Microsoft.Toolkit.Uwp.Notifications;
-using Microsoft.Win32;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -18,6 +13,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Gapotchenko.FX.Diagnostics;
+using Microsoft.Toolkit.Uwp.Notifications;
+using Microsoft.Win32;
+using Newtonsoft.Json;
+using FrostyFix5.Dialogs;
 
 namespace FrostyFix5 {
     /// <summary>
@@ -25,12 +25,12 @@ namespace FrostyFix5 {
     /// </summary>
     public partial class MainWindow : Window {
 
-        public class GameListItem {
+        public class Game {
             public string DisplayName { get; set; }
             public string FileName { get; set; }
             public string Path { get; set; }
         }
-        public ObservableCollection<GameListItem> GameList = new ObservableCollection<GameListItem>();
+        public ObservableCollection<Game> GameList = new();
 
         public static class Platforms {
             public static string Origin { get; set; }
@@ -54,8 +54,7 @@ namespace FrostyFix5 {
             RefreshLaunchButton();
             LoadSelections();
 
-            Thread checkGameStatus = new Thread(GameStatusThread);
-            checkGameStatus.IsBackground = true;
+            Thread checkGameStatus = new(GameStatusThread) { IsBackground = true };
             checkGameStatus.Start();
         }
 
@@ -87,15 +86,16 @@ namespace FrostyFix5 {
 
         public void LocateInstalls() {
             // List of games & registry keys. Add a new line to add new game
-            List<GameListItem> gameKeys = new List<GameListItem>();
-            gameKeys.Add(new GameListItem { DisplayName = "Star Wars: Battlefront", FileName = "starwarsbattlefront", Path = @"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront" });
-            gameKeys.Add(new GameListItem { DisplayName = "Star Wars: Battlefront II", FileName = "starwarsbattlefrontii", Path = @"SOFTWARE\EA Games\STAR WARS Battlefront II" });
-            gameKeys.Add(new GameListItem { DisplayName = "Battlefield One", FileName = "bf1", Path = @"SOFTWARE\WOW6432Node\EA Games\Battlefield 1" });
-            gameKeys.Add(new GameListItem { DisplayName = "Mass Effect: Andromeda", FileName = "MassEffectAndromeda", Path = @"SOFTWARE\WOW6432Node\BioWare\Mass Effect Andromeda" });
-            gameKeys.Add(new GameListItem { DisplayName = "Need for Speed", FileName = "NFS16", Path = @"SOFTWARE\EA Games\Need for Speed" });
-            gameKeys.Add(new GameListItem { DisplayName = "Need for Speed: Payback", FileName = "NeedForSpeedPayback", Path = @"SOFTWARE\EA Games\Need for Speed Payback" });
-            gameKeys.Add(new GameListItem { DisplayName = "Plants vs. Zombies: Garden Warfare 2", FileName = "GW2.Main_Win64_Retail", Path = @"SOFTWARE\PopCap\Plants vs Zombies GW2" });
-            gameKeys.Add(new GameListItem { DisplayName = "Dragon Age: Inquisition", FileName = "DragonAgeInquisition", Path = @"SOFTWARE\Wow6432Node\Bioware\Dragon Age Inquisition" });
+            List<Game> gameKeys = new() {
+                new Game { DisplayName = "Star Wars: Battlefront", FileName = "starwarsbattlefront", Path = @"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront" },
+                new Game { DisplayName = "Star Wars: Battlefront II", FileName = "starwarsbattlefrontii", Path = @"SOFTWARE\EA Games\STAR WARS Battlefront II" },
+                new Game { DisplayName = "Battlefield One", FileName = "bf1", Path = @"SOFTWARE\WOW6432Node\EA Games\Battlefield 1" },
+                new Game { DisplayName = "Mass Effect: Andromeda", FileName = "MassEffectAndromeda", Path = @"SOFTWARE\WOW6432Node\BioWare\Mass Effect Andromeda" },
+                new Game { DisplayName = "Need for Speed", FileName = "NFS16", Path = @"SOFTWARE\EA Games\Need for Speed" },
+                new Game { DisplayName = "Need for Speed: Payback", FileName = "NeedForSpeedPayback", Path = @"SOFTWARE\EA Games\Need for Speed Payback" },
+                new Game { DisplayName = "Plants vs. Zombies: Garden Warfare 2", FileName = "GW2.Main_Win64_Retail", Path = @"SOFTWARE\PopCap\Plants vs Zombies GW2" },
+                new Game { DisplayName = "Dragon Age: Inquisition", FileName = "DragonAgeInquisition", Path = @"SOFTWARE\Wow6432Node\Bioware\Dragon Age Inquisition" }
+            };
 
             // Save selected Index, then clear
             int index = GameSelectorDropdown.SelectedIndex;
@@ -103,15 +103,15 @@ namespace FrostyFix5 {
             GameList.Clear();
 
             // Fill Game List
-            foreach (GameListItem game in gameKeys) {
+            foreach (Game game in gameKeys) {
                 string path = Registry.LocalMachine.OpenSubKey(game.Path)?.GetValue("Install Dir")?.ToString();
                 if (File.Exists(path + game.FileName + ".exe")) 
-                    GameList.Add(new GameListItem { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
+                    GameList.Add(new Game { DisplayName = game.DisplayName, FileName = game.FileName, Path = path });
             }
 
             if (File.Exists(Settings.Instance.CustomGamePath)) {
                 string fileName = Path.GetFileName(Settings.Instance.CustomGamePath);
-                GameList.Add(new GameListItem { DisplayName = $"Custom Game ({fileName})", FileName = Path.GetFileNameWithoutExtension(fileName), Path = Path.GetDirectoryName(Settings.Instance.CustomGamePath) + "\\" });
+                GameList.Add(new Game { DisplayName = $"Custom Game ({fileName})", FileName = Path.GetFileNameWithoutExtension(fileName), Path = Path.GetDirectoryName(Settings.Instance.CustomGamePath) + "\\" });
             }
 
             // Restore index
@@ -189,7 +189,7 @@ namespace FrostyFix5 {
             }
 
             // Get Game & Pack Info
-            GameListItem game = GameList.FirstOrDefault(s => dataDir.Contains(s.Path));
+            Game game = GameList.FirstOrDefault(s => dataDir.Contains(s.Path));
 
             if (game != null)
                 CurrentGame.Text = game.DisplayName;
@@ -253,7 +253,7 @@ namespace FrostyFix5 {
             if (GameSelectorDropdown.SelectedItem == null) return;
 
             // Fill list
-            string path = (GameSelectorDropdown.SelectedItem as GameListItem).Path + "ModData\\";
+            string path = (GameSelectorDropdown.SelectedItem as Game).Path + "ModData\\";
             Directory.CreateDirectory(path);
 
             if (Directory.Exists(path + "\\Data") || (Directory.GetDirectories(path).Length == 0)) 
@@ -279,7 +279,7 @@ namespace FrostyFix5 {
             Mouse.OverrideCursor = Cursors.Wait;
 
             // Locate ModData
-            string path = (GameSelectorDropdown.SelectedItem as GameListItem).Path + "ModData\\";
+            string path = (GameSelectorDropdown.SelectedItem as Game).Path + "ModData\\";
             string pack = PackList.SelectedItem.ToString();
             string packPath = path + pack;
 
@@ -287,7 +287,7 @@ namespace FrostyFix5 {
                 packPath = path;
 
             if (GlobalPlat.IsChecked == false) {
-                Process p = new Process();
+                Process p = new();
                 p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 p.StartInfo.FileName = "cmd.exe";
                 p.StartInfo.Arguments = "/C set \"GAME_DATA_DIR=" + packPath + "\" && start \"\" \"";
@@ -318,7 +318,7 @@ namespace FrostyFix5 {
 
             if (Settings.Instance.LaunchGame == true && Settings.Instance.FrostyPath != null) {
                 string pack = PackList.SelectedItem.ToString();
-                using (Process frosty = new Process()) {
+                using (Process frosty = new()) {
                     frosty.StartInfo.FileName = Settings.Instance.FrostyPath;
                     frosty.StartInfo.UseShellExecute = false;
                     frosty.StartInfo.WorkingDirectory = Path.GetDirectoryName(Settings.Instance.FrostyPath);
@@ -358,8 +358,7 @@ namespace FrostyFix5 {
         }
 
         private void ButtonSettings_Click(object sender, RoutedEventArgs e) {
-            SettingsWindow settingsWindow = new SettingsWindow();
-            settingsWindow.Owner = this;
+            SettingsWindow settingsWindow = new() { Owner = this };
             settingsWindow.ShowDialog();
             Settings.Save();
             LocateInstalls();
@@ -382,7 +381,7 @@ namespace FrostyFix5 {
         }
 
         private void SaveSelections() {
-            List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
+            List<RadioButton> radioButtons = new() { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
             Settings.Instance.SelectedGame = GameSelectorDropdown.SelectedIndex;
             Settings.Instance.SelectedPlatform = radioButtons.IndexOf(radioButtons.FirstOrDefault(r => (bool)r.IsChecked));
@@ -391,7 +390,7 @@ namespace FrostyFix5 {
         }
 
         private void LoadSelections() {
-            List<RadioButton> radioButtons = new List<RadioButton> { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
+            List<RadioButton> radioButtons = new() { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
             if (Settings.Instance.SelectedGame > -1)
                 if (Settings.Instance.SelectedGame < GameSelectorDropdown.Items.Count - 1)
