@@ -2205,7 +2205,7 @@
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="True"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
         <Setter Property="Background" Value="{StaticResource ContainerGridBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlDefaultBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BackgroundColour}"/>
         <Setter Property="Foreground" Value="{StaticResource ControlBrightDefaultBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1,0"/>
         <Setter Property="Width" Value="15"/>
@@ -2215,19 +2215,19 @@
                 <ControlTemplate TargetType="{x:Type ScrollBar}">
                     <Grid x:Name="Bg" SnapsToDevicePixels="true">
                         <Grid.RowDefinitions>
-                            <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+                            <RowDefinition MaxHeight="0"/>
                             <RowDefinition Height="0.00001*"/>
-                            <RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+                            <RowDefinition MaxHeight="0"/>
                         </Grid.RowDefinitions>
                         
                         <Button x:Name="PART_LineUpButton" 
                                         Command="{x:Static ScrollBar.LineUpCommand}" 
-                                        BorderThickness="1 1 1 0">
+                                        BorderThickness="1 0 0 1" Background="Transparent">
                             <Path x:Name="ArrowTop" Data="M 0,4 C0,4 0,6 0,6 0,6 3.5,2.5 3.5,2.5 3.5,2.5 7,6 7,6 7,6 7,4 7,4 7,4 3.5,0.5 3.5,0.5 3.5,0.5 0,4 0,4 z"
-                                  Fill="{StaticResource ControlGlythColour}" Margin="3,4,3,3" Stretch="Uniform"/>
+                                  Fill="{StaticResource ControlGlythColour}" Margin="3" Stretch="Uniform"/>
                         </Button>
                         <Border BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="1 0 1 0" 
+                                BorderThickness="1 0 0 0" 
                                 Background="{TemplateBinding Background}" 
                                 Grid.Row="1">
                             <Track x:Name="PART_Track" IsDirectionReversed="true"  Grid.Row="1">
@@ -2245,11 +2245,11 @@
 
                         <Button x:Name="PART_LineDownButton" 
                                         Command="{x:Static ScrollBar.LineDownCommand}"
-                                         BorderThickness="1 0 1 1"
+                                         BorderThickness="1 1 0 0" Background="Transparent"
                                         Grid.Row="2">
                             <Path x:Name="ArrowBottom"
                                   Data="M 0,2.5 C0,2.5 0,0.5 0,0.5 0,0.5 3.5,4 3.5,4 3.5,4 7,0.5 7,0.5 7,0.5 7,2.5 7,2.5 7,2.5 3.5,6 3.5,6 3.5,6 0,2.5 0,2.5 z" 
-                                  Fill="{StaticResource ControlGlythColour}" Margin="3,4,3,3" Stretch="Uniform"/>
+                                  Fill="{StaticResource ControlGlythColour}" Margin="3" Stretch="Uniform"/>
                         </Button>
                         
                     </Grid>
@@ -2584,6 +2584,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Background" Value="{StaticResource ControlBrightDefaultBackground}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ControlBrightDefaultBorderBrush}"/>
+        <Setter Property="Margin" Value="1 1 1 2"/>
         <Setter Property="IsTabStop" Value="false"/>
         <Setter Property="Template">
             <Setter.Value>
