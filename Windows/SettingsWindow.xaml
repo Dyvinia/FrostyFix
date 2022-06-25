@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:p="clr-namespace:FrostyFix5.Properties"
         xmlns:local="clr-namespace:FrostyFix5"
         mc:Ignorable="d"
         ResizeMode="NoResize"
@@ -97,7 +96,7 @@ VictorPL - Original Script</TextBox>
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" x:Name="FrostyPath" Text="{Binding Path=(local:AppSettings.FrostyPath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Source={x:Static p:Settings.Default}, Path=FrostyPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Grid.Column="0" x:Name="FrostyPath" Text="{Binding Path=(local:AppSettings.FrostyPath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Path=(local:AppSettings.FrostyPath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Button Grid.Column="2" x:Name="FrostySelect" Content="Select..." Height="20" HorizontalAlignment="Right" Width="58" Click="FrostySelect_Click" VerticalAlignment="Top"/>
                         </Grid>
                     </StackPanel>
@@ -112,7 +111,7 @@ VictorPL - Original Script</TextBox>
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" x:Name="CustomGamePath" Text="{Binding Path=(local:AppSettings.CustomGamePath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Source={x:Static p:Settings.Default}, Path=CustomGamePath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Grid.Column="0" x:Name="CustomGamePath" Text="{Binding Path=(local:AppSettings.CustomGamePath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Path=(local:AppSettings.CustomGamePath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Button Grid.Column="2" x:Name="CustomGameSelect" Content="Select..." Height="20" HorizontalAlignment="Right" Width="58" Click="CustomGameSelect_Click" VerticalAlignment="Top"/>
                         </Grid>
                     </StackPanel>
