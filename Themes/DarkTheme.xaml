@@ -17,7 +17,7 @@
     <SolidColorBrush x:Key="ControlDarkerBackground"             Color="#FF2A2A2A" />
     <SolidColorBrush x:Key="ControlDarkerBorderBrush"            Color="#FF2F2F2F" />
     <SolidColorBrush x:Key="ControlDefaultBackground"            Color="#FF2D2D2D" />
-    <SolidColorBrush x:Key="ControlDefaultBorderBrush"           Color="#FF323232" />
+    <SolidColorBrush x:Key="ControlDefaultBorderBrush"           Color="#FF2D2D2D" />
     <SolidColorBrush x:Key="ControlBrightDefaultBackground"      Color="#FF343434" />
     <SolidColorBrush x:Key="ControlBrightDefaultBorderBrush"     Color="#FF3C3C3C" />
     <SolidColorBrush x:Key="ControlDisabledBackground"           Color="#FF212121" />
@@ -1394,7 +1394,7 @@
     <!-- ListView -->
     <Style TargetType="{x:Type ListView}">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlBrightDefaultBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ControlDefaultBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="{StaticResource ControlDefaultForeground}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -2205,7 +2205,7 @@
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="True"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
         <Setter Property="Background" Value="{StaticResource ContainerGridBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource BackgroundColour}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ControlDefaultBorderBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource ControlBrightDefaultBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1,0"/>
         <Setter Property="Width" Value="15"/>
