@@ -22,6 +22,7 @@ namespace FrostyFix5 {
             DataContext = Settings.Instance;
 
             MouseDown += (s, e) => FocusManager.SetFocusedElement(this, this);
+            KeyDown += new KeyEventHandler(KeyHandler);
 
             ResetButton.Click += (s, e) => {
                 Settings.Reset();
@@ -55,6 +56,12 @@ namespace FrostyFix5 {
             dialog.FilterIndex = 2;
             if (dialog.ShowDialog() == true) {
                 Settings.Instance.CustomGamePath = dialog.FileName;
+            }
+        }
+
+        private void KeyHandler(object sender, KeyEventArgs e) {
+            if (e.Key == Key.F12) {
+                Process.Start("explorer.exe", $"/select, {Settings.ConfigPath}");
             }
         }
     }

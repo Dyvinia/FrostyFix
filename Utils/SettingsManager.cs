@@ -15,17 +15,12 @@ public abstract class SettingsManager<T> where T : SettingsManager<T>, new() {
     public static T Instance { get; private set; }
 
     public static void Load() {
-        if (File.Exists(ConfigPath)) {
-            try {
-                Instance = JsonSerializer.Deserialize<T>(File.ReadAllText(ConfigPath));
-            }
-            catch {
-                Instance = new T();
-            }
+        try {
+            Instance = JsonSerializer.Deserialize<T>(File.ReadAllText(ConfigPath));
         }
-        else {
+        catch {
             Instance = new T();
-        } 
+        }
     }
 
     public static void Save() {
