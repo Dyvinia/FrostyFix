@@ -18,6 +18,8 @@ using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using FrostyFix.Dialogs;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace FrostyFix {
     /// <summary>
@@ -47,7 +49,6 @@ namespace FrostyFix {
             GameSelectorDropdown.SelectionChanged += (s, e) => CheckModData();
             MouseDown += (s, e) => FocusManager.SetFocusedElement(this, this);
 
-            CheckVersion();
             LocateInstalls();
             CheckStatus();
             CheckLaunchEnable();
@@ -56,32 +57,6 @@ namespace FrostyFix {
 
             Thread checkGameStatus = new(GameStatusThread) { IsBackground = true };
             checkGameStatus.Start();
-        }
-
-        public void CheckVersion() {
-            try {
-                using (var client = new WebClient()) {
-                    client.CachePolicy = new RequestCachePolicy(RequestCacheLevel.NoCacheNoStore);
-                    client.Headers.Add(HttpRequestHeader.UserAgent, "request");
-
-                    dynamic results = JsonConvert.DeserializeObject<dynamic>(client.DownloadString("https://api.github.com/repos/Dyvinia/FrostyFix/releases/latest"));
-                    string latestVersionString = results.tag_name;
-                    var latestVersion = new Version(latestVersionString.Substring(1));
-                    var version = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString());
-                    
-                    var result = version.CompareTo(latestVersion);
-                    if (result < 0) {
-                        string message = "You are using an outdated version of FrostyFix. \nWould you like to download the latest version?";
-                        MessageBoxResult Result = MessageBoxDialog.Show(message, this.Title, MessageBoxButton.YesNo, DialogSound.Notify);
-                        if (Result == MessageBoxResult.Yes) {
-                            Process.Start("https://github.com/Dyvinia/FrostyFix/releases/latest");
-                        }
-                    }
-                }
-            }
-            catch (Exception e) {
-                ExceptionDialog.Show(e, this.Title, false, "Unable to check for updates:");
-            }
         }
 
         public void LocateInstalls() {

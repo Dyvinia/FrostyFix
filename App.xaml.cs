@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using FrostyFix.Dialogs;
+using FrostyFix.Config;
 using PropertyChanged;
+using Newtonsoft.Json;
 
 namespace FrostyFix {
 
@@ -35,14 +39,37 @@ namespace FrostyFix {
 
         public App() {
             Settings.Load();
+            CheckVersion();
 
             DispatcherUnhandledException += Application_DispatcherUnhandledException;
         }
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
             e.Handled = true;
-            string title = "FrostyFix 5";
+            string title = "FrostyFix";
             ExceptionDialog.Show(e.Exception, title, true);
+        }
+
+        public async void CheckVersion() {
+            try {
+                using HttpClient client = new();
+                client.DefaultRequestHeaders.Add("User-Agent", "request");
+
+                dynamic json = JsonConvert.DeserializeObject<dynamic>(await client.GetStringAsync("https://api.github.com/repos/Dyvinia/FrostyFix/releases/latest"));
+                Version latest = new(((string)json.tag_name).Substring(1));
+                Version local = new(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+
+                if (local.CompareTo(latest) < 0) {
+                    string message = "You are using an outdated version of FrostyFix. \nWould you like to download the latest version?";
+                    MessageBoxResult Result = MessageBoxDialog.Show(message, "FrostyFix", MessageBoxButton.YesNo, DialogSound.Notify);
+                    if (Result == MessageBoxResult.Yes) {
+                        Process.Start("https://github.com/Dyvinia/FrostyFix/releases/latest");
+                    }
+                }
+            }
+            catch (Exception e) {
+                ExceptionDialog.Show(e, "FrostyFix", false, "Unable to check for updates:");
+            }
         }
     }
 }
