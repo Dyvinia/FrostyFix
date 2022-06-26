@@ -110,6 +110,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
+            
             <TabItem Header="Settings">
                 <Grid Background="#FF141414">
                     <Grid.RowDefinitions>
@@ -145,7 +146,7 @@
                     <Separator Grid.Row="2"/>
 
                     <StackPanel Grid.Row="3" Orientation="Vertical" Margin="10,0">
-                        <TextBlock Text="Custom Game:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-3,0,1"/>
+                        <TextBlock Text="Custom Game:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-4,0,1"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
