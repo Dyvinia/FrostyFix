@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -7,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using Microsoft.Win32;
 
 namespace FrostyFix {
     /// <summary>
@@ -38,20 +38,22 @@ namespace FrostyFix {
         }
 
         private void FrostySelect_Click(object sender, RoutedEventArgs e) {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Select Frosty EXE";
-            dialog.Filter = "Frosty (*.exe) |*.exe";
-            dialog.FilterIndex = 2;
+            OpenFileDialog dialog = new() {
+                Title = "Select Frosty EXE",
+                Filter = "Frosty (*.exe) |*.exe",
+                FilterIndex = 2
+            };
             if (dialog.ShowDialog() == true) {
                 Settings.Instance.FrostyPath = dialog.FileName;
             }
         }
 
         private void CustomGameSelect_Click(object sender, RoutedEventArgs e) {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Title = "Select Game EXE";
-            dialog.Filter = "Game Executable (*.exe) |*.exe";
-            dialog.FilterIndex = 2;
+            OpenFileDialog dialog = new() {
+                Title = "Select Game EXE",
+                Filter = "Game Executable (*.exe) |*.exe",
+                FilterIndex = 2
+            };
             if (dialog.ShowDialog() == true) {
                 Settings.Instance.CustomGamePath = dialog.FileName;
             }

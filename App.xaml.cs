@@ -57,7 +57,7 @@ namespace FrostyFix {
 
                 dynamic json = JsonConvert.DeserializeObject<dynamic>(await client.GetStringAsync("https://api.github.com/repos/Dyvinia/FrostyFix/releases/latest"));
                 Version latest = new(((string)json.tag_name).Substring(1));
-                Version local = new(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                Version local = Assembly.GetExecutingAssembly().GetName().Version;
 
                 if (local.CompareTo(latest) < 0) {
                     string message = "You are using an outdated version of FrostyFix. \nWould you like to download the latest version?";

@@ -121,23 +121,23 @@ namespace FrostyFix {
                 CurrentPlat.Text = "Global";
 
             // Check Launchers
-            foreach (Process p in Process.GetProcessesByName("EADesktop")) {
-                StringDictionary env = p.ReadEnvironmentVariables();
+            foreach (Process eaDesktop in Process.GetProcessesByName("EADesktop")) {
+                StringDictionary env = eaDesktop.ReadEnvironmentVariables();
                 if (env.ContainsKey("GAME_DATA_DIR")) {
                     dataDir = env["GAME_DATA_DIR"];
                     CurrentPlat.Text = "EA Desktop";
                 }
 
             }
-            foreach (Process p in Process.GetProcessesByName("EpicGamesLauncher")) {
-                StringDictionary env = p.ReadEnvironmentVariables();
+            foreach (Process epicGames in Process.GetProcessesByName("EpicGamesLauncher")) {
+                StringDictionary env = epicGames.ReadEnvironmentVariables();
                 if (env.ContainsKey("GAME_DATA_DIR")) {
                     dataDir = env["GAME_DATA_DIR"];
                     CurrentPlat.Text = "Epic Games Launcher";
                 }
             }
-            foreach (Process p in Process.GetProcessesByName("Origin")) {
-                StringDictionary env = p.ReadEnvironmentVariables();
+            foreach (Process origin in Process.GetProcessesByName("Origin")) {
+                StringDictionary env = origin.ReadEnvironmentVariables();
                 if (env.ContainsKey("GAME_DATA_DIR")) {
                     dataDir = env["GAME_DATA_DIR"];
                     CurrentPlat.Text = "Origin";
@@ -193,10 +193,11 @@ namespace FrostyFix {
                                 else if (args.Length > 2) pack = new DirectoryInfo(args[2]).Name;
                                 else pack = "None";
 
-                                if (found != true)
+                                if (found != true) {
                                     new ToastContentBuilder()
                                         .AddText(game + " is running with profile: " + pack)
                                         .Show();
+                                }
                                 found = true;
                             }
                         }
@@ -204,7 +205,7 @@ namespace FrostyFix {
                             Settings.Instance.BackgroundThread = false;
                             Settings.Save();
 
-                            string title = "FrostyFix 5";
+                            string title = "FrostyFix";
                             Task.Run(() => {
                                 ExceptionDialog.Show(ex, title, false, "Background thread has encountered an error and has been disabled:");
                             });
