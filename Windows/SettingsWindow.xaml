@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="FrostyFix: Info"
-        Height="380" Width="320"
+        Height="360" Width="320"
         WindowStartupLocation="CenterScreen"
         Style="{DynamicResource CustomWindowStyle}">
 
@@ -71,40 +71,41 @@
 
                     <Grid Grid.Row="2" VerticalAlignment="Center">
                         <StackPanel>
-                            <TextBlock TextWrapping="Wrap" Height="22" TextAlignment="Center"  FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                            <TextBlock TextWrapping="Wrap" Height="21" TextAlignment="Center"  FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
                                 GitHub: 
                                 <Hyperlink NavigateUri="https://github.com/Dyvinia/FrostyFix" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
                                 https://github.com/Dyvinia/FrostyFix
                                 </Hyperlink>
                             </TextBlock>
 
-                            <TextBlock TextWrapping="Wrap" Height="22" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                            <TextBlock TextWrapping="Wrap" Height="21" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
                                 FAQ: 
                                 <Hyperlink NavigateUri="https://github.com/Dyvinia/FrostyFix#faq" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
                                 https://github.com/Dyvinia/FrostyFix#FAQ
                                 </Hyperlink>
                             </TextBlock>
 
-                            <TextBlock TextWrapping="Wrap" Height="22" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                            <TextBlock TextWrapping="Wrap" Height="21" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
                                 Frosty Toolsuite:
                                 <Hyperlink NavigateUri="https://frostytoolsuite.com/" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
                                 https://frostytoolsuite.com/
                                 </Hyperlink>
                             </TextBlock>
 
-                            <TextBlock TextWrapping="Wrap" Height="22" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                            <TextBlock TextWrapping="Wrap" Height="21" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
                                 BattlefrontModding: 
                                 <Hyperlink NavigateUri="https://discord.gg/advqsyv" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
                                 https://discord.gg/advqsyv
                                 </Hyperlink>
                             </TextBlock>
 
-                            <TextBlock TextWrapping="Wrap" Height="22" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
+                            <TextBlock TextWrapping="Wrap" Height="21" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
                                 Donate: 
                                 <Hyperlink NavigateUri="https://dyy.vin/donate" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
                                 https://dyy.vin/Donate
                                 </Hyperlink>
                             </TextBlock>
+                            <Separator Opacity="0" Height="0"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
