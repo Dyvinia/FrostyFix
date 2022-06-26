@@ -128,7 +128,7 @@
 
                     <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10,0">
                         <Grid ToolTip="Launches game using selected Frosty Installation&#x0a;Make sure proper game is selected within Frosty">
-                            <CheckBox x:Name="LaunchGameOption" IsChecked="{Binding Path=(local:Settings.LaunchGame), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Launch Game w/ Frosty" HorizontalAlignment="Left" Foreground="#FFF1F1F1" VerticalAlignment="Top" />
+                            <CheckBox x:Name="LaunchGameOption" IsChecked="{Binding Path=(local:Config.LaunchGame), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Launch Game w/ Frosty" HorizontalAlignment="Left" Foreground="#FFF1F1F1" VerticalAlignment="Top" />
                         </Grid>
                         <Separator Opacity="0" Height="2"/>
                         <TextBlock Text="Frosty Installation:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-1,0,1"/>
@@ -138,7 +138,7 @@
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" x:Name="FrostyPath" Text="{Binding Path=(local:Settings.FrostyPath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Path=(local:Settings.FrostyPath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Grid.Column="0" x:Name="FrostyPath" Text="{Binding Path=(local:Config.FrostyPath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Path=(local:Config.FrostyPath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Button Grid.Column="2" x:Name="FrostySelect" Content="Select..." Height="20" HorizontalAlignment="Right" Width="58" Click="FrostySelect_Click" VerticalAlignment="Top"/>
                         </Grid>
                     </StackPanel>
@@ -153,7 +153,7 @@
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" x:Name="CustomGamePath" Text="{Binding Path=(local:Settings.CustomGamePath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Path=(local:Settings.CustomGamePath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Grid.Column="0" x:Name="CustomGamePath" Text="{Binding Path=(local:Config.CustomGamePath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Height="20" VerticalAlignment="Top" TextWrapping="NoWrap" VerticalScrollBarVisibility="Disabled" ToolTip="{Binding Path=(local:Config.CustomGamePath), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <Button Grid.Column="2" x:Name="CustomGameSelect" Content="Select..." Height="20" HorizontalAlignment="Right" Width="58" Click="CustomGameSelect_Click" VerticalAlignment="Top"/>
                         </Grid>
                     </StackPanel>
@@ -162,7 +162,7 @@
 
                     <StackPanel Grid.Row="5" Orientation="Vertical" Margin="10,0">
                         <Grid ToolTip="Checks Game's info in the background">
-                            <CheckBox x:Name="BackgroundOption" IsChecked="{Binding Path=(local:Settings.BackgroundThread), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" VerticalAlignment="Top" />
+                            <CheckBox x:Name="BackgroundOption" IsChecked="{Binding Path=(local:Config.BackgroundThread), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" VerticalAlignment="Top" />
                         </Grid>
                     </StackPanel>
 
@@ -170,7 +170,7 @@
 
                     <StackPanel Grid.Row="7" Orientation="Vertical" Margin="10,0">
                         <Grid ToolTip="Check version on startup">
-                            <CheckBox x:Name="UpdateCheckerOption" IsChecked="{Binding Path=(local:Settings.UpdateChecker), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Update Checker" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <CheckBox x:Name="UpdateCheckerOption" IsChecked="{Binding Path=(local:Config.UpdateChecker), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Update Checker" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         </Grid>
                     </StackPanel>
 

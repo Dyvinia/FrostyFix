@@ -17,14 +17,14 @@ namespace FrostyFix {
             InitializeComponent();
 
             VersionText.Text = App.Version;
-            DataContext = Settings.Instance;
+            DataContext = Config.Settings;
 
             MouseDown += (s, e) => FocusManager.SetFocusedElement(this, this);
             KeyDown += new KeyEventHandler(KeyHandler);
 
             ResetButton.Click += (s, e) => {
-                Settings.Reset();
-                Settings.Save();
+                Config.Reset();
+                Config.Save();
             };
         }
 
@@ -44,7 +44,7 @@ namespace FrostyFix {
                 FilterIndex = 2
             };
             if (dialog.ShowDialog() == true) {
-                Settings.Instance.FrostyPath = dialog.FileName;
+                Config.Settings.FrostyPath = dialog.FileName;
             }
         }
 
@@ -55,7 +55,7 @@ namespace FrostyFix {
                 FilterIndex = 2
             };
             if (dialog.ShowDialog() == true) {
-                Settings.Instance.CustomGamePath = dialog.FileName;
+                Config.Settings.CustomGamePath = dialog.FileName;
             }
         }
 
@@ -72,7 +72,7 @@ namespace FrostyFix {
 
         private void KeyHandler(object sender, KeyEventArgs e) {
             if (e.Key == Key.F12) {
-                Process.Start("explorer.exe", $"/select, {Settings.ConfigPath}");
+                Process.Start("explorer.exe", $"/select, {Config.ConfigPath}");
             }
         }
     }

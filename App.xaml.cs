@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using FrostyFix.Dialogs;
-using FrostyFix.Config;
+using FrostyFix.SettingsManager;
 using PropertyChanged;
 using Newtonsoft.Json;
 
 namespace FrostyFix {
 
     [AddINotifyPropertyChangedInterface]
-    public class Settings : SettingsManager<Settings> {
+    public class Config : SettingsManager<Config> {
         public bool LaunchGame { get; set; } = false;
         public bool BackgroundThread { get; set; } = true;
         public bool UpdateChecker { get; set; } = true;
@@ -36,9 +36,9 @@ namespace FrostyFix {
         public static readonly string Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
 
         public App() {
-            Settings.Load();
+            Config.Load();
 
-            if (Settings.Instance.UpdateChecker) 
+            if (Config.Settings.UpdateChecker) 
                 CheckVersion();
 
             DispatcherUnhandledException += Application_DispatcherUnhandledException;

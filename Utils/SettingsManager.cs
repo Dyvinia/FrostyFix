@@ -4,9 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 
-namespace FrostyFix.Config {
+namespace FrostyFix.SettingsManager {
     public abstract class SettingsManager<T> where T : SettingsManager<T>, new() {
-        public static T Instance { get; private set; }
+        public static T Settings { get; private set; }
 
         public static readonly string ConfigPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
@@ -15,23 +15,23 @@ namespace FrostyFix.Config {
 
         public static void Load() {
             try {
-                Instance = JsonSerializer.Deserialize<T>(File.ReadAllText(ConfigPath));
+                Settings = JsonSerializer.Deserialize<T>(File.ReadAllText(ConfigPath));
             }
             catch {
-                Instance = new T();
+                Settings = new T();
             }
         }
 
         public static void Save() {
-            string json = JsonSerializer.Serialize(Instance, new JsonSerializerOptions { WriteIndented = true });
+            string json = JsonSerializer.Serialize(Settings, new JsonSerializerOptions { WriteIndented = true });
             Directory.CreateDirectory(Path.GetDirectoryName(ConfigPath));
             File.WriteAllText(ConfigPath, json);
         }
 
         public static void Reset() {
-            T defaultInstance = new();
+            T defaultSettings = new();
             foreach (PropertyInfo property in typeof(T).GetProperties().Where(p => p.CanWrite)) {
-                property.SetValue(Instance, property.GetValue(defaultInstance, null), null);
+                property.SetValue(Settings, property.GetValue(defaultSettings, null), null);
             }
         }
     }
