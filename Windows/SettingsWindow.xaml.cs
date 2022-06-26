@@ -60,19 +60,14 @@ namespace FrostyFix {
         }
 
         private void CreditButton_Click(object sender, RoutedEventArgs e) {
-            Button button = sender as Button;
             string url;
-            switch (button.Content) {
+            switch ((sender as Button).Content) {
                 case "Dyvinia": url = "https://github.com/Dyvinia/"; break;
                 case "BattleDash": url = "https://battleda.sh/"; break;
                 case "VictorPL": url = "https://twitter.com/VictorPL2003/"; break;
                 default: return;
             }
-            ProcessStartInfo p = new() {
-                FileName = url,
-                UseShellExecute = true
-            };
-            Process.Start(p);
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
 
         private void KeyHandler(object sender, KeyEventArgs e) {
