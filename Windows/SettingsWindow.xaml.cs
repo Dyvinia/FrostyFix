@@ -72,7 +72,7 @@ namespace FrostyFix {
 
         private void KeyHandler(object sender, KeyEventArgs e) {
             if (e.Key == Key.F12) {
-                Process.Start("explorer.exe", $"/select, {Config.ConfigPath}");
+                Process.Start("explorer.exe", $"/select, {Config.FilePath}");
             }
         }
     }

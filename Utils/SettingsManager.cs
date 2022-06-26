@@ -8,14 +8,14 @@ namespace FrostyFix.SettingsManager {
     public abstract class SettingsManager<T> where T : SettingsManager<T>, new() {
         public static T Settings { get; private set; }
 
-        public static readonly string ConfigPath = Path.Combine(
+        public static readonly string FilePath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             Assembly.GetEntryAssembly().GetName().Name,
             "config.json");
 
         public static void Load() {
             try {
-                Settings = JsonSerializer.Deserialize<T>(File.ReadAllText(ConfigPath));
+                Settings = JsonSerializer.Deserialize<T>(File.ReadAllText(FilePath));
             }
             catch {
                 Settings = new T();
@@ -24,8 +24,8 @@ namespace FrostyFix.SettingsManager {
 
         public static void Save() {
             string json = JsonSerializer.Serialize(Settings, new JsonSerializerOptions { WriteIndented = true });
-            Directory.CreateDirectory(Path.GetDirectoryName(ConfigPath));
-            File.WriteAllText(ConfigPath, json);
+            Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
+            File.WriteAllText(FilePath, json);
         }
 
         public static void Reset() {
