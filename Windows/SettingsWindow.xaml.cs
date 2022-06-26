@@ -61,7 +61,7 @@ namespace FrostyFix {
             Button button = sender as Button;
             string url;
             switch (button.Content) {
-                case "Dyvinia": url = "https://github.com/Dyvinia"; break;
+                case "Dyvinia": url = "https://github.com/Dyvinia/"; break;
                 case "BattleDash": url = "https://battleda.sh/"; break;
                 case "VictorPL": url = "https://twitter.com/VictorPL2003/"; break;
                 default: return;
