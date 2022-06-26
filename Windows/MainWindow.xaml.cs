@@ -16,10 +16,7 @@ using System.Windows.Input;
 using Gapotchenko.FX.Diagnostics;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.Win32;
-using Newtonsoft.Json;
 using FrostyFix.Dialogs;
-using System.Net.Http;
-using System.Net.Http.Headers;
 
 namespace FrostyFix {
     /// <summary>
