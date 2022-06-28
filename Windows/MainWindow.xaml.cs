@@ -122,7 +122,7 @@ namespace FrostyFix {
 
             // Check Launchers
             foreach (Process eaDesktop in Process.GetProcessesByName("EADesktop")) {
-                StringDictionary env = eaDesktop.ReadEnvironmentVariables();
+                StringDictionary env = eaDesktop?.ReadEnvironmentVariables();
                 if (env.ContainsKey("GAME_DATA_DIR")) {
                     dataDir = env["GAME_DATA_DIR"];
                     CurrentPlat.Text = "EA Desktop";
@@ -130,14 +130,14 @@ namespace FrostyFix {
 
             }
             foreach (Process epicGames in Process.GetProcessesByName("EpicGamesLauncher")) {
-                StringDictionary env = epicGames.ReadEnvironmentVariables();
+                StringDictionary env = epicGames?.ReadEnvironmentVariables();
                 if (env.ContainsKey("GAME_DATA_DIR")) {
                     dataDir = env["GAME_DATA_DIR"];
                     CurrentPlat.Text = "Epic Games Launcher";
                 }
             }
             foreach (Process origin in Process.GetProcessesByName("Origin")) {
-                StringDictionary env = origin.ReadEnvironmentVariables();
+                StringDictionary env = origin?.ReadEnvironmentVariables();
                 if (env.ContainsKey("GAME_DATA_DIR")) {
                     dataDir = env["GAME_DATA_DIR"];
                     CurrentPlat.Text = "Origin";
