@@ -28,13 +28,11 @@ namespace FrostyFix.Dialogs {
 
         public MessageBoxDialog(string message, string title, MessageBoxButton buttons, DialogSound sound) {
             InitializeComponent();
-            SetVisibilityOfButtons(buttons);
+            ButtonVisibility(buttons);
             PlaySound(sound);
 
             Title = title;
             MessageText.Text = message;
-            Window mainWindow = Application.Current.MainWindow;
-            Icon = mainWindow.Icon;
 
             OKButton.Click += OnClose;
             YesButton.Click += OnClose;
@@ -45,7 +43,7 @@ namespace FrostyFix.Dialogs {
         public static MessageBoxResult Show(string message, string title, MessageBoxButton buttons, DialogSound sound = DialogSound.None) {
             MessageBoxResult msgBoxResult = MessageBoxResult.None;
             Application.Current.Dispatcher.Invoke(() => {
-                MessageBoxDialog window = new MessageBoxDialog(message, title, buttons, sound);
+                MessageBoxDialog window = new(message, title, buttons, sound);
                 window.ShowDialog();
                 msgBoxResult = window.result;
             });
@@ -66,7 +64,7 @@ namespace FrostyFix.Dialogs {
             Close();
         }
 
-        private void SetVisibilityOfButtons(MessageBoxButton button) {
+        private void ButtonVisibility(MessageBoxButton button) {
             switch (button) {
                 case MessageBoxButton.OK:
                     CancelButton.Visibility = Visibility.Collapsed;

@@ -60,10 +60,10 @@ namespace FrostyFix {
                 Version local = Assembly.GetExecutingAssembly().GetName().Version;
 
                 if (local.CompareTo(latest) < 0) {
-                    string message = "You are using an outdated version of FrostyFix. \nWould you like to download the latest version?";
+                    string message = $"You are using FrostyFix v{local.ToString()[..5]}. \nWould you like to download the latest version? (v{latest})";
                     MessageBoxResult Result = MessageBoxDialog.Show(message, "FrostyFix", MessageBoxButton.YesNo, DialogSound.Notify);
                     if (Result == MessageBoxResult.Yes) {
-                        Process.Start("https://github.com/Dyvinia/FrostyFix/releases/latest");
+                        Process.Start(new ProcessStartInfo("https://github.com/Dyvinia/FrostyFix/releases/latest") { UseShellExecute = true });
                     }
                 }
             }

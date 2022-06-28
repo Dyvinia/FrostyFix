@@ -22,8 +22,6 @@ namespace FrostyFix.Dialogs {
             InitializeComponent();
 
             Title = title;
-            Window mainWindow = Application.Current.MainWindow;
-            Icon = mainWindow.Icon;
 
             // Show or hide Header & Play according sounds
             int headerHeight = 30;
