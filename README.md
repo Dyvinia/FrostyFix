@@ -4,7 +4,7 @@
 
 FrostyFix is a tool to fix an issue with modding games on platforms other than Origin (EA Desktop, Epic Games Store, Steam), where mods do not appear in the game.
 
-![image](https://i.imgur.com/9m6QuVI.png)
+![image](https://i.imgur.com/u2FzcIp.png)
 
 ## Instructions
 
