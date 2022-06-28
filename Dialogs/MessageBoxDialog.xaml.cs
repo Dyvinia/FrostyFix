@@ -95,14 +95,9 @@ namespace FrostyFix.Dialogs {
 
         private void PlaySound(DialogSound sound) {
             switch (sound) {
-                case DialogSound.None:
-                    break;
-                case DialogSound.Notify:
-                    SystemSounds.Exclamation.Play();
-                    break;
-                case DialogSound.Error:
-                    SystemSounds.Hand.Play();
-                    break;
+                case DialogSound.None: break;
+                case DialogSound.Notify: SystemSounds.Exclamation.Play(); break;
+                case DialogSound.Error: SystemSounds.Hand.Play(); break;
             }
         }
     }

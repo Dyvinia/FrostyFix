@@ -33,7 +33,7 @@ namespace FrostyFix {
     /// </summary>
     public partial class App : Application {
 
-        public static readonly string Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString().Substring(0, 5);
+        public static readonly string Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString()[..5];
 
         public App() {
             Config.Load();
