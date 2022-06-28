@@ -10,7 +10,6 @@
 	  <ApplicationIcon>Resources\FrostyFix.ico</ApplicationIcon>
 
 	  <AssemblyName>FrostyFix</AssemblyName>
-	  <AssemblyTitle>FrostyFix 5</AssemblyTitle>
 	  <Version>5.0.1</Version>
 	  <Copyright>Copyright © 2022 Dyvinia</Copyright>
 	  <Company>Dyvinia</Company>
