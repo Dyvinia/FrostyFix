@@ -14,7 +14,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Gapotchenko.FX.Diagnostics;
-using Microsoft.Toolkit.Uwp.Notifications;
 using Microsoft.Win32;
 using FrostyFix.Dialogs;
 
@@ -193,11 +192,8 @@ namespace FrostyFix {
                                 else if (args.Length > 2) pack = new DirectoryInfo(args[2]).Name;
                                 else pack = "None";
 
-                                if (found != true) {
-                                    new ToastContentBuilder()
-                                        .AddText(game + " is running with profile: " + pack)
-                                        .Show();
-                                }
+                                if (found != true)
+                                    Task.Run(() => MessageBoxDialog.Show(game + " is running with profile: " + pack, Title, MessageBoxButton.OK, DialogSound.Notify));
                                 found = true;
                             }
                         }

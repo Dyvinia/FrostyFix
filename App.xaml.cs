@@ -56,7 +56,7 @@ namespace FrostyFix {
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
 
                 dynamic json = JsonConvert.DeserializeObject<dynamic>(await client.GetStringAsync("https://api.github.com/repos/Dyvinia/FrostyFix/releases/latest"));
-                Version latest = new(((string)json.tag_name).Substring(1));
+                Version latest = new(((string)json.tag_name)[1..]);
                 Version local = Assembly.GetExecutingAssembly().GetName().Version;
 
                 if (local.CompareTo(latest) < 0) {
