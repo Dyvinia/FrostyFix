@@ -34,12 +34,13 @@ namespace FrostyFix {
     public partial class App : Application {
 
         public static readonly string Version = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString()[..5];
+        public static readonly string AppName = Assembly.GetEntryAssembly().GetName().Name;
 
         public App() {
             Config.Load();
 
             if (Config.Settings.UpdateChecker) 
-                CheckVersion();
+                CheckVersion("Dyvinia", "FrostyFix");
 
             DispatcherUnhandledException += Application_DispatcherUnhandledException;
         }
@@ -50,25 +51,25 @@ namespace FrostyFix {
             ExceptionDialog.Show(e.Exception, title, true);
         }
 
-        public async void CheckVersion() {
+        public async void CheckVersion(string repoAuthor, string repoName) {
             try {
                 using HttpClient client = new();
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
 
-                dynamic json = JsonConvert.DeserializeObject<dynamic>(await client.GetStringAsync("https://api.github.com/repos/Dyvinia/FrostyFix/releases/latest"));
+                dynamic json = JsonConvert.DeserializeObject<dynamic>(await client.GetStringAsync($"https://api.github.com/repos/{repoAuthor}/{repoName}/releases/latest"));
                 Version latest = new(((string)json.tag_name)[1..]);
                 Version local = Assembly.GetExecutingAssembly().GetName().Version;
 
                 if (local.CompareTo(latest) < 0) {
-                    string message = $"You are using FrostyFix v{local.ToString()[..5]}. \nWould you like to download the latest version? (v{latest})";
+                    string message = $"You are using {AppName} v{local.ToString()[..5]}. \nWould you like to download the latest version? (v{latest})";
                     MessageBoxResult Result = MessageBoxDialog.Show(message, "FrostyFix", MessageBoxButton.YesNo, DialogSound.Notify);
                     if (Result == MessageBoxResult.Yes) {
-                        Process.Start(new ProcessStartInfo("https://github.com/Dyvinia/FrostyFix/releases/latest") { UseShellExecute = true });
+                        Process.Start(new ProcessStartInfo($"https://github.com/{repoAuthor}/{repoName}/releases/latest") { UseShellExecute = true });
                     }
                 }
             }
             catch (Exception e) {
-                ExceptionDialog.Show(e, "FrostyFix", false, "Unable to check for updates:");
+                ExceptionDialog.Show(e, AppName, false, "Unable to check for updates:");
             }
         }
     }
