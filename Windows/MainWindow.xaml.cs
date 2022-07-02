@@ -111,7 +111,6 @@ namespace FrostyFix {
         }
 
         public void CheckStatus() {
-            throw new NotImplementedException();
             // Check Global
             string dataDir = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
             if (!String.IsNullOrEmpty(dataDir))
