@@ -20,14 +20,12 @@ namespace DyviniaUtils {
 
                 if (local.CompareTo(latest) < 0) {
                     string message = $"You are using {repoName} v{local.ToString()[..5]}. \nWould you like to download the latest version? (v{latest})";
-                    MessageBoxResult Result = MessageBoxDialog.Show(message, repoName, MessageBoxButton.YesNo, DialogSound.Notify);
-                    if (Result == MessageBoxResult.Yes) {
+                    if (MessageBoxDialog.Show(message, repoName, MessageBoxButton.YesNo, DialogSound.Notify) == MessageBoxResult.Yes)
                         Process.Start(new ProcessStartInfo($"https://github.com/{repoAuthor}/{repoName}/releases/latest") { UseShellExecute = true });
-                    }
                 }
             }
             catch (Exception e) {
-                ExceptionDialog.Show(e, repoName, false, "Unable to check for updates:");
+                ExceptionDialog.Show(e, repoName, "Unable to check for updates:");
             }
         }
     }

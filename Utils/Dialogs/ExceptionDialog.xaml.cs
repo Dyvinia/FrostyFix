@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Media;
+using System.Reflection;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace DyviniaUtils.Dialogs {
     /// <summary>
     /// Interaction logic for ExceptionWindow.xaml
     /// </summary>
     public partial class ExceptionDialog : Window {
-        public ExceptionDialog(Exception ex, string title, bool isCrash, string messagePrefix) {
+        public ExceptionDialog(Exception ex, string title, string messagePrefix, bool isCrash) {
             InitializeComponent();
 
             Title = title;
@@ -37,9 +39,17 @@ namespace DyviniaUtils.Dialogs {
             CopyButton.Click += (s, e) => Clipboard.SetDataObject(message);
         }
 
-        public static void Show(Exception ex, string title, bool isCrash = false, string messagePrefix = null) {
+        public static void Show(Exception ex, string title, string messagePrefix = null, bool isCrash = false) {
             Application.Current.Dispatcher.Invoke(() => {
-                ExceptionDialog window = new(ex, title, isCrash, messagePrefix);
+                ExceptionDialog window = new(ex, title, messagePrefix, isCrash);
+                window.ShowDialog();
+            });
+        }
+
+        public static void UnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
+            e.Handled = true;
+            Application.Current.Dispatcher.Invoke(() => {
+                ExceptionDialog window = new(e.Exception, Assembly.GetEntryAssembly().GetName().Name, null, true);
                 window.ShowDialog();
             });
         }

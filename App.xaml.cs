@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using PropertyChanged;
-using Newtonsoft.Json;
 using DyviniaUtils;
 using DyviniaUtils.Dialogs;
 
@@ -39,7 +32,7 @@ namespace FrostyFix {
         public App() {
             Config.Load();
 
-            DispatcherUnhandledException += Application_DispatcherUnhandledException;
+            DispatcherUnhandledException += ExceptionDialog.UnhandledException;
         }
 
         protected override void OnStartup(StartupEventArgs e) {
@@ -47,12 +40,6 @@ namespace FrostyFix {
 
             if (Config.Settings.UpdateChecker)
                 GitHub.CheckVersion("Dyvinia", "FrostyFix");
-        }
-
-        private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
-            e.Handled = true;
-            string title = "FrostyFix";
-            ExceptionDialog.Show(e.Exception, title, true);
         }
 
     }

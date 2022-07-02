@@ -200,7 +200,7 @@ namespace FrostyFix {
 
                             string title = "FrostyFix";
                             Task.Run(() => {
-                                ExceptionDialog.Show(ex, title, false, "Background thread has encountered an error and has been disabled:");
+                                ExceptionDialog.Show(ex, title, "Background thread has encountered an error and has been disabled:");
                             });
                         }
                     }

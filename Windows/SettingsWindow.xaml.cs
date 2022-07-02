@@ -20,7 +20,6 @@ namespace FrostyFix {
             DataContext = Config.Settings;
 
             MouseDown += (s, e) => FocusManager.SetFocusedElement(this, this);
-            KeyDown += new KeyEventHandler(KeyHandler);
 
             ResetButton.Click += (s, e) => {
                 Config.Reset();
@@ -70,10 +69,11 @@ namespace FrostyFix {
             Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
 
-        private void KeyHandler(object sender, KeyEventArgs e) {
-            if (e.Key == Key.F12) {
+        protected override void OnKeyDown(KeyEventArgs e) {
+            base.OnKeyDown(e);
+
+            if (e.Key == Key.F12)
                 Process.Start("explorer.exe", $"/select, {Config.FilePath}");
-            }
         }
     }
 }
