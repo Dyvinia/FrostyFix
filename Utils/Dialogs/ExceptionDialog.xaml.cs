@@ -2,7 +2,7 @@
 using System.Media;
 using System.Windows;
 
-namespace FrostyFix.Dialogs {
+namespace DyviniaUtils.Dialogs {
     /// <summary>
     /// Interaction logic for ExceptionWindow.xaml
     /// </summary>
@@ -11,6 +11,7 @@ namespace FrostyFix.Dialogs {
             InitializeComponent();
 
             Title = title;
+            DataContext = this;
 
             // Show or hide Header & Play according sounds
             int headerHeight = 30;

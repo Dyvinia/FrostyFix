@@ -2,7 +2,7 @@
 using System.Media;
 using System.Windows;
 
-namespace FrostyFix.Dialogs {
+namespace DyviniaUtils.Dialogs {
     public enum DialogSound {
         None,
         Notify,

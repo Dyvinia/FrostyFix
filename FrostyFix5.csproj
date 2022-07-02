@@ -33,27 +33,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\GillSansNova-Bold.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Fonts\GillSansNova-Book.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Fonts\GillSansNova-CnBold.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Fonts\GillSansNova-SemiBold.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Fonts\GillSansNovaInline-Bold.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\FrostyFix.ico">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\FrostyFixNB.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
+	<Resource Include="Fonts\GillSansNova-Bold.ttf" />
+    <Resource Include="Fonts\GillSansNova-Book.ttf" />
+    <Resource Include="Fonts\GillSansNova-CnBold.ttf" />
+    <Resource Include="Fonts\GillSansNova-SemiBold.ttf" />
+    <Resource Include="Fonts\GillSansNovaInline-Bold.ttf" />
+    <Resource Include="Resources\FrostyFix.ico" />
+    <Resource Include="Resources\FrostyFixNB.png" />
   </ItemGroup>
 
   <ItemGroup>

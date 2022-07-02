@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 
-namespace FrostyFix.SettingsManager {
+namespace DyviniaUtils {
     public abstract class SettingsManager<T> where T : SettingsManager<T>, new() {
         public static T Settings { get; private set; }
 

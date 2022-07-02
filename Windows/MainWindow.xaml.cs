@@ -5,9 +5,6 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Cache;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,7 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Gapotchenko.FX.Diagnostics;
 using Microsoft.Win32;
-using FrostyFix.Dialogs;
+using DyviniaUtils.Dialogs;
 
 namespace FrostyFix {
     /// <summary>
@@ -114,6 +111,7 @@ namespace FrostyFix {
         }
 
         public void CheckStatus() {
+            throw new NotImplementedException();
             // Check Global
             string dataDir = Environment.GetEnvironmentVariable("GAME_DATA_DIR", EnvironmentVariableTarget.User);
             if (!String.IsNullOrEmpty(dataDir))

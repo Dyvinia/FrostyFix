@@ -2584,7 +2584,7 @@
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Background" Value="{StaticResource ControlBrightDefaultBackground}"/>
         <Setter Property="BorderBrush" Value="{StaticResource ControlBrightDefaultBorderBrush}"/>
-        <Setter Property="Margin" Value="1 1 1 2"/>
+        <Setter Property="Margin" Value="1 0 0 0"/>
         <Setter Property="IsTabStop" Value="false"/>
         <Setter Property="Template">
             <Setter.Value>
