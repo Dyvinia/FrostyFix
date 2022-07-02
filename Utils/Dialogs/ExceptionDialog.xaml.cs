@@ -15,16 +15,13 @@ namespace DyviniaUtils.Dialogs {
 
             // Show or hide Header & Play according sounds
             int headerHeight = 30;
-            int height = 250;
             if (!isCrash) {
                 headerHeight = 5;
-                height -= 25;
                 HeaderText.Visibility = Visibility.Collapsed;
                 SystemSounds.Exclamation.Play();
             }
             else SystemSounds.Hand.Play();
             Header.Height = new GridLength(headerHeight);
-            Height = height + headerHeight;
 
             // Create exception message
             string message = ex.Message;
@@ -42,7 +39,7 @@ namespace DyviniaUtils.Dialogs {
 
         public static void Show(Exception ex, string title, bool isCrash = false, string messagePrefix = null) {
             Application.Current.Dispatcher.Invoke(() => {
-                ExceptionDialog window = new ExceptionDialog(ex, title, isCrash, messagePrefix);
+                ExceptionDialog window = new(ex, title, isCrash, messagePrefix);
                 window.ShowDialog();
             });
         }
