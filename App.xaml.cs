@@ -39,10 +39,14 @@ namespace FrostyFix {
         public App() {
             Config.Load();
 
-            if (Config.Settings.UpdateChecker) 
-                GitHub.CheckVersion("Dyvinia", "FrostyFix");
-
             DispatcherUnhandledException += Application_DispatcherUnhandledException;
+        }
+
+        protected override void OnStartup(StartupEventArgs e) {
+            new MainWindow().Show();
+
+            if (Config.Settings.UpdateChecker)
+                GitHub.CheckVersion("Dyvinia", "FrostyFix");
         }
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) {
