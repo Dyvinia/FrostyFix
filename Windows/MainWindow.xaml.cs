@@ -360,7 +360,7 @@ namespace FrostyFix {
             List<RadioButton> radioButtons = new() { EADPlat, EGSPlat, OriginPlat, GlobalPlat };
 
             if (Config.Settings.SelectedGame > -1)
-                if (Config.Settings.SelectedGame < GameSelectorDropdown.Items.Count - 1)
+                if (Config.Settings.SelectedGame < GameSelectorDropdown.Items.Count)
                     GameSelectorDropdown.SelectedIndex = Config.Settings.SelectedGame;
 
             if (Config.Settings.SelectedPlatform > -1)
