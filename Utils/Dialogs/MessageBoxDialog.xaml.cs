@@ -16,13 +16,14 @@ namespace DyviniaUtils.Dialogs {
 
         public MessageBoxResult result;
 
-        public MessageBoxDialog(string message, string title, MessageBoxButton buttons, DialogSound sound) {
+        public MessageBoxDialog(string message, string title, Window owner, MessageBoxButton buttons, DialogSound sound) {
             InitializeComponent();
             ButtonVisibility(buttons);
             PlaySound(sound);
 
             Title = title;
             MessageText.Text = message;
+            Owner = owner;
 
             OKButton.Click += OnClose;
             YesButton.Click += OnClose;
@@ -33,7 +34,17 @@ namespace DyviniaUtils.Dialogs {
         public static MessageBoxResult Show(string message, string title, MessageBoxButton buttons, DialogSound sound = DialogSound.None) {
             MessageBoxResult msgBoxResult = MessageBoxResult.None;
             Application.Current.Dispatcher.Invoke(() => {
-                MessageBoxDialog window = new(message, title, buttons, sound);
+                MessageBoxDialog window = new(message, title, Application.Current.MainWindow, buttons, sound);
+                window.ShowDialog();
+                msgBoxResult = window.result;
+            });
+            return msgBoxResult;
+        }
+
+        public static MessageBoxResult Show(string message, string title, Window owner, MessageBoxButton buttons, DialogSound sound = DialogSound.None) {
+            MessageBoxResult msgBoxResult = MessageBoxResult.None;
+            Application.Current.Dispatcher.Invoke(() => {
+                MessageBoxDialog window = new(message, title, owner, buttons, sound);
                 window.ShowDialog();
                 msgBoxResult = window.result;
             });
