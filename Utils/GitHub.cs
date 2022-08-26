@@ -1,32 +1,71 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
-using Newtonsoft.Json;
 using DyviniaUtils.Dialogs;
-
 
 namespace DyviniaUtils {
     class GitHub {
-        public async static void CheckVersion(string repoAuthor, string repoName) {
+
+        class Release {
+            public string tag_name { get; set; }
+
+            public Asset[] assets { get; set; }
+
+            public class Asset {
+                public string name { get; set; }
+                public string browser_download_url { get; set; }
+            }
+        }
+
+
+        /// <summary>
+        /// Checks Github if there is a newer version
+        /// </summary>
+        public static async Task<bool> CheckVersion(string repoAuthor, string repoName) {
             try {
                 using HttpClient client = new();
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
+                Release json = JsonSerializer.Deserialize<Release>(await client.GetStringAsync($"https://api.github.com/repos/{repoAuthor}/{repoName}/releases/latest"));
 
-                dynamic json = JsonConvert.DeserializeObject<dynamic>(await client.GetStringAsync($"https://api.github.com/repos/{repoAuthor}/{repoName}/releases/latest"));
-                Version latest = new(((string)json.tag_name)[1..]);
+                Version latest = new(json.tag_name[1..]);
                 Version local = Assembly.GetExecutingAssembly().GetName().Version;
 
-                if (local.CompareTo(latest) < 0) {
-                    string message = $"You are using {repoName} v{local.ToString()[..5]}. \nWould you like to download the latest version? (v{latest})";
-                    if (MessageBoxDialog.Show(message, repoName, MessageBoxButton.YesNo, DialogSound.Notify) == MessageBoxResult.Yes)
-                        Process.Start(new ProcessStartInfo($"https://github.com/{repoAuthor}/{repoName}/releases/latest") { UseShellExecute = true });
-                }
+                if (local.CompareTo(latest) < 0)
+                    return true;
+                else 
+                    return false;
             }
             catch (Exception e) {
                 ExceptionDialog.Show(e, repoName, "Unable to check for updates:");
+                return false;
             }
+        }
+
+        /// <summary>
+        /// Downloads and Installs newest version
+        /// </summary>
+        public static async Task InstallUpdate(string repoAuthor, string repoName, IProgress<double> progress) {
+            using HttpClient client = new();
+            client.DefaultRequestHeaders.Add("User-Agent", "request");
+            Release json = JsonSerializer.Deserialize<Release>(await client.GetStringAsync($"https://api.github.com/repos/{repoAuthor}/{repoName}/releases/latest"));
+
+            string downloadUrl = json.assets.Where(x => x.browser_download_url.Contains(".exe")).FirstOrDefault().browser_download_url;
+
+            string filePath = Environment.ProcessPath;
+            string oldPath = filePath.Replace(".exe", ".old.exe");
+
+            File.Move(filePath, oldPath, true);
+
+            await Downloader.Download(downloadUrl, filePath, progress);
+
+            Process.Start(new ProcessStartInfo { FileName = filePath, UseShellExecute = true });
+            Application.Current.Dispatcher.Invoke(() => Application.Current.Shutdown());
         }
     }
 }

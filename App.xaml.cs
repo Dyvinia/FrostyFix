@@ -35,11 +35,19 @@ namespace FrostyFix {
             DispatcherUnhandledException += ExceptionDialog.UnhandledException;
         }
 
-        protected override void OnStartup(StartupEventArgs e) {
+        protected async override void OnStartup(StartupEventArgs e) {
             new MainWindow().Show();
 
-            if (Config.Settings.UpdateChecker)
-                GitHub.CheckVersion("Dyvinia", "FrostyFix");
+            if (Config.Settings.UpdateChecker) {
+                string repoAuthor = "Dyvinia";
+                string repoName = "FrostyFix";
+
+                if (await GitHub.CheckVersion(repoAuthor, repoName)) {
+                    string message = $"Would you like to download the latest version of {repoName}?";
+                    if (MessageBoxDialog.Show(message, repoName, MessageBoxButton.YesNo, DialogSound.Notify) == MessageBoxResult.Yes)
+                        await GitHub.InstallUpdate(repoAuthor, repoName, new Progress<double>());
+                }
+            }  
         }
 
     }
