@@ -16,6 +16,9 @@ FrostyFix is a tool to fix an issue with modding games on platforms other than O
 4. Click Enable/Launch
 5. To disable FrostyFix, click **Disable Mods**
 
+## .NET 6 Runtime
+This application requires [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download)
+
 ## Reminder
 #### **You must disable this whenever you play any other Frostbite game or if you encounter issues with other games.**
 **You must run this program again every time you want to play another Frostbite game**, so you can either disable mods or select the other game.
@@ -36,7 +39,7 @@ FrostyFix is a tool to fix an issue with modding games on platforms other than O
 
 > **Q:** Why are some games missing?
 > 
-> **A:** If FrostyFix cannot locate a game, it hides the game in the dropdown. You can add a custom game to the dropdown in the Settings window.
+> **A:** If FrostyFix cannot locate a game, it hides the game in the dropdown. ***You can add a custom game to the dropdown in the Settings window.***
 
 ## Unsupported Games
 These games are confirmed to be unsupported because they DO NOT USE a environment variable unlike most other Frostbite Games. They will not be able to be fixed through FrostyFix
