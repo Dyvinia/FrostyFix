@@ -44,9 +44,9 @@ namespace FrostyFix {
                 if (await GitHub.CheckVersion(repoAuthor, repoName)) {
                     string message = $"Would you like to download the latest version of {repoName}?";
                     if (MessageBoxDialog.Show(message, repoName, MessageBoxButton.YesNo, DialogSound.Notify) == MessageBoxResult.Yes)
-                        await GitHub.InstallUpdate(repoAuthor, repoName, new Progress<double>());
+                        await GitHub.InstallUpdate(repoAuthor, repoName);
                 }
-            }  
+            }
         }
 
     }

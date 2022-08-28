@@ -50,7 +50,7 @@ namespace DyviniaUtils {
         /// <summary>
         /// Downloads and Installs newest version
         /// </summary>
-        public static async Task InstallUpdate(string repoAuthor, string repoName, IProgress<double> progress) {
+        public static async Task InstallUpdate(string repoAuthor, string repoName) {
             using HttpClient client = new();
             client.DefaultRequestHeaders.Add("User-Agent", "request");
             Release json = JsonSerializer.Deserialize<Release>(await client.GetStringAsync($"https://api.github.com/repos/{repoAuthor}/{repoName}/releases/latest"));
@@ -62,7 +62,7 @@ namespace DyviniaUtils {
 
             File.Move(filePath, oldPath, true);
 
-            await Downloader.Download(downloadUrl, filePath, progress);
+            await Downloader.DownloadWithWindow(downloadUrl, filePath);
 
             Process.Start(new ProcessStartInfo { FileName = filePath, UseShellExecute = true });
             Application.Current.Dispatcher.Invoke(() => Application.Current.Shutdown());

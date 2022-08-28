@@ -2,8 +2,13 @@
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace DyviniaUtils {
+
     class Downloader {
         /// <summary>
         /// Downloads file to destination
@@ -41,6 +46,67 @@ namespace DyviniaUtils {
                 }
             }
             while (isMoreToRead);
+        }
+
+        /// <summary>
+        /// Shows Progress window while Downloading file to destination
+        /// </summary>
+        public static async Task DownloadWithWindow(string downloadUrl, string destinationFilePath) {
+            DownloadWindow downloadWindow = new("Downloading");
+            downloadWindow.Show();
+            await Download(downloadUrl, destinationFilePath, downloadWindow.Progress);
+            await Task.Delay(100);
+            downloadWindow.Close();
+        }
+
+        private class DownloadWindow : Window {
+            public IProgress<double> Progress;
+
+            public DownloadWindow(string title) {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                ResizeMode = ResizeMode.NoResize;
+                WindowStyle = WindowStyle.None;
+                AllowsTransparency = true;
+                Background = Brushes.Transparent;
+                Cursor = Cursors.Wait;
+
+                Title = title;
+                Height = 100;
+                Width = 400;
+
+                Grid innerGrid = new() {
+                    Background = new BrushConverter().ConvertFromString("#FF141414") as Brush,
+                    Margin = new Thickness(5)
+                };
+
+                TextBlock labelText = new() {
+                    Text = title,
+                    FontWeight = FontWeights.Bold,
+                    FontSize = 20,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
+                ProgressBar progressBar = new() {
+                    Height = 5,
+                    Maximum = 1,
+                    VerticalAlignment = VerticalAlignment.Bottom,
+                    BorderThickness = new Thickness(),
+                    Background = Brushes.Transparent,
+                    Foreground = Brushes.White,
+                };
+                Progress = new Progress<double>(p => progressBar.Value = p);
+
+                innerGrid.Children.Add(labelText);
+                innerGrid.Children.Add(progressBar);
+
+                Grid rootGrid = new() {
+                    Background = new BrushConverter().ConvertFromString("#FF2D2D2D") as Brush
+                };
+                rootGrid.Children.Add(innerGrid);
+
+                Content = rootGrid;
+            }
         }
     }
 }
