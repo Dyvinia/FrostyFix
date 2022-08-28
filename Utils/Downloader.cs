@@ -11,7 +11,7 @@ namespace DyviniaUtils {
 
     class Downloader {
         /// <summary>
-        /// Downloads file to destination
+        /// Download file to destination
         /// </summary>
         public static async Task Download(string downloadUrl, string destinationFilePath, IProgress<double> progress) {
             using HttpClient httpClient = new() { Timeout = TimeSpan.FromMinutes(30) };
@@ -26,7 +26,7 @@ namespace DyviniaUtils {
             byte[] buffer = new byte[4096];
             bool isMoreToRead = true;
 
-            using var fileStream = new FileStream(destinationFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true);
+            using FileStream fileStream = new(destinationFilePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true);
 
             do {
                 int bytesRead = await contentStream.ReadAsync(buffer);
@@ -49,7 +49,7 @@ namespace DyviniaUtils {
         }
 
         /// <summary>
-        /// Shows Progress window while Downloading file to destination
+        /// Show progress window while downloading file to destination
         /// </summary>
         public static async Task DownloadWithWindow(string downloadUrl, string destinationFilePath) {
             DownloadWindow downloadWindow = new("Downloading");
