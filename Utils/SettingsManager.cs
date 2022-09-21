@@ -8,10 +8,21 @@ namespace DyviniaUtils {
     public abstract class SettingsManager<T> where T : SettingsManager<T>, new() {
         public static T Settings { get; private set; }
 
-        public static readonly string FilePath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            Assembly.GetEntryAssembly().GetName().Name,
-            "config.json");
+        public static string FilePath {
+            get {
+                if (typeof(T).GetCustomAttribute<LocalConfigAttribute>()?.IsLocalConfig == true) {
+                    return Path.Combine(
+                        AppDomain.CurrentDomain.BaseDirectory,
+                        "config.json");
+                }
+                else {
+                    return Path.Combine(
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        Assembly.GetEntryAssembly().GetName().Name,
+                        "config.json");
+                }
+            }
+        }
 
         public static void Load() {
             try {
@@ -33,6 +44,14 @@ namespace DyviniaUtils {
             foreach (PropertyInfo property in typeof(T).GetProperties().Where(p => p.CanWrite)) {
                 property.SetValue(Settings, property.GetValue(defaultSettings, null), null);
             }
+        }
+    }
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public class LocalConfigAttribute : Attribute {
+        public bool IsLocalConfig { get; set; }
+        public LocalConfigAttribute(bool isLocalConfig) {
+            IsLocalConfig = isLocalConfig;
         }
     }
 }

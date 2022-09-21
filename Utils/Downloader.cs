@@ -52,7 +52,7 @@ namespace DyviniaUtils {
         /// Show progress window while downloading file to destination
         /// </summary>
         public static async Task DownloadWithWindow(string downloadUrl, string destinationFilePath) {
-            DownloadWindow downloadWindow = new("Downloading");
+            DownloadWindow downloadWindow = new();
             downloadWindow.Show();
             await Download(downloadUrl, destinationFilePath, downloadWindow.Progress);
             await Task.Delay(100);
@@ -62,7 +62,7 @@ namespace DyviniaUtils {
         private class DownloadWindow : Window {
             public IProgress<double> Progress;
 
-            public DownloadWindow(string title) {
+            public DownloadWindow() {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 ResizeMode = ResizeMode.NoResize;
                 WindowStyle = WindowStyle.None;
@@ -70,7 +70,7 @@ namespace DyviniaUtils {
                 Background = Brushes.Transparent;
                 Cursor = Cursors.Wait;
 
-                Title = title;
+                Title = "Downloading";
                 Height = 100;
                 Width = 400;
 
@@ -80,7 +80,7 @@ namespace DyviniaUtils {
                 };
 
                 TextBlock labelText = new() {
-                    Text = title,
+                    Text = Title,
                     FontWeight = FontWeights.Bold,
                     FontSize = 20,
                     HorizontalAlignment = HorizontalAlignment.Center,
