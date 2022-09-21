@@ -10,7 +10,7 @@ namespace DyviniaUtils {
 
         public static string FilePath {
             get {
-                if (typeof(T).GetCustomAttribute<LocalConfigAttribute>()?.IsLocalConfig == true) {
+                if (typeof(T).GetCustomAttribute<UseLocalConfigAttribute>() != null) {
                     return Path.Combine(
                         AppDomain.CurrentDomain.BaseDirectory,
                         "config.json");
@@ -47,11 +47,7 @@ namespace DyviniaUtils {
         }
     }
 
+
     [AttributeUsage(AttributeTargets.Class)]
-    public class LocalConfigAttribute : Attribute {
-        public bool IsLocalConfig { get; set; }
-        public LocalConfigAttribute(bool isLocalConfig) {
-            IsLocalConfig = isLocalConfig;
-        }
-    }
+    public class UseLocalConfigAttribute : Attribute { }
 }
