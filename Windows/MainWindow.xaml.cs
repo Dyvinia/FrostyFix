@@ -58,7 +58,6 @@ namespace FrostyFix {
                 new Game { DisplayName = "Star Wars: Battlefront", FileName = "starwarsbattlefront", Path = @"SOFTWARE\Wow6432Node\EA Games\STAR WARS Battlefront" },
                 new Game { DisplayName = "Star Wars: Battlefront II", FileName = "starwarsbattlefrontii", Path = @"SOFTWARE\EA Games\STAR WARS Battlefront II" },
                 new Game { DisplayName = "Battlefield One", FileName = "bf1", Path = @"SOFTWARE\WOW6432Node\EA Games\Battlefield 1" },
-                new Game { DisplayName = "Battlefield V", FileName = "bfv", Path = @"SOFTWARE\WOW6432Node\EA Games\Battlefield V" },
                 new Game { DisplayName = "Mass Effect: Andromeda", FileName = "MassEffectAndromeda", Path = @"SOFTWARE\WOW6432Node\BioWare\Mass Effect Andromeda" },
                 new Game { DisplayName = "Need for Speed", FileName = "NFS16", Path = @"SOFTWARE\EA Games\Need for Speed" },
                 new Game { DisplayName = "Need for Speed: Payback", FileName = "NeedForSpeedPayback", Path = @"SOFTWARE\EA Games\Need for Speed Payback" },
