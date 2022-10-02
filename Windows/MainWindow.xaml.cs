@@ -48,8 +48,8 @@ namespace FrostyFix {
             RefreshLaunchButton();
             LoadSelections();
 
-            Thread checkGameStatus = new(GameStatusThread) { IsBackground = true };
-            checkGameStatus.Start();
+            //Thread checkGameStatus = new(GameStatusThread) { IsBackground = true };
+            //checkGameStatus.Start();
         }
 
         public void LocateInstalls() {
@@ -185,7 +185,7 @@ namespace FrostyFix {
                                 var env = process.ReadEnvironmentVariables();
                                 string[] args = process.ReadArgumentList().ToArray();
                                 string pack;
-                                if (env["GAME_DATA_DIR"] != null) pack = new DirectoryInfo(env["GAME_DATA_DIR"]).Name;
+                                if (env.ContainsKey("GAME_DATA_DIR")) pack = new DirectoryInfo(env["GAME_DATA_DIR"]).Name;
                                 else if (args.Length > 2) pack = new DirectoryInfo(args[2]).Name;
                                 else pack = "None";
 

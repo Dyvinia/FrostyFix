@@ -160,21 +160,21 @@
 
                     <Separator Grid.Row="4"/>
 
-                    <StackPanel Grid.Row="5" Orientation="Vertical" Margin="10,0">
+                    <!--<StackPanel Grid.Row="5" Orientation="Vertical" Margin="10,0">
                         <Grid ToolTip="Checks Game's info in the background">
                             <CheckBox x:Name="BackgroundOption" IsChecked="{Binding Path=(local:Config.BackgroundThread), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Background Thread" HorizontalAlignment="Left" Foreground="#FFF1F1F1" VerticalAlignment="Top" />
                         </Grid>
                     </StackPanel>
 
-                    <Separator Grid.Row="6"/>
+                    <Separator Grid.Row="6"/>-->
 
-                    <StackPanel Grid.Row="7" Orientation="Vertical" Margin="10,0">
+                    <StackPanel Grid.Row="5" Orientation="Vertical" Margin="10,0">
                         <Grid ToolTip="Check version on startup">
                             <CheckBox x:Name="UpdateCheckerOption" IsChecked="{Binding Path=(local:Config.UpdateChecker), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="Update Checker" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         </Grid>
                     </StackPanel>
 
-                    <Separator Grid.Row="8"/>
+                    <Separator Grid.Row="6"/>
 
                     <Button Grid.Row="9" x:Name="ResetButton" Content="Reset Settings" Height="25" Margin="10" VerticalAlignment="Bottom"/>
                 </Grid>
