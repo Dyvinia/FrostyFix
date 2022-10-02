@@ -10,15 +10,15 @@ namespace DyviniaUtils {
 
         public static string FilePath {
             get {
-                if (typeof(T).GetCustomAttribute<UseLocalConfigAttribute>() != null) {
+                if (typeof(T).GetCustomAttribute<GlobalConfigAttribute>() != null) {
                     return Path.Combine(
-                        AppDomain.CurrentDomain.BaseDirectory,
+                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                        Assembly.GetEntryAssembly().GetName().Name,
                         "config.json");
                 }
                 else {
                     return Path.Combine(
-                        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                        Assembly.GetEntryAssembly().GetName().Name,
+                        AppDomain.CurrentDomain.BaseDirectory,
                         "config.json");
                 }
             }
@@ -47,7 +47,9 @@ namespace DyviniaUtils {
         }
     }
 
-
+    /// <summary>
+    /// Saves Config file to AppData
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class UseLocalConfigAttribute : Attribute { }
+    public class GlobalConfigAttribute : Attribute { }
 }

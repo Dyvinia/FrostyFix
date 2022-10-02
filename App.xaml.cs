@@ -7,6 +7,7 @@ using DyviniaUtils.Dialogs;
 
 namespace FrostyFix {
 
+    [GlobalConfig]
     [AddINotifyPropertyChangedInterface]
     public class Config : SettingsManager<Config> {
         public bool LaunchGame { get; set; } = false;
