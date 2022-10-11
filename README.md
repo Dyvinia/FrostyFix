@@ -6,6 +6,8 @@ FrostyFix is a tool to fix an issue with modding games on platforms other than O
 
 ![image](https://i.imgur.com/u2FzcIp.png)
 
+#### New Alternative [DatapathFix](https://github.com/Dyvinia/DatapathFixPlugin) with full game support
+
 ## Instructions
 
 ### [Download the latest release](https://github.com/Dyvinia/FrostyFix/releases)
