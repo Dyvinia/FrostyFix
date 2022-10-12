@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using DyviniaUtils.Dialogs;
@@ -13,13 +14,19 @@ namespace DyviniaUtils {
     class GitHub {
 
         class Release {
-            public string tag_name { get; set; }
 
-            public Asset[] assets { get; set; }
+            [JsonPropertyName("tag_name")]
+            public string Tag { get; set; }
+
+            [JsonPropertyName("assets")]
+            public Asset[] Assets { get; set; }
 
             public class Asset {
-                public string name { get; set; }
-                public string browser_download_url { get; set; }
+                [JsonPropertyName("name")]
+                public string Name { get; set; }
+
+                [JsonPropertyName("browser_download_url")]
+                public string DownloadURL { get; set; }
             }
         }
 
@@ -31,9 +38,9 @@ namespace DyviniaUtils {
             try {
                 using HttpClient client = new();
                 client.DefaultRequestHeaders.Add("User-Agent", "request");
-                Release json = JsonSerializer.Deserialize<Release>(await client.GetStringAsync($"https://api.github.com/repos/{repoAuthor}/{repoName}/releases/latest"));
+                Release releases = JsonSerializer.Deserialize<Release>(await client.GetStringAsync($"https://api.github.com/repos/{repoAuthor}/{repoName}/releases/latest"));
 
-                Version latest = new(json.tag_name[1..]);
+                Version latest = new(releases.Tag[1..]);
                 Version local = Assembly.GetExecutingAssembly().GetName().Version;
 
                 if (local.CompareTo(latest) < 0)
@@ -55,7 +62,7 @@ namespace DyviniaUtils {
             client.DefaultRequestHeaders.Add("User-Agent", "request");
             Release json = JsonSerializer.Deserialize<Release>(await client.GetStringAsync($"https://api.github.com/repos/{repoAuthor}/{repoName}/releases/latest"));
 
-            string downloadUrl = json.assets.Where(x => x.browser_download_url.Contains(".exe")).FirstOrDefault().browser_download_url;
+            string downloadUrl = json.Assets.Where(x => x.DownloadURL.Contains(".exe")).FirstOrDefault().DownloadURL;
 
             string filePath = Environment.ProcessPath;
             string oldPath = filePath.Replace(".exe", ".old.exe");
