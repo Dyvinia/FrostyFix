@@ -12,11 +12,14 @@ FrostyFix is a tool to fix an issue with modding games on platforms other than O
 
 ### [Download the latest release](https://github.com/Dyvinia/FrostyFix/releases)
 
-1. Launch FrostyFix
-2. Select Game and Profile
-3. Select the Platform you intend to use
-4. Click Enable/Launch
-5. To disable FrostyFix, click **Disable Mods**
+1. Download FrostyFix
+2. Apply your chosen mods normally through Frosty Mod Manager and launch the game through it.
+   <br>**Your mods will not show up in game, don't worry**
+3. Exit the Game and Launch FrostyFix
+4. Select Game and Profile
+5. Select the Platform you intend to use
+6. Click Enable/Launch
+7. To Disable FrostyFix, click **Disable Mods**
 
 ## .NET 6 Runtime
 This application requires [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
@@ -43,26 +46,7 @@ This application requires [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/
 > 
 > **A:** If FrostyFix cannot locate a game, it hides the game in the dropdown. ***You can add a custom game to the dropdown in the Settings window.***
 
-## Unsupported Games
-These games are confirmed to be unsupported because they DO NOT USE a environment variable unlike most other Frostbite Games. They will not be able to be fixed through FrostyFix
-- FIFA 20
-- Madden 20
-- Need For Speed: Heat
-
-## Terms of Use<sup>[[?]](https://github.com/Dyvinia/stuff/blob/main/docs/terms-of-use.md)</sup>
-By using this project or its source code, for any purpose and in any shape or form, you grant your **implicit agreement** to all the following statements:
-
-- You **agree that Trans Rights are Human Rights** <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f3f3-26a7.png" width="15"/>
-- You **accept and recognize all LGBTQIA+ identities**
-- You **understand that Gender and Sex are not binary**
-- You **reject the false and hateful narratives in right-wing propaganda**
-
-## Support
-If you still have questions and/or need support with FrostyFix **after reading the FAQ**, join the [BattlefrontModding Discord Server](https://discord.gg/advqsyv)
-
 ## Credits
 Created by [Dyvinia](https://twitter.com/Dyvinia)
-
-[![Donate=Paypal](https://img.shields.io/badge/Donate-Paypal-informational?style=for-the-badge)](https://www.paypal.me/DulanaG)
 
 [![Donate-Kofi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J63UBHG)
