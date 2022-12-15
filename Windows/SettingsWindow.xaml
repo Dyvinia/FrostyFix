@@ -79,9 +79,9 @@
                             </TextBlock>
 
                             <TextBlock TextWrapping="Wrap" Height="21" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
-                                FAQ: 
-                                <Hyperlink NavigateUri="https://github.com/Dyvinia/FrostyFix#faq" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
-                                https://github.com/Dyvinia/FrostyFix#FAQ
+                                DPFix: 
+                                <Hyperlink NavigateUri="https://github.com/Dyvinia/DatapathFixPlugin" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
+                                https://github.com/Dyvinia/DatapathFixPlugin
                                 </Hyperlink>
                             </TextBlock>
 
@@ -101,8 +101,8 @@
 
                             <TextBlock TextWrapping="Wrap" Height="21" TextAlignment="Center" FontSize="13" FontFamily="/Fonts/GillSansNova-SemiBold.ttf #Gill Sans Nova">
                                 Donate: 
-                                <Hyperlink NavigateUri="https://dyy.vin/donate" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
-                                https://dyy.vin/Donate
+                                <Hyperlink NavigateUri="https://ko-fi.com/dyvinia" RequestNavigate="Hyperlink_RequestNavigate" Foreground="White" FontFamily="/Fonts/GillSansNova-Book.ttf #Gill Sans Nova">
+                                https://ko-fi.com/Dyvinia
                                 </Hyperlink>
                             </TextBlock>
                             <Separator Opacity="0" Height="0"/>

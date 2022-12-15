@@ -330,6 +330,10 @@ namespace FrostyFix {
             LocateInstalls();
         }
 
+        private void ButtonDonate_Click(object sender, RoutedEventArgs e) {
+            Process.Start(new ProcessStartInfo(@"https://ko-fi.com/dyvinia") { UseShellExecute = true });
+        }
+
         private void LaunchButton_Click(object sender, RoutedEventArgs e) {
             SaveSelections();
             LaunchWithMods();
