@@ -22,7 +22,8 @@ FrostyFix is a tool to fix an issue with modding games on platforms other than O
 7. To Disable FrostyFix, click **Disable Mods**
 
 ## .NET 6 Runtime
-This application requires [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+This application requires [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)<br>
+![image](https://i.imgur.com/KDpUsFc.png)
 
 ## Reminder
 #### **You must disable this whenever you play any other Frostbite game or if you encounter issues with other games.**
