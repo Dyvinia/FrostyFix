@@ -4,7 +4,7 @@
 
 ### New Alternative [DatapathFix](https://github.com/Dyvinia/DatapathFixPlugin) with full game support
 
-FrostyFix is a tool to fix an issue with modding games on platforms other than Origin (EA Desktop, Epic Games Store, Steam), where mods do not appear in the game.
+FrostyFix is a tool to fix an issue with modding Frosty games on Epic Games Store, where mods do not appear in the game.
 
 ![image](https://i.imgur.com/u2FzcIp.png)
 
